@@ -120,6 +120,6 @@ public class KennelReservation
    */
   public String toString()
   {
-    return pet+":"+customer+":"+startDate+":"+endDate+":"+pricePerDay;
+    return customer+":"+startDate+":"+endDate+":"+pet+":"+pricePerDay;
   }
 }

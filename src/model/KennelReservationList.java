@@ -66,7 +66,6 @@ public class KennelReservationList
   {
     return kennelReservations;
   }
-  //returning a value how much is available in the timeline(need start and end date)
   /**
    * method for calculating the number of reservations available in the given time
    * @param startDate Date object, with data for year, month, name, storing the start date
@@ -96,14 +95,23 @@ public class KennelReservationList
   {
     return howMuchIsAvailable(startDate,endDate)>0;
   }
-  //check if during timeline reservation is available
-  //Use this if there is a different limit than essential
+  /**
+   * method for checking if a reservation is available during the given timeline,
+   * using given max limit and not initial
+   * @param startDate Date object, with data for year, month, name, storing the start date
+   * @param endDate Date object, with value for the date of finishing the booking(year,month,day)
+   * @param maxlimit value for maximum limit of stored pets
+   * @return reservation available or not based on a maxlimit, we check.
+   */
   public boolean isReservationAvailable(Date startDate, Date endDate, int maxlimit)
   {
-    return howMuchIsAvailable(startDate,endDate)<maxlimit;
+    return (maxlimit-howMuchIsAvailable(startDate,endDate))>0;
   }
-  //Searching trough the reservations and checking maching name
-  //returning a reservationList if found else a         <!null!>
+  /**
+   * method for selecting all reservations with the specific customer in it.
+   * @param name
+   * @return  a reservationList if found else a (null)
+   */
   public KennelReservation getReservationByCustomerName(String name)
   {
     for (int i = 0; i < kennelReservations.size(); i++)
@@ -115,73 +123,66 @@ public class KennelReservationList
     }
     return null;
   }
-  //Returning reservationList, based on pets in petList and searches trough color.
-  public KennelReservationList getReservationByPetColor(String color,PetList petList)
+  /**
+   * Returning reservationList, based on pets in petList and searches trough color.
+   * @param color
+   * @return
+   */
+  public KennelReservationList getReservationByPetColor(String color)
   {
-    ArrayList<Pet> petsByColor;
-    ArrayList<Pet> allPetsFromPetList = petList.getPetsByType().getPets();
-
-    for (int i = 0; i < allPetsFromPetList.size(); i++)
+    KennelReservationList result = new KennelReservationList();
+    for (KennelReservation kennelReservation : kennelReservations)
     {
-      if (allPetsFromPetList.get(i).getColor().equals(color))
+      if (kennelReservation.getPet().getColor().equals(color))
       {
-        petsByColor.add(allPetsFromPetList.get(i));
+        result.addReservation(kennelReservation);
       }
     }
-    if (petsByColor.isEmpty())
-    {
-      return null;
-    }
-    ArrayList<KennelReservation> reservationsByPet = new ArrayList<>();
-    for (int i = 0; i < kennelReservations.size() ; i++)
-    {
-      KennelReservation temp = kennelReservations.get(i);
-      for (int j = 0; j < petsByColor.size(); j++)
-      {
-        if (temp.getPet().equals(petsByColor.get(j)))
-        {
-          reservationsByPet.add(kennelReservations.get(i));
-        }
-      }
-    }
-
-    return new KennelReservationList(reservationsByPet);
+    return result;
   }
-  //Returning reservationList, based on pets in petList and searches trough species.
-  public KennelReservationList getReservationByPetSpecies(String species,PetList petList)
+  /**
+   * Returning reservationList, based on pets in petList and searches trough species.
+   * @param speciesOrBreed
+   * @return
+   */
+  public KennelReservationList getReservationByPetSpecies(String speciesOrBreed)
   {
-    ArrayList<Pet> petsBySpecies;
-    ArrayList<Pet> allPetsFromPetList = petList.getPetsByType().getPets();
-
-    for (int i = 0; i < allPetsFromPetList.size(); i++)
+    KennelReservationList result = new KennelReservationList();
+    for (KennelReservation kennelReservation : kennelReservations)
     {
-      if (allPetsFromPetList.get(i).getSpecies().equals(species))
+      int type = kennelReservation.getPet().getType();
+
+      switch (type)
       {
-        petsBySpecies.add(allPetsFromPetList.get(i));
+        case 1:
+        case 2:
+          if (kennelReservation.getPet().getBreed().equals(speciesOrBreed))
+          {
+            result.addReservation(kennelReservation);
+          }
+          break;
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+          if (kennelReservation.getPet().getSpecies().equals(speciesOrBreed))
+          {
+            result.addReservation(kennelReservation);
+          }
+          break;
+        default:
+        default:
+          throw new UnknownPetTypeException("Pet type cannot be "+type);
       }
     }
-    if (petsBySpecies.isEmpty())
-    {
-      return null;
-    }
-    ArrayList<model.KennelReservation> reservationsByPet = new ArrayList<>();
-    for (int i = 0; i < kennelReservations.size() ; i++)
-    {
-      model.KennelReservation temp = kennelReservations.get(i);
-      for (int j = 0; j < petsBySpecies.size(); j++)
-      {
-        if (temp.getPet().equals(petsBySpecies.get(j)))
-        {
-          reservationsByPet.add(kennelReservations.get(i));
-        }
-      }
-    }
-
-    return new KennelReservationList(reservationsByPet);
+    return result;
   }
-  //general toString method
-  public String toString()
-  {
+
+  /**
+   * Returning all reservations as a String
+   * @return
+   */
+  public String toString() {
     return kennelReservations.toString();
   }
 
