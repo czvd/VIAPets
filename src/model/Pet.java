@@ -1,0 +1,202 @@
+package model;
+
+public abstract class Pet
+{
+  private int type;
+  private double price;
+  private String color;
+  private int age;
+  private String gender;
+  private String name;
+  private String comment;
+  private boolean inKennel;
+
+  public Pet(int type, double price, String color, int age)
+  {
+    isNotInKennel();
+    setType(type);
+    setPrice(price);
+    setColor(color);
+    setAge(age);
+    gender = "NotAssigned";
+    name = "NoName";
+    comment = "NoComment";
+  }
+
+  public int getType()
+  {
+    return type;
+  }
+
+  public String getTypeString()
+  {
+    String temp = "";
+    switch (type)
+    {
+      case 1:
+        temp += "Dog";
+        break;
+      case 2:
+        temp += "Cat";
+        break;
+      case 3:
+        temp += "Bird";
+        break;
+      case 4:
+        temp += "Fish";
+        break;
+      case 5:
+        temp += "Rodent";
+        break;
+      case 6:
+        temp += "Various";
+        break;
+    }
+    return temp;
+  }
+
+  public double getPrice()
+  {
+    return price;
+  }
+
+  public String getColor()
+  {
+    return color;
+  }
+
+  public int getAge()
+  {
+    return age;
+  }
+
+  public String getGender()
+  {
+    return gender;
+  }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public String getComment()
+  {
+    return comment;
+  }
+
+  public boolean getInKennel()
+  {
+    return inKennel;
+  }
+
+  private final void setType(int type)
+  {
+    switch (type)
+    {
+      case 1, 2, 3, 4, 5, 6:
+        this.type = type;
+        break;
+      default:
+        throw new IllegalTypeException();
+    }
+  }
+
+  public void setPrice(double price)
+  {
+    if (!inKennel)
+    {
+      if (price >= 0)
+      {
+        this.price = price;
+      }
+      else
+        throw new IllegalPriceException();
+    }
+    else
+      throw new UnsupportedActionException(
+          "Can't set a price for a pet in the kennel");
+  }
+
+  public void setColor(String color)
+  {
+    this.color = color;
+  }
+
+  public void setAge(int age)
+  {
+    if (age >= 0)
+    {
+      this.age = age;
+    }
+    else
+      throw new IllegalAgeException();
+  }
+
+  public void isMale()
+  {
+    gender = "Male";
+  }
+
+  public void isFemale()
+  {
+    gender = "Female";
+  }
+
+  public void setName(String name)
+  {
+    if (name.matches("[a-zA-z ]+"))
+    {
+      this.name = name;
+    }
+    else
+      throw new IllegalNameException();
+  }
+
+  public void setComment(String comment)
+  {
+    this.comment = comment;
+  }
+
+  public void isInKennel()
+  {
+    if (hasAccessToKennel())
+    {
+      inKennel = true;
+      price = -1;
+    }
+    else
+      throw new UnsupportedActionException(
+          "This type doesn't have access to the kennel");
+  }
+
+  public void isNotInKennel()
+  {
+    inKennel = false;
+  }
+
+  public abstract boolean hasAccessToKennel();
+
+  public boolean equals(Object obj)
+  {
+    if (obj == null || getClass() != obj.getClass())
+    {
+      return false;
+    }
+
+    Pet temp = (Pet) obj;
+
+    return type == temp.getType() && price == temp.getPrice() && color.equals(
+        temp.getColor()) && age == temp.getAge() && gender.equals(
+        temp.getGender()) && name.equals(temp.getName()) && comment.equals(
+        temp.getComment()) && inKennel == temp.getInKennel();
+  }
+
+  public String toString()
+  {
+    return getTypeString() + "\n" + getPrice() + "\n" + getColor() + "\n"
+        + getAge() + "\n" + getGender() + "\n" + getName() + "\n" + getComment()
+        + "\n" + getInKennel();
+  }
+}
+

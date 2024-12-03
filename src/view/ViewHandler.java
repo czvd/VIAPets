@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-//import model.StudentModelManager;
 
 import java.io.IOException;
 
@@ -15,12 +14,12 @@ public class ViewHandler
   private AllStudentsViewController allStudentsViewController;
   private ChangeCountryViewController changeCountryViewController;
 
-  //private StudentModelManager modelManager;
+  private VIAPetsModelManager modelManager;
 
-  public ViewHandler(Stage stage)//StudentModelManager modelManager
+  public ViewHandler(Stage stage, VIAPetsModelManager modelManager)//StudentModelManager modelManager
   {
     this.stage = stage;
-    //this.modelManager = modelManager;
+    this.modelManager = modelManager;
   }
 
   public void start()

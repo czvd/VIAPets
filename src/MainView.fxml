@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="37.0" layoutY="153.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="92.0" text="Pet" />
+      <Button layoutX="436.0" layoutY="153.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="131.0" text="Customer" />
+      <Button layoutX="164.0" layoutY="153.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="92.0" text="Sale" />
+      <Button layoutX="280.0" layoutY="153.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="119.0" text="Kennel" />
+      <Label layoutX="50.0" layoutY="60.0" prefHeight="70.0" prefWidth="486.0" text="Welcome to VIAPets" textAlignment="CENTER">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
+
