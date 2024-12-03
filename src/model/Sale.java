@@ -4,23 +4,23 @@ import java.io.Serializable;
 
 public class Sale implements Serializable
 {
-  private Customer customer;
   private Pet pet;
-  private double finalPrice = 20;
+  private Customer customer;
   private Date dateOfSale;
+  private double finalPrice = 20;
 
-  public Sale(Customer customer, Pet pet)
+  public Sale(Pet pet, Customer customer)
   {
-    this.customer = customer;
     this.pet = pet;
+    this.customer = customer;
     dateOfSale = Date.today();
   }
   public Sale(Customer customer, Pet pet, double finalPrice)
   {
-    this.customer = customer;
     this.pet = pet;
-    this.finalPrice = finalPrice;
+    this.customer = customer;
     dateOfSale = Date.today();
+    this.finalPrice = finalPrice;
   }
 
   public Pet getPet()

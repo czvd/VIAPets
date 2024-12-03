@@ -11,6 +11,9 @@ import java.io.IOException;
 public class ViewHandler
 {
   private Stage stage;
+
+  private Scene currentScene;
+
   private view.mainViewController mainViewController;
   //initialize customer controllers
   private ManageCustomerViewController manageCustomerViewController;
@@ -27,29 +30,30 @@ public class ViewHandler
 
   private VIAPetsModelManager modelManager;
 
-  public ViewHandler(Stage window, VIAPetsModelManager modelManager)
+  public ViewHandler(Stage stage, VIAPetsModelManager modelManager)
   {
-    this.stage = window;
+    this.stage = stage;
     this.modelManager = modelManager;
   }
 
   public void start()
   {
     loadViewMain();
-    //load customer
-    loadManageCustomerView();
-    loadAddNewCustomerView();
-    //load sale
+//    //load customer
+//    loadManageCustomerView();
+//    loadAddNewCustomerView();
+//    //load sale
     loadAddSaleView();
     loadSaleView();
-    //load reservation
-    loadReservationView();
-    loadAddReservationView();
-    //load pet
-    loadPetView();
-    loadAddPetView();
+//    //load reservation
+//    loadReservationView();
+//    loadAddReservationView();
+//    //load pet
+//    loadPetView();
+//    loadAddPetView();
 
     openView("MainView");
+
   }
 
   public void openView(String id)
@@ -96,12 +100,13 @@ public class ViewHandler
 
     String title = "";
 
-    if(stage.getScene().getRoot().getUserData() !=null)
+    if(stage.getScene().getRoot().getUserData() != null)
     {
       title = stage.getScene().getRoot().getUserData().toString();
     }
 
     stage.setTitle(title);
+   // stage.setScene(currentScene);
     stage.show();
   }
 
@@ -113,7 +118,7 @@ public class ViewHandler
       loader.setLocation(getClass().getResource("MainView.fxml"));
       Region root = loader.load();
       mainViewController = loader.getController();
-      mainViewController.init(this, new Scene(root),modelManager);
+      mainViewController.init(this, new Scene(root), modelManager);
     }
     catch (IOException e)
     {
@@ -168,6 +173,7 @@ public class ViewHandler
       e.printStackTrace();
     }
   }
+
   private void loadSaleView()
   {
     try
@@ -176,7 +182,7 @@ public class ViewHandler
       loader.setLocation(getClass().getResource("SaleView.fxml"));
       Region root = loader.load();
       saleViewController = loader.getController();
-      saleViewController.init(this, new Scene(root),modelManager);
+      saleViewController.init(this, new Scene(root), modelManager);
     }
     catch (IOException e)
     {
@@ -245,5 +251,4 @@ public class ViewHandler
       e.printStackTrace();
     }
   }
-
 }

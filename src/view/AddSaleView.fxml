@@ -8,50 +8,49 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <HBox alignment="CENTER" layoutX="1.0" prefHeight="70.0" prefWidth="600.0" spacing="20.0">
-            <children>
-                <Button mnemonicParsing="false" text="View Sale" />
-                <Button mnemonicParsing="false" text="Add New Sale" />
-            </children>
-        </HBox>
-        <VBox alignment="CENTER_LEFT" layoutY="64.0" prefHeight="210.0" prefWidth="200.0" spacing="23.0">
-            <children>
-                <Label prefHeight="18.0" prefWidth="31.0" text="Pet:" />
-                <Label prefHeight="18.0" prefWidth="69.0" text="Customer:" />
-                <Label prefHeight="18.0" prefWidth="44.0" text="Date:" />
-                <Label prefHeight="18.0" prefWidth="43.0" text="Price:" />
-            </children>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-            <padding>
-                <Insets left="140.0" top="10.0" />
-            </padding>
-        </VBox>
-        <VBox alignment="CENTER_LEFT" layoutX="210.0" layoutY="70.0" prefHeight="210.0" prefWidth="400.0" spacing="15.0">
-            <children>
-                <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="300.0" />
-                <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="300.0" />
-                <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="300.0" />
-                <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="300.0" />
-            </children>
-        </VBox>
-        <HBox alignment="TOP_CENTER" layoutY="274.0" prefHeight="60.0" prefWidth="600.0">
-            <children>
-                <Button mnemonicParsing="false" text="Add The Sale" />
-            </children>
-        </HBox>
-        <HBox alignment="BOTTOM_RIGHT" layoutX="1.0" layoutY="334.0" prefHeight="60.0" prefWidth="600.0">
-            <children>
-                <Button mnemonicParsing="false" text="Back to the main page">
-                    <HBox.margin>
-                        <Insets bottom="10.0" right="20.0" />
-                    </HBox.margin>
-                </Button>
-            </children>
-        </HBox>
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddSaleViewController">
+   <children>
+      <HBox alignment="CENTER" layoutX="1.0" prefHeight="70.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" text="View Sale" />
+            <Button mnemonicParsing="false" text="Add New Sale" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER_LEFT" layoutY="64.0" prefHeight="210.0" prefWidth="200.0" spacing="23.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="31.0" text="Pet:" />
+            <Label prefHeight="18.0" prefWidth="69.0" text="Customer:" />
+            <Label prefHeight="18.0" prefWidth="44.0" text="Date:" />
+            <Label prefHeight="18.0" prefWidth="43.0" text="Price:" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="140.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="CENTER_LEFT" layoutX="210.0" layoutY="70.0" prefHeight="210.0" prefWidth="400.0" spacing="15.0">
+         <children>
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="300.0" />
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="300.0" />
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="300.0" />
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="10.0" prefWidth="300.0" />
+         </children>
+      </VBox>
+      <HBox alignment="TOP_CENTER" layoutY="274.0" prefHeight="60.0" prefWidth="600.0">
+         <children>
+            <Button mnemonicParsing="false" text="Add The Sale" />
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_RIGHT" layoutX="1.0" layoutY="334.0" prefHeight="60.0" prefWidth="600.0">
+         <children>
+            <Button mnemonicParsing="false" text="Back to the main page">
+               <HBox.margin>
+                  <Insets bottom="10.0" right="20.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

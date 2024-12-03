@@ -7,12 +7,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import ModelManager.VIAPetsModelManager;
+import javafx.scene.layout.Region;
 
 public class mainViewController
 {
   private Scene scene;
   private VIAPetsModelManager modelManager;
   private ViewHandler viewHandler;
+  //private Region root;
 
   @FXML Button PetsButton;
   @FXML Button ReservationsButton;
@@ -26,14 +28,16 @@ public class mainViewController
     this.modelManager = modelManager;
   }
 
-  public void reset()
-  {
-
-  }
-
+  // Getter for the scene
   public Scene getScene()
   {
     return scene;
+
+  }
+
+  public void reset()
+  {
+
   }
 
   public void handleActions(ActionEvent e)

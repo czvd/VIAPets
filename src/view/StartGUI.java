@@ -8,11 +8,11 @@ import java.io.IOException;
 
 public class StartGUI extends Application
 {
-  VIAPetsModelManager modelManager = new VIAPetsModelManager("viapets.bin");
+  VIAPetsModelManager modelManager = new VIAPetsModelManager("VIAPets.bin");
 
   public void start(Stage window)
   {
-    ViewHandler viewHandler = new ViewHandler(window, modelManager);
+    ViewHandler viewHandler = new ViewHandler(window,modelManager );
     viewHandler.start();
   }
 }
