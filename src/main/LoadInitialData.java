@@ -1,5 +1,6 @@
 package main;
 
+import ModelManager.VIAPetsModelManager;
 import model.*;
 
 import utils.FileHandler;
@@ -11,6 +12,17 @@ public class LoadInitialData
 {
   public static void main(String[] args)
   {
+
+    VIAPetsModelManager modelManager = new VIAPetsModelManager("VIAPets.bin");
+
+   // System.out.println(modelManager.getAllPets());
+   // modelManager.addPet(new Dog(123, "grey", 12,"greatdane"));
+    modelManager.addCostumer(new Customer("Richard", "Vegh","9999", "ricky@gmail.com"));
+    modelManager.addCostumer(new Customer("Richad", "Vegh","999", "ricky3@gmail.com"));
+    modelManager.addCostumer(new Customer("Ricard", "Vegh","999912", "ricky2@gmail.com"));
+    modelManager.addCostumer(new Customer("Rihard", "Vegh","9999222", "ricky1@gmail.com"));
+
+    /*
     VIAPets viaPets = new VIAPets();
     try
     {
@@ -25,5 +37,7 @@ public class LoadInitialData
       System.out.println("IO Error writing to file ");
     }
     System.out.println("Done");
+
+     */
   }
 }

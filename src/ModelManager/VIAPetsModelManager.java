@@ -1,3 +1,5 @@
+package ModelManager;
+
 import model.*;
 import utils.FileHandler;
 import model.PetList;
@@ -12,8 +14,8 @@ public class VIAPetsModelManager
   private VIAPets viaPets;
 
   public VIAPetsModelManager(String fileName)
-      throws ClassNotFoundException, IOException
   {
+    viaPets = new VIAPets();
     this.fileName = fileName;
     try
     {
@@ -26,6 +28,10 @@ public class VIAPetsModelManager
     catch (IOException e)
     {
       System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      throw new RuntimeException(e);
     }
   }
   public void save()
@@ -50,7 +56,7 @@ public class VIAPetsModelManager
     return viaPets.getPetList();
   }
 
-  public void addPet(Sale newPet)
+  public void addPet(Pet newPet)
   {
     PetList allPets = getAllPets();
     allPets.addPet(newPet);
@@ -179,6 +185,10 @@ public class VIAPetsModelManager
     }
 
     save();
+  }
+  public CustomerList getCustomerByName(String name)
+  {
+    return getAllCustomers().getCustomerByName(name);
   }
 
   //Kennel Reservation Model manager

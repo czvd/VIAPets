@@ -1,16 +1,14 @@
 package model;
 
-import java.util.Objects;
+import java.io.Serializable;
 
-public class Rodent extends Pet
+public class Rodent extends Pet implements Serializable
 {
-  private String species;
   private boolean bite;
 
   public Rodent(double price, String color, int age, String species)
   {
-    super(4, price, color, age);
-    setSpecies(species);
+    super(4, price, color, age, species);
     bite = false;
   }
 
@@ -19,24 +17,9 @@ public class Rodent extends Pet
     return false;
   }
 
-  public String getSpecies()
-  {
-    return species;
-  }
-
   public boolean doesItBite()
   {
     return bite;
-  }
-
-  public void setSpecies(String species)
-  {
-    if (species.matches("[a-zA-Z ]+"))
-    {
-      this.species = species;
-    }
-    else
-      throw new IllegalBreedSpecException();
   }
 
   public void isBiting()
@@ -57,12 +40,11 @@ public class Rodent extends Pet
     if (!super.equals(obj))
       return false;
     Rodent temp = (Rodent)obj;
-    return super.equals(obj) && getSpecies().equals(temp.getSpecies()) && doesItBite() == temp.doesItBite();
+    return super.equals(obj) && doesItBite() == temp.doesItBite();
   }
 
   public String toString()
   {
-    return super.toString() + "\n" + getSpecies() + doesItBite();
+    return super.toString() + "\n" + doesItBite();
   }
 }
-

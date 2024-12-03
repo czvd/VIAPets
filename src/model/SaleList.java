@@ -67,7 +67,7 @@ public class SaleList implements Serializable
         case 1:
         {
           Dog temp = (Dog)sale.getPet();
-          if (temp.getBreed().equals(speciesOrBreed)) {
+          if (temp.getSpecies().equals(speciesOrBreed)) {
             result.addSale(sale);
           }
           break;
@@ -75,7 +75,7 @@ public class SaleList implements Serializable
         case 2:
         {
           Cat temp = (Cat)sale.getPet();
-          if (temp.getBreed().equals(speciesOrBreed)) {
+          if (temp.getSpecies().equals(speciesOrBreed)) {
             result.addSale(sale);
           }
         }

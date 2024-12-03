@@ -1,14 +1,14 @@
 package model;
 
-public class Bird extends Pet
+import java.io.Serializable;
+
+public class Bird extends Pet implements Serializable
 {
-  private String species;
   private String preferredFood;
 
   public Bird(double price, String color, int age, String species)
   {
-    super(3, price, color, age);
-    setSpecies(species);
+    super(3, price, color, age, species);
     preferredFood = "NoData";
   }
 
@@ -17,24 +17,9 @@ public class Bird extends Pet
     return true;
   }
 
-  public String getSpecies()
-  {
-    return species;
-  }
-
   public String getPreferredFood()
   {
     return preferredFood;
-  }
-
-  public void setSpecies(String species)
-  {
-    if (species.matches("[a-zA-Z ]+"))
-    {
-      this.species = species;
-    }
-    else
-      throw new IllegalBreedSpecException();
   }
 
   public void setPreferredFood(String preferredFood)
@@ -55,7 +40,6 @@ public class Bird extends Pet
 
   public String toString()
   {
-    return super.toString() + "\n" + species + "\n" + preferredFood;
+    return super.toString() + "\n" + preferredFood;
   }
 }
-

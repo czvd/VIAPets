@@ -1,4 +1,7 @@
 package model;
+
+import java.io.Serializable;
+
 /**
  * A class containing representing a Kennel reservation with
  * a price for one day, a pet object, 2 date object(start and end date)
@@ -6,7 +9,7 @@ package model;
  * @author Richard Vegh
  * @version 1.0
  */
-public class KennelReservation
+public class KennelReservation implements Serializable
 {
   private Pet pet;
   private Date startDate, endDate;

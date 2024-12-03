@@ -66,25 +66,21 @@ public class CustomerList implements Serializable
     return customers.size();
   }
 
-  /**
-   * Gets a customer object by the name from the list
-   * @param firstName the first name of the customer we are searching for
-   * @param lastName the last name of the customer we are searching for
-   * @return the Customer object with the given first name and last name if one exist, else null
-   */
-  public Customer get(String firstName, String lastName)
+
+  public CustomerList getCustomerByName(String name)
   {
+    Customer temp;
+    CustomerList customers = new CustomerList();
     for(int i = 0; i<customers.size(); i++)
     {
-      Customer temp = customers.get(i);
+       temp = customers.get(i);
 
-      if(temp.getFirstName().equals(firstName) && temp.getLastName().equals(lastName))
+      if(temp.getFirstName().equals(name) || temp.getLastName().equals(name))
       {
-        return temp;
+        customers.addCustomer(temp);
       }
     }
-
-    return null;
+    return customers;
   }
 
   /**

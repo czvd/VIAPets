@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Pet
+import java.io.Serializable;
+
+public abstract class Pet implements Serializable
 {
   private int type;
   private double price;
@@ -10,14 +12,16 @@ public abstract class Pet
   private String name;
   private String comment;
   private boolean inKennel;
+  private String species;
 
-  public Pet(int type, double price, String color, int age)
+  public Pet(int type, double price, String color, int age, String species)
   {
     isNotInKennel();
     setType(type);
     setPrice(price);
     setColor(color);
     setAge(age);
+    setSpecies(species);
     gender = "NotAssigned";
     name = "NoName";
     comment = "NoComment";
@@ -26,6 +30,11 @@ public abstract class Pet
   public int getType()
   {
     return type;
+  }
+
+  public String getSpecies()
+  {
+    return species;
   }
 
   public String getTypeString()
@@ -175,6 +184,16 @@ public abstract class Pet
     inKennel = false;
   }
 
+  public void setSpecies(String species)
+  {
+    if (species.matches("[a-zA-Z ]+"))
+    {
+      this.species = species;
+    }
+    else
+      throw new IllegalBreedSpecException();
+  }
+
   public abstract boolean hasAccessToKennel();
 
   public boolean equals(Object obj)
@@ -199,4 +218,3 @@ public abstract class Pet
         + "\n" + getInKennel();
   }
 }
-

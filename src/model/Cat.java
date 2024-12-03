@@ -1,20 +1,15 @@
 package model;
 
-public class Cat extends Pet
+import java.io.Serializable;
+
+public class Cat extends Pet implements Serializable
 {
-  private String breed;
   private String nameOfBreeder;
 
-  public Cat(double price, String color, int age, String breed)
+  public Cat(double price, String color, int age, String species)
   {
-    super(2, price, color, age);
-    setBreed(breed);
+    super(2, price, color, age, species);
     nameOfBreeder = "NoName";
-  }
-
-  public String getBreed()
-  {
-    return breed;
   }
 
   public String getNameOfBreeder()
@@ -22,15 +17,7 @@ public class Cat extends Pet
     return nameOfBreeder;
   }
 
-  public void setBreed(String breed)
-  {
-    if (breed.matches("[a-zA-z ]+"))
-    {
-      this.breed = breed;
-    }
-    else
-      throw new IllegalBreedSpecException();
-  }
+
 
   public void setNameOfBreeder(String nameOfBreeder)
   {
@@ -51,18 +38,17 @@ public class Cat extends Pet
   @Override
   public boolean equals(Object obj)
   {
-    if (super.equals(obj))
+    if(obj == null || getClass() != obj.getClass())
     {
-      Cat temp = (Cat) obj;
-      return breed.equals(temp.getBreed()) && nameOfBreeder.equals(
-          temp.getNameOfBreeder());
+      return false;
     }
-    return false;
+
+    Cat temp = (Cat)obj;
+    return super.equals(temp) && nameOfBreeder.equals(temp.getNameOfBreeder());
   }
 
   public String toString()
   {
-    return super.toString() + "\n" + breed + "\n" + nameOfBreeder;
+    return super.toString() + "\n" + nameOfBreeder;
   }
 }
-

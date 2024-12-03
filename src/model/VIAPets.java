@@ -1,6 +1,8 @@
 package model;
 
-public class VIAPets
+import java.io.Serializable;
+
+public class VIAPets implements Serializable
 {
   private SaleList saleList;
   private KennelReservationList kennelReservationList;

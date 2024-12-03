@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * @author Richard Vegh
  * @version 1.0
  */
-public class KennelReservationList
+public class KennelReservationList implements Serializable
 {
   private ArrayList<KennelReservation> kennelReservations;
   private int maxlimit = 10;
@@ -62,9 +63,9 @@ public class KennelReservationList
    * method used for returning all the KennelReservation object in one ArrayList
    * @return an array list of KennelReservation objects
    */
-  public ArrayList<KennelReservation> getAllReservations()
+  public KennelReservationList getAllReservations()
   {
-    return kennelReservations;
+    return new KennelReservationList(kennelReservations);
   }
   /**
    * method for calculating the number of reservations available in the given time
@@ -152,27 +153,10 @@ public class KennelReservationList
     {
       int type = kennelReservation.getPet().getType();
 
-      switch (type)
+
+      if (kennelReservation.getPet().getSpecies().equals(speciesOrBreed)) throw new UnknownPetTypeException("Pet type cannot be "+type);
       {
-        case 1:
-        case 2:
-          if (kennelReservation.getPet().getBreed().equals(speciesOrBreed))
-          {
-            result.addReservation(kennelReservation);
-          }
-          break;
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-          if (kennelReservation.getPet().getSpecies().equals(speciesOrBreed))
-          {
-            result.addReservation(kennelReservation);
-          }
-          break;
-        default:
-        default:
-          throw new UnknownPetTypeException("Pet type cannot be "+type);
+        result.addReservation(kennelReservation);
       }
     }
     return result;

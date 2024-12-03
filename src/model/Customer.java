@@ -43,6 +43,16 @@ public class Customer implements Serializable
   {
     return firstName + " " + lastName;
   }
+  
+  public boolean isEqual(String name)
+  {
+    if(name.equals(getName()))
+    {
+      return true;
+    }
+    return false;
+  }
+
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -72,6 +82,9 @@ public class Customer implements Serializable
     }
     this.phoneNumber = phoneNumber;
   }
+
+
+
 
 
 

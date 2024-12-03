@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Date
+public class Date implements Serializable
 {
   private int day;
   private int month;
@@ -95,7 +96,7 @@ public class Date
     this.year = year;
   }
 
-  public int calculatePeriod(Date startDate, Date endDate)
+  public static int calculatePeriod(Date startDate, Date endDate)
   {
     //checking if the start date is after than end date, else returns error message
     if(endDate.isBefore(startDate))
@@ -115,11 +116,11 @@ public class Date
         //the month is the same, return just the days between
         return endDate.getDay() - startDate.getDay();
       }
-      //month are not the same, goe trough everty month between, plus add days in first and last month
+      //month are not the same, goes trough every month between, plus add days in first and last month
       int checkMonth = startDate.getMonth() + 1;
       for (int i = endDate.getMonth() - startDate.getMonth()-1; i>0;i--)
       {
-        totalDays+=daysInMonth(checkMonth);
+        totalDays+=daysInMonth(checkMonth,startDate.getYear());
         checkMonth++;
       }
       return totalDays+endDate.getDay();
@@ -128,7 +129,7 @@ public class Date
     //start with first year, where the startdate is in
     for (int i=startDate.getMonth()+1;i<=12;i++)
     {
-      totalDays+=daysInMonth(i);
+      totalDays+=daysInMonth(i, startDate.getYear());
     }
     //if there is more than 1 years we count the whole year
     int difference = endDate.getYear() - startDate.getYear();
@@ -146,7 +147,7 @@ public class Date
     // the last year with months and days added together
     for (int i=1; i<endDate.getMonth();i++)
     {
-      totalDays+=daysInMonth(i);
+      totalDays+=daysInMonth(i, endDate.getYear());
     }
     //lastly adding the last day
     return totalDays+endDate.getDay();
@@ -164,16 +165,9 @@ public class Date
     }
   }
 
-  public boolean isLeapYear(int year)
+  public static boolean isLeapYear(int year)
   {
-    if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+    return year % 400 == 0 || (year % 100 != 0 && year % 4 == 0);
   }
 
   public int daysInMonth()
@@ -206,7 +200,7 @@ public class Date
     }
   }
 
-  public int daysInMonth(int month)
+  public static int daysInMonth(int month, int year)
   {
     if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8
         || month == 10 || month == 12)
@@ -221,7 +215,7 @@ public class Date
 
     else if (month == 2)
     {
-      if (isLeapYear())
+      if (isLeapYear(year))
       {
         return 29;
       }

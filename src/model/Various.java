@@ -1,15 +1,13 @@
 package model;
 
-import java.util.Objects;
+import java.io.Serializable;
 
-public class Various extends Pet
+public class Various extends Pet implements Serializable
 {
-  private String species;
 
   public Various(double price, String color, int age, String species)
   {
-    super(6,price,color,age);
-    setSpecies(species);
+    super(6,price,color,age,species);
   }
 
   @Override
@@ -18,29 +16,19 @@ public class Various extends Pet
     return false;
   }
 
-  public String getSpecies()
-  {
-    return species;
-  }
-
-  public void setSpecies(String species)
-  {
-    if (species.matches("[a-zA-Z ]+"))
-    {
-      this.species = species;
-    }
-    else
-      throw new IllegalBreedSpecException();
-  }
-
-  @Override public boolean equals(Object obj)
+  @Override
+  public boolean equals(Object obj)
   {
     if (obj == null || getClass() != obj.getClass())
       return false;
     if (!super.equals(obj))
       return false;
     Various temp = (Various) obj;
-    return super.equals(temp) && getSpecies().equals(temp.getSpecies());
+    return super.equals(temp);
+  }
+
+  public String toString()
+  {
+    return super.toString();
   }
 }
-

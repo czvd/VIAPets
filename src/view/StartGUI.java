@@ -2,13 +2,17 @@ package view;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import ModelManager.VIAPetsModelManager;
+
+import java.io.IOException;
 
 public class StartGUI extends Application
 {
+  VIAPetsModelManager modelManager = new VIAPetsModelManager("viapets.bin");
+
   public void start(Stage window)
   {
-    VIAPetsModelManager modelManager = new VIAPEtsModelManager("viapets.bin");
-    ViewHandler viewHandler = new ViewHandler(window,modelManager);
+    ViewHandler viewHandler = new ViewHandler(window, modelManager);
     viewHandler.start();
   }
 }
