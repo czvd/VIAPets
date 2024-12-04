@@ -27,6 +27,7 @@ public class AddPetViewController
   @FXML private RadioButton femaleRadio;
   @FXML private CheckBox kennelCheck;
 
+
   public void init(ViewHandler viewHandler, Scene scene, VIAPetsModelManager modelManager)
   {
     this.viewHandler = viewHandler;

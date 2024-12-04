@@ -5,10 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SaleViewController">
@@ -19,30 +21,7 @@
                 <Button fx:id="addNewButton" mnemonicParsing="false" onAction="#handleActions" text="Add New Sale" />
             </children>
         </HBox>
-        <VBox alignment="CENTER_LEFT" layoutX="315.0" layoutY="42.0" prefHeight="315.0" prefWidth="85.0" spacing="23.0">
-            <children>
-                <Label prefHeight="18.0" prefWidth="31.0" text="Pet:" />
-                <Label prefHeight="18.0" prefWidth="70.0" text="Customer:" />
-                <Label prefHeight="18.0" prefWidth="76.0" text="Date &amp; time:" />
-                <Label prefHeight="18.0" prefWidth="43.0" text="Price:" />
-            </children>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-            <padding>
-                <Insets bottom="35.0" left="10.0" />
-            </padding>
-        </VBox>
-        <VBox alignment="CENTER" layoutX="399.0" layoutY="42.0" prefHeight="315.0" prefWidth="200.0" spacing="15.0">
-            <children>
-                <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="195.0" text="pet" />
-                <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="195.0" text="customer" />
-                <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="195.0" text="wfer" />
-                <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="195.0" text="23" />
-                <Button mnemonicParsing="false" text="Delete Sale" />
-            </children>
-        </VBox>
-        <HBox alignment="TOP_RIGHT" layoutY="367.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="600.0">
+        <HBox alignment="TOP_RIGHT" layoutY="367.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="600.0">
             <children>
                 <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleActions" text="Back to the main page">
                     <HBox.margin>
@@ -59,7 +38,6 @@
                 <TextField text="Search by...." />
                 <TableView prefHeight="294.0" prefWidth="315.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Pet" />
                         <TableColumn prefWidth="75.0" text="Customer" />
                         <TableColumn prefWidth="83.99993896484375" text="Date &amp; time" />
                         <TableColumn prefWidth="79.99997253417968" text="Price" />
@@ -67,5 +45,43 @@
                 </TableView>
             </children>
         </VBox>
+        <GridPane layoutX="324.0" layoutY="80.0" prefHeight="255.0" prefWidth="213.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="124.20001220703125" minWidth="10.0" prefWidth="61.8" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="151.39999999999998" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="name" GridPane.rowIndex="1" />
+                <Label text="age" GridPane.rowIndex="2" />
+                <Label text="color" GridPane.rowIndex="3" />
+                <Label text="price" GridPane.rowIndex="4" />
+                <Label text="gender" GridPane.rowIndex="5" />
+                <Label text="watertype" GridPane.rowIndex="7" />
+                <Label text="predator" GridPane.rowIndex="8" />
+                <Label text="type" />
+                <Label text="comment" GridPane.rowIndex="6" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextField prefHeight="73.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                <TextField GridPane.columnIndex="1" />
+            </children>
+        </GridPane>
+        <Label layoutX="389.0" layoutY="50.0" text="Pet Information" />
     </children>
 </AnchorPane>

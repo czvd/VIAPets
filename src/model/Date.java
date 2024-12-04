@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.*;
 
 public class Date implements Serializable
 {
@@ -40,10 +41,13 @@ public class Date implements Serializable
   public static Date today()
   {
     LocalDate currentDate = LocalDate.now();
+    LocalTime now = LocalTime.now();
     int currentday = currentDate.getDayOfMonth();
     int currentmonth = currentDate.getMonthValue();
     int currentyear = currentDate.getYear();
-    return new Date(currentday, currentmonth, currentyear);
+    int currenthour = now.getHour();
+    int currentminute = now.getMinute();
+    return new Date(currentday, currentmonth, currentyear, currenthour,currentminute);
   }
 
   public int getDay()
@@ -271,7 +275,7 @@ public class Date implements Serializable
 
   public String toString()
   {
-    return day+":" + month + ":" + year + ":" + hour + ":" + minute;
+    return  month + "/"+day+"/" + year +" -- "+hour+":"+minute;
   }
 
 }

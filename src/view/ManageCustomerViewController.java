@@ -10,6 +10,8 @@ import ModelManager.VIAPetsModelManager;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
 import model.CustomerList;
+import model.IllegalEmailException;
+import model.IllegalPhoneNumberException;
 
 import java.util.NoSuchElementException;
 
@@ -74,7 +76,7 @@ public class ManageCustomerViewController
             }
             catch (NullPointerException e)
             {
-              System.out.println("happened..");
+              System.out.println("no elements found");
             }
             catch (NoSuchElementException e)
             {
@@ -123,14 +125,78 @@ public class ManageCustomerViewController
       String lastName = lastNameField.getText();
       String phoneNumber = phoneNumberField.getText();
       String emailAddress = emailAddressField.getText();
-      Customer customer = new Customer(firstName,lastName,phoneNumber,emailAddress);
-      modelManager.removeCustomer(selectedCustomer);
-      modelManager.addCostumer(customer);
-      updateTableView();
-      firstNameField.setText("");
-      lastNameField.setText("");
-      phoneNumberField.setText("");
-      emailAddressField.setText("");
+
+      if (firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty()
+          || emailAddress.isEmpty())
+      {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("All fields must be filled out!");
+        alert.showAndWait();
+        return;
+      }
+      if (firstName == null || firstName.length() < 3)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("First name must be at least 3 characters long.");
+        alert.showAndWait();
+        return;
+      }
+      if (!phoneNumber.matches("\\d+"))
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Phone number must contain only digits!");
+        alert.showAndWait();
+        return;
+      }
+      if (!emailAddress.matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Invalid email format. Expected format: user@host.domain.");
+        alert.showAndWait();
+        return;
+      }
+      try
+      {
+        Customer customer = new Customer(firstName,lastName,phoneNumber,emailAddress);
+        modelManager.removeCustomer(selectedCustomer);
+        modelManager.addCostumer(customer);
+        updateTableView();
+        firstNameField.setText("");
+        lastNameField.setText("");
+        phoneNumberField.setText("");
+        emailAddressField.setText("");
+      }
+      catch (IllegalEmailException illegalEmailException){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("The email address matches other email address in the system, enter other email address.");
+        alert.showAndWait();
+        return;
+      }
+      catch(IllegalPhoneNumberException illegalPhoneNumberException)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("The phone number matches other phone number in the system, enter other phone number.");
+        alert.showAndWait();
+        return;
+      }
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Changed!");
+      alert.setHeaderText(null);
+      alert.setContentText("The customer data has been changed.");
+      alert.showAndWait();
     }
 
     else if(e.getSource() == deleteButton)
@@ -189,18 +255,21 @@ public class ManageCustomerViewController
   }
   private void updateTableView(String name)
   {
-    fleTableView.getItems().clear(); // Clear the table
+    if (fleTableView != null)
+    {
+      fleTableView.getItems().clear();
+    } // Clear the table
 
-    CustomerList customers = modelManager.getAllCustomers(); // Get all customers
+    CustomerList customers = modelManager.getAllCustomers();
     for (int i =0; i< customers.size();i++ )
     {
       Customer customer = customers.get(i);
-      // Check if the customer's first or last name contains the search text
+
       if (customer.getFirstName().equals(name)
           || customer.getLastName().equals(name))
       {
         fleTableView.getItems()
-            .add(customer); // Add matching customers to the table
+            .add(customer);
       }
     }
   }
