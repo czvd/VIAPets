@@ -66,7 +66,17 @@ public class SaleViewController
   {
     if (e.getSource() == backButton)
     {
-      viewHandler.openView("MainView");
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "Do you really want to go back?", ButtonType.YES, ButtonType.NO);
+      alert.setTitle("Back");
+      alert.setHeaderText(null);
+
+      alert.showAndWait();
+
+      if (alert.getResult() == ButtonType.YES)
+      {
+        viewHandler.openView("MainView");
+      }
     }
     else if (e.getSource() == addNewButton)
     {
@@ -82,4 +92,5 @@ public class SaleViewController
       }
     }
   }
+
 }

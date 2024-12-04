@@ -34,7 +34,7 @@ public class CustomerList implements Serializable
       }
       else if(customer1.getPhoneNumber().equals(customer.getPhoneNumber()))
       {
-        throw new IllegalArgumentException("The phone number matches other phone number in the system, enter other phone number.");
+        throw new IllegalPhoneNumberException("The phone number matches other phone number in the system, enter other phone number.");
       }
     }
     customers.add(customer);

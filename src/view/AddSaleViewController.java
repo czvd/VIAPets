@@ -5,6 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import model.Customer;
+import model.CustomerList;
 
 public class AddSaleViewController
 {
@@ -15,6 +18,7 @@ public class AddSaleViewController
   @FXML private Button backButton;
   @FXML private Button saleViewButton;
   @FXML private Button deleteButton;
+  @FXML private ComboBox<Customer> customerList;
 
   public void init(ViewHandler viewHandler, Scene scene,
       VIAPetsModelManager modelManager)
@@ -31,6 +35,7 @@ public class AddSaleViewController
 
   public void reset()
   {
+
   }
 
   public void handleActions(ActionEvent e)

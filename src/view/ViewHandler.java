@@ -40,8 +40,8 @@ public class ViewHandler
   {
     loadViewMain();
 //    //load customer
-//    loadManageCustomerView();
-//    loadAddNewCustomerView();
+    loadManageCustomerView();
+    loadAddNewCustomerView();
 //    //load sale
     loadAddSaleView();
     loadSaleView();
@@ -50,7 +50,7 @@ public class ViewHandler
 //    loadAddReservationView();
 //    //load pet
 //    loadPetView();
-//    loadAddPetView();
+    loadAddPetView();
 
     openView("MainView");
 
@@ -132,7 +132,7 @@ public class ViewHandler
     try
     {
       FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(getClass().getResource("ManageCostumerView.fxml"));
+      loader.setLocation(getClass().getResource("ManageCustomerView.fxml"));
       Region root = loader.load();
       manageCustomerViewController = loader.getController();
       manageCustomerViewController.init(this, new Scene(root),modelManager);

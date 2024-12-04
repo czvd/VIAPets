@@ -32,38 +32,38 @@
                         <Label text="Last name:" GridPane.rowIndex="1" />
                         <Label text="Phone number:" GridPane.rowIndex="2" />
                         <Label text="Email address:" GridPane.rowIndex="3" />
-                        <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
-                        <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="emailAddressField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="firstNameField" onAction="#handleActions" GridPane.columnIndex="1" />
+                        <TextField fx:id="lastNameField" onAction="#handleActions" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="phoneNumberField" onAction="#handleActions" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="emailAddressField" onAction="#handleActions" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     </children>
                 </GridPane>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                     <children>
-                        <Button fx:id="editButton" mnemonicParsing="false" text="Edit">
+                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleActions" text="Edit">
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin>
                         </Button>
-                        <Button fx:id="deleteButton" mnemonicParsing="false" text="Delete" />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleActions" text="Delete" />
                     </children>
                 </HBox>
             </children>
         </VBox>
         <HBox alignment="CENTER" prefHeight="77.0" prefWidth="600.0" spacing="50.0">
             <children>
-                <Button fx:id="manageButton" mnemonicParsing="false" text="Manage" />
-                <Button fx:id="addNewButton" mnemonicParsing="false" text="Add new" />
+                <Button fx:id="manageButton" mnemonicParsing="false" onAction="#handleActions" text="Manage" />
+                <Button fx:id="addNewButton" mnemonicParsing="false" onAction="#handleActions" text="Add new" />
             </children>
         </HBox>
         <VBox layoutX="5.0" layoutY="75.0" prefHeight="302.0" prefWidth="311.0" spacing="30.0">
             <children>
-                <TextField fx:id="searchField" promptText="Search by first name or last name" />
-                <TableView prefHeight="225.0" prefWidth="281.0">
+                <TextField fx:id="searchField" onAction="#handleActions" promptText="Search by first name or last name" />
+                <TableView fx:id="fleTableView" onSort="#handleActions" prefHeight="225.0" prefWidth="281.0">
                     <columns>
-                        <TableColumn prefWidth="108.66668701171875" text="First name" />
-                        <TableColumn prefWidth="100.66665649414062" text="Last name" />
-                        <TableColumn prefWidth="100.0" text="Email address" />
+                        <TableColumn fx:id="firstNameColumn" prefWidth="108.66668701171875" text="First name" />
+                        <TableColumn fx:id="lastNameColumn" prefWidth="100.66665649414062" text="Last name" />
+                        <TableColumn fx:id="emailAddressColumn" prefWidth="100.0" text="Email address" />
                     </columns>
                 </TableView>
             </children>

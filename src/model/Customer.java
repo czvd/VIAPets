@@ -43,7 +43,7 @@ public class Customer implements Serializable
   {
     return firstName + " " + lastName;
   }
-  
+
   public boolean isEqual(String name)
   {
     if(name.equals(getName()))
@@ -93,8 +93,6 @@ public class Customer implements Serializable
       throw new IllegalArgumentException("Invalid email format. Expected format: user@host.domain.");
     }
 
-
-
     this.emailAddress = emailAddress;
   }
 
@@ -111,7 +109,7 @@ public class Customer implements Serializable
 
   public String toString()
   {
-    return firstName + ":" + lastName + ":" + phoneNumber + ":" + emailAddress;
+    return firstName + " " + lastName + " " + phoneNumber + " " + emailAddress;
   }
 
 

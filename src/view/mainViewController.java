@@ -25,6 +25,7 @@ public class mainViewController
   {
     this.viewHandler = viewHandler;
     this.scene = scene;
+    this.scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
     this.modelManager = modelManager;
   }
 

@@ -178,7 +178,7 @@ public class VIAPetsModelManager
     {
       Customer customer = allCustomers.get(i);
 
-      if (customer.equals(change))
+      if (customer.equals((Object)change))
       {
         customer.setFirstName(firstName);
       }
