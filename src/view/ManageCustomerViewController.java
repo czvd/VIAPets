@@ -161,7 +161,12 @@ public class ManageCustomerViewController
     }
     else if (e.getSource()== searchField)
     {
-      updateTableView(searchField.getText());
+      String query = searchField.getText();
+      if (query.isEmpty()) {
+        updateTableView();
+      } else {
+        updateTableView(query);
+      }
     }
   }
 

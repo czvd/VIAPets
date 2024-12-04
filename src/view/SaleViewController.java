@@ -1,17 +1,15 @@
 package view;
 
 import ModelManager.VIAPetsModelManager;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ButtonType;
+import model.Customer;
+import model.CustomerList;
 import model.Sale;
-import javafx.scene.control.cell.PropertyValueFactory;
-
 
 public class SaleViewController
 {
@@ -22,13 +20,6 @@ public class SaleViewController
   @FXML private Button backButton;
   @FXML private Button addNewButton;
   @FXML private Button deleteButton;
-  @FXML private TableView<Sale> salesTable;
-  @FXML private TableColumn<Sale, String> petColumn;
-  @FXML private TableColumn<Sale, String> customerColumn;
-  @FXML private TableColumn<Sale, String> dateTimeColumn;
-  @FXML private TableColumn<Sale, Double> priceColumn;
-
-  private ObservableList<Sale> salesData = FXCollections.observableArrayList();
 
   public void init(ViewHandler viewHandler, Scene scene, VIAPetsModelManager modelManager)
   {
@@ -36,18 +27,7 @@ public class SaleViewController
     this.scene = scene;
     this.modelManager = modelManager;
 
-//    // Initialize salesData
-//    salesData = FXCollections.observableArrayList();
-//
-//    // Bind columns to Sale properties
-//    petColumn.setCellValueFactory(new PropertyValueFactory<>("pet"));
-//    customerColumn.setCellValueFactory(new PropertyValueFactory<>("customer"));
-//    dateTimeColumn.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
-//    priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-//
-//    // Load initial data
-//    salesData.setAll(VIAPetsModelManager.getAllSales()); // Ensure modelManager.getSales() returns a list of Sale objects
-//    salesTable.setItems(salesData);
+    this.scene.getStylesheets().add(getClass().getResource("SaleView.css").toExternalForm());
   }
 
   public Scene getScene()
@@ -57,9 +37,6 @@ public class SaleViewController
 
   public void reset()
   {
-//    // Refresh the data
-//    salesData.setAll(VIAPetsModelManager.getAllSales());
-//    salesTable.refresh();
   }
 
   public void handleActions(ActionEvent e)
@@ -82,13 +59,20 @@ public class SaleViewController
     {
       viewHandler.openView("AddSaleView");
     }
-    else if (e.getSource() == deleteButton)
+    else if(e.getSource() == deleteButton)
     {
-      Sale selectedSale = salesTable.getSelectionModel().getSelectedItem();
-      if (selectedSale != null)
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "Do you really want to go back?", ButtonType.YES, ButtonType.NO);
+      alert.setTitle("Back");
+      alert.setHeaderText(null);
+
+      alert.showAndWait();
+
+      if (alert.getResult() == ButtonType.YES)
       {
-        modelManager.removeSale(selectedSale); // Remove from backend
-        salesData.remove(selectedSale); // Remove from table
+        //Sale sale = new Sale(); // there are 2 sale constructors, which one should I use?
+        //modelManager.removeSale(sale);
+        //updateTableView();
       }
     }
   }

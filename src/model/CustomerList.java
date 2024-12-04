@@ -30,7 +30,7 @@ public class CustomerList implements Serializable
       Customer customer1 = customers.get(i);
       if(customer1.getEmailAddress().equals(customer.getEmailAddress()))
       {
-        throw new IllegalArgumentException("The email address matches other email address in the system, enter other email address.");
+        throw new IllegalEmailException("The email address matches other email address in the system, enter other email address.");
       }
       else if(customer1.getPhoneNumber().equals(customer.getPhoneNumber()))
       {

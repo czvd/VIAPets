@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.AddPetView"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddPetViewController">
+    <children>
+        <Label layoutX="200.0" layoutY="91.0" prefHeight="18.0" prefWidth="33.0" text="Price" />
+        <TextField layoutX="234.0" layoutY="87.0" />
+        <Label layoutX="200.0" layoutY="154.0" prefHeight="18.0" prefWidth="33.0" text="Age" />
+        <TextField layoutX="234.0" layoutY="151.0" prefHeight="26.0" prefWidth="34.0" />
+        <Label layoutX="200.0" layoutY="123.0" prefHeight="18.0" prefWidth="33.0" text="Color" />
+        <TextField layoutX="234.0" layoutY="119.0" />
+        <Label layoutX="200.0" layoutY="187.0" prefHeight="18.0" prefWidth="43.0" text="Gender" />
+        <RadioButton layoutX="245.0" layoutY="187.0" mnemonicParsing="false" text="Male" />
+        <RadioButton layoutX="305.0" layoutY="187.0" mnemonicParsing="false" text="Female" />
+        <Label layoutX="200.0" layoutY="215.0" prefHeight="18.0" prefWidth="33.0" text="Name" />
+        <TextField layoutX="234.0" layoutY="211.0" />
+        <Label layoutX="200.0" layoutY="243.0" prefHeight="18.0" prefWidth="60.0" text="Comment" />
+        <TextArea layoutX="200.0" layoutY="261.0" prefHeight="63.0" prefWidth="200.0" />
+        <CheckBox layoutX="201.0" layoutY="332.0" mnemonicParsing="false" text="Kennel Pet" />
+        <Label layoutX="200.0" layoutY="61.0" text="Type" />
+        <ComboBox layoutX="234.0" layoutY="57.0" prefWidth="150.0" />
+    </children>
 </AnchorPane>
