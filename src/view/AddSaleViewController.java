@@ -319,7 +319,7 @@ public class AddSaleViewController
         alert.showAndWait();
         return;
       }
-      modelManager.addSale(new Sale(selectedCustomer,selectedPet,Integer.parseInt(price)));
+      modelManager.addSale(new Sale(selectedPet,selectedCustomer,Integer.parseInt(price)));
       System.out.println("new sale added");
       updatePetTable();
       updateCostumerTable();
