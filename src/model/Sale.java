@@ -15,7 +15,7 @@ public class Sale implements Serializable
     this.customer = customer;
     dateOfSale = Date.today();
   }
-  public Sale(Customer customer, Pet pet, double finalPrice)
+  public Sale(Pet pet, Customer customer, double finalPrice)
   {
     this.pet = pet;
     this.customer = customer;
