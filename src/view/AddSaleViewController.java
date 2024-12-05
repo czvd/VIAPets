@@ -1,13 +1,17 @@
 package view;
 
 import ModelManager.VIAPetsModelManager;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 import model.*;
 
 import java.util.NoSuchElementException;
@@ -20,7 +24,7 @@ public class AddSaleViewController
 
   @FXML private Button backButton;
   @FXML private Button saleViewButton;
-  @FXML private Button deleteButton;
+  @FXML private Button addNewSaleButton;
   @FXML private ComboBox<Customer> customerList;
   //initializing costumer table
   @FXML private TableView<Customer> customerTableView = new TableView<>();
@@ -111,7 +115,7 @@ public class AddSaleViewController
             }
             catch (NoSuchElementException e)
             {
-              System.out.println("Table view, customer changed");
+              System.out.println("petTableView, pet changed");
             }
           }
         });
@@ -150,10 +154,24 @@ public class AddSaleViewController
             }
             catch (NoSuchElementException e)
             {
-              System.out.println("Table view, customer changed");
+              System.out.println("customerTableView, customer changed");
             }
           }
         });
+
+    //timeline method for setting the current time
+    Timeline thirtySeconds = new Timeline(
+        new KeyFrame(Duration.seconds(30),
+            new EventHandler<ActionEvent>() {
+
+              @Override
+              public void handle(ActionEvent event) {
+                DateNTimeField.setText(Date.today().toString());
+                System.out.println("date field updated");
+              }
+            }));
+    thirtySeconds.setCycleCount(Timeline.INDEFINITE);
+    thirtySeconds.play();
   }
 
   private void setPriceField()
@@ -226,7 +244,17 @@ public class AddSaleViewController
     price = priceField.getText();
     if (e.getSource() == backButton)
     {
-      viewHandler.openView("MainView");
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "Do you really want to go back?", ButtonType.YES, ButtonType.NO);
+      alert.setTitle("Back");
+      alert.setHeaderText(null);
+
+      alert.showAndWait();
+
+      if (alert.getResult() == ButtonType.YES)
+      {
+        viewHandler.openView("MainView");
+      }
     }
     else if (e.getSource() == saleViewButton)
     {
@@ -261,6 +289,43 @@ public class AddSaleViewController
         default:
           updatePetTable();
       }
+    }
+    else if (e.getSource() == addNewSaleButton)
+    {
+      if (selectedPet==null)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Pet is not selected");
+        alert.showAndWait();
+        return;
+      }
+      if(selectedCustomer==null)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Customer is not selected");
+        alert.showAndWait();
+        return;
+      }
+      if(price == null|| price.isEmpty())
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("The sale must have a price!");
+        alert.showAndWait();
+        return;
+      }
+      modelManager.addSale(new Sale(selectedCustomer,selectedPet,Integer.parseInt(price)));
+      System.out.println("new sale added");
+      updatePetTable();
+      updateCostumerTable();
+      DateNTimeField.setText(Date.today().toString());
+      priceField.setText("");
+      priceField.setText("");
     }
   }
 }
