@@ -9,7 +9,6 @@ import java.io.IOException;
 public class StartGUI extends Application
 {
   VIAPetsModelManager modelManager = new VIAPetsModelManager("VIAPets.bin");
-
   public void start(Stage window)
   {
     ViewHandler viewHandler = new ViewHandler(window, modelManager);

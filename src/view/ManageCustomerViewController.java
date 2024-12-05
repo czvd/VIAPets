@@ -95,6 +95,7 @@ public class ManageCustomerViewController
   public void reset()
   {
     updateTableView();
+    modelManager.save();
   }
 
   public void handleActions(ActionEvent e)

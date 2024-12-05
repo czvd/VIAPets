@@ -11,6 +11,28 @@ public class Dog extends Pet implements Serializable
     super(1, price, color, age, species);
     nameOfBreeder = "NoName";
   }
+  //constuctor for easy checking used at Kennel reservation and sales reservation
+  public Dog(Dog dog)
+  {
+    super(dog.getType(), dog.getPrice(), dog.getColor(), dog.getAge(), dog.getSpecies());
+
+    if(dog.getGender().equals("Male")){
+      isMale();
+    }
+    else if (dog.getGender().equals("Female"))
+    {
+      isFemale();
+    }
+    setComment(dog.getComment());
+    setName(dog.getName());
+    if(dog.getInKennel()){
+      isInKennel();
+    }else {
+      isNotInKennel();
+    }
+    setNameOfBreeder(dog.getNameOfBreeder());
+
+  }
 
   public String getNameOfBreeder()
   {
@@ -30,7 +52,7 @@ public class Dog extends Pet implements Serializable
   @Override
   public boolean hasAccessToKennel()
   {
-    return true;
+    return getInKennel();
   }
 
   @Override

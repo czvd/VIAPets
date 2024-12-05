@@ -11,10 +11,32 @@ public class Bird extends Pet implements Serializable
     super(3, price, color, age, species);
     preferredFood = "NoData";
   }
+  //constuctor for easy checking used at Kennel reservation and sales reservation
+  public Bird(Bird bird)
+  {
+    super(bird.getType(), bird.getPrice(), bird.getColor(), bird.getAge(), bird.getSpecies());
+
+    if(bird.getGender().equals("Male")){
+      isMale();
+    }
+    else if (bird.getGender().equals("Female"))
+    {
+      isFemale();
+    }
+    setComment(bird.getComment());
+    setName(bird.getName());
+    if(bird.getInKennel()){
+      isInKennel();
+    }else {
+      isNotInKennel();
+    }
+    setPreferredFood(bird.getPreferredFood());
+
+  }
 
   @Override public boolean hasAccessToKennel()
   {
-    return true;
+    return getInKennel();
   }
 
   public String getPreferredFood()

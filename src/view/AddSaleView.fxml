@@ -69,7 +69,7 @@
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
                <children>
-                  <ComboBox fx:id="typeButton" onAction="#handleActions" prefHeight="25.0" prefWidth="66.0" />
+                  <ComboBox fx:id="typeSelect" onAction="#handleActions" prefHeight="25.0" prefWidth="66.0" />
                   <TableView fx:id="petTableView" onSort="#handleActions" prefHeight="98.0" prefWidth="541.0">
                      <columns>
                         <TableColumn fx:id="petNameColumn" prefWidth="75.0" text="name" />

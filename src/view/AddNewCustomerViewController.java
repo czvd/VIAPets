@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import ModelManager.VIAPetsModelManager;
 import model.Customer;
-import model.CustomerList;
 import model.IllegalPhoneNumberException;
 import model.IllegalEmailException;
 

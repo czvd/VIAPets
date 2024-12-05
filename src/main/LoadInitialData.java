@@ -23,8 +23,7 @@ public class LoadInitialData
     modelManager.addCostumer(new Customer("Ricard", "Vegh","999912", "ricky2@gmail.com"));
     modelManager.addCostumer(new Customer("Rihard", "Vegh","9999222", "ricky1@gmail.com"));
 */
-    modelManager.addSale(new Sale(new Cat(200,"grey",23,"mastiff"),modelManager.getAllCustomers().getCustomerByName("Richard").get(0)));
-    modelManager.addSale(new Sale(new Customer("Patyo", "Golian","4556", "patyo@gmail.com"),new Cat(200,"blue",23,"mastiff"),2000));
+    modelManager.addPet(new Cat(1,"grey",30,"mastiff"));
     /*
     VIAPets viaPets = new VIAPets();
     try

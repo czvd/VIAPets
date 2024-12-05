@@ -11,10 +11,34 @@ public class Rodent extends Pet implements Serializable
     super(4, price, color, age, species);
     bite = false;
   }
+  //constuctor for easy checking used at Kennel reservation and sales reservation
+  public Rodent(Rodent rodent)
+  {
+    super(rodent.getType(), rodent.getPrice(), rodent.getColor(), rodent.getAge(), rodent.getSpecies());
+
+    if(rodent.getGender().equals("Male")){
+      isMale();
+    }
+    else if (rodent.getGender().equals("Female"))
+    {
+      isFemale();
+    }
+    setComment(rodent.getComment());
+    setName(rodent.getName());
+    if(rodent.getInKennel()){
+      isInKennel();
+    }else {
+      isNotInKennel();
+    }
+    if(rodent.doesItBite()){
+      isBiting();
+    }else isNotBiting();
+
+  }
 
   @Override public boolean hasAccessToKennel()
   {
-    return false;
+    return getInKennel();
   }
 
   public boolean doesItBite()

@@ -9,11 +9,32 @@ public class Various extends Pet implements Serializable
   {
     super(6,price,color,age,species);
   }
+  //constuctor for easy checking used at Kennel reservation and sales reservation
+  public Various(Various various)
+  {
+    super(various.getType(), various.getPrice(), various.getColor(), various.getAge(), various.getSpecies());
+
+    if(various.getGender().equals("Male")){
+      isMale();
+    }
+    else if (various.getGender().equals("Female"))
+    {
+      isFemale();
+    }
+    setComment(various.getComment());
+    setName(various.getName());
+    if(various.getInKennel()){
+      isInKennel();
+    }else {
+      isNotInKennel();
+    }
+
+  }
 
   @Override
   public boolean hasAccessToKennel()
   {
-    return false;
+    return getInKennel();
   }
 
   @Override

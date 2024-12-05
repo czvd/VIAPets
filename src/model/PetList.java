@@ -21,6 +21,23 @@ public class PetList implements Serializable
     pets.remove(pet);
   }
 
+  public int size()
+  {
+    return pets.size();
+  }
+
+  public Pet get(int index)
+  {
+    if(index<pets.size())
+    {
+      return pets.get(index);
+    }
+    else
+    {
+      return null;
+    }
+  }
+
   public PetList getPetsByType(int type)
   {
     PetList temp = new PetList();
