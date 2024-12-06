@@ -161,13 +161,12 @@ public class AddSaleViewController
 
     //timeline method for setting the current time
     Timeline thirtySeconds = new Timeline(
-        new KeyFrame(Duration.seconds(30),
+        new KeyFrame(Duration.seconds(10),
             new EventHandler<ActionEvent>() {
 
               @Override
               public void handle(ActionEvent event) {
                 DateNTimeField.setText(Date.today().toString());
-                System.out.println("date field updated");
               }
             }));
     thirtySeconds.setCycleCount(Timeline.INDEFINITE);
@@ -267,13 +266,14 @@ public class AddSaleViewController
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
-        alert.setContentText("The price should be postive and a number!");
+        alert.setContentText("The price should be positive and a number!");
         alert.showAndWait();
         return;
       }
     }
     else if (e.getSource()==typeSelect)
     {
+      selectedPet = null;
       int selected = typeSelect.getSelectionModel().getSelectedIndex();
       switch (selected)
       {
@@ -321,11 +321,15 @@ public class AddSaleViewController
       }
       modelManager.addSale(new Sale(selectedPet,selectedCustomer,Integer.parseInt(price)));
       System.out.println("new sale added");
+      modelManager.getAllPets().removePet(selectedPet);
       updatePetTable();
       updateCostumerTable();
+      selectedCustomer = null;
+      selectedPet = null;
       DateNTimeField.setText(Date.today().toString());
       priceField.setText("");
       priceField.setText("");
+      typeSelect.getSelectionModel().selectFirst();
     }
   }
 }

@@ -39,18 +39,18 @@ public class ViewHandler
   public void start()
   {
     loadViewMain();
-//    //load customer
+//    load customer
     loadManageCustomerView();
     loadAddNewCustomerView();
-//    //load sale
+//    load sale
     loadAddSaleView();
     loadSaleView();
-//    //load reservation
-//    loadReservationView();
-//    loadAddReservationView();
-//    //load pet
+//    load reservation
+    loadReservationView();
+    loadAddReservationView();
+//    load pet
 //    loadPetView();
-    loadAddPetView();
+//    loadAddPetView();
 
     openView("MainView");
 

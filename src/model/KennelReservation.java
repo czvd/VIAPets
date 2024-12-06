@@ -25,7 +25,7 @@ public class KennelReservation implements Serializable
    * @param pet Object about a pet
    * @param pricePerDay price in dollar for one day of booking
    */
-  public KennelReservation(Customer customer,Date startDate, Date endDate, Pet pet, double pricePerDay)
+  public KennelReservation(Pet pet,Customer customer,Date startDate, Date endDate, double pricePerDay)
   {
     this.customer = customer;
     this.startDate = startDate;
@@ -35,6 +35,22 @@ public class KennelReservation implements Serializable
   }
 
   /**
+   *
+   * @param pet
+   * @param customer
+   * @param startDate
+   * @param endDate
+   * @param pricePerDay
+   */
+  public KennelReservation(Pet pet,Customer customer,Date startDate, Date endDate, String pricePerDay)
+  {
+    this.customer = customer;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.pet = pet;
+    this.pricePerDay = Double.parseDouble(pricePerDay);
+  }
+  /**
    * four-argument constructor initializing kennelReservation, normally
    * using this method sets the price for one booking per day to 20
    * @param customer
@@ -42,7 +58,7 @@ public class KennelReservation implements Serializable
    * @param endDate
    * @param pet
    */
-  public KennelReservation(Customer customer,Date startDate, Date endDate, Pet pet)
+  public KennelReservation(Pet pet,Customer customer,Date startDate, Date endDate)
   {
     this.customer = customer;
     this.startDate = startDate;

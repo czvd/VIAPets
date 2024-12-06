@@ -11,7 +11,7 @@ public abstract class Pet implements Serializable
   private String gender;
   private String name;
   private String comment;
-  private boolean inKennel;
+  private boolean inKennel = false;
   private String species;
 
   public Pet(int type, double price, String color, int age, String species)
@@ -169,14 +169,14 @@ public abstract class Pet implements Serializable
 
   public void isInKennel()
   {
-    if (hasAccessToKennel())
-    {
+//    if (hasAccessToKennel())
+//    {
       inKennel = true;
-      price = -1;
-    }
-    else
-      throw new UnsupportedActionException(
-          "This type doesn't have access to the kennel");
+      price = 0;
+//    }
+//    else
+//      throw new UnsupportedActionException(
+//          "This type doesn't have access to the kennel");
   }
 
   public void isNotInKennel()

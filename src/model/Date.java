@@ -278,4 +278,8 @@ public class Date implements Serializable
     return  month + "/"+day+"/" + year +" -- "+hour+":"+minute;
   }
 
+  public Date copy()
+  {
+    return new Date(day, month, year, hour, minute);
+  }
 }

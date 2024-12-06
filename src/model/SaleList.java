@@ -55,7 +55,7 @@ public class SaleList implements Serializable
     sales.remove(sale);
   }
 
-  public SaleList getSalesByPetSpeciesOrBreed(String speciesOrBreed) {
+/*  public SaleList getSalesByPetSpeciesOrBreed(String speciesOrBreed) {
     SaleList result = new SaleList();
     for (Sale sale : sales)
     {

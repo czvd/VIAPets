@@ -15,14 +15,15 @@ public class LoadInitialData
 
     VIAPetsModelManager modelManager = new VIAPetsModelManager("VIAPets.bin");
 
-   // System.out.println(modelManager.getAllPets());
-   // modelManager.addPet(new Dog(123, "grey", 12,"greatdane"));
-    /*
+    Cat temp = new Cat(123, "grey", 12,"greatdane");
+    temp.hasAccessToKennel();
+    temp.isInKennel();
+    modelManager.addPet(temp);
+    modelManager.addPet(new Dog(123, "grey", 12,"greatdane"));
     modelManager.addCostumer(new Customer("Richard", "Vegh","9999", "ricky@gmail.com"));
     modelManager.addCostumer(new Customer("Richad", "Vegh","999", "ricky3@gmail.com"));
     modelManager.addCostumer(new Customer("Ricard", "Vegh","999912", "ricky2@gmail.com"));
     modelManager.addCostumer(new Customer("Rihard", "Vegh","9999222", "ricky1@gmail.com"));
-*/
     modelManager.addPet(new Cat(1,"grey",30,"mastiff"));
     /*
     VIAPets viaPets = new VIAPets();

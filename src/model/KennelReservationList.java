@@ -46,8 +46,23 @@ public class KennelReservationList implements Serializable
    * method for adding a KennelReservation object to the list
    * @param kennelReservation a KennelReservation object
    */
-  public void addReservation(KennelReservation kennelReservation){ //adding a reservation
-    kennelReservations.add(kennelReservation);
+  public void addReservation(KennelReservation kennelReservation, Date startdate, Date endDate){ //adding a reservation
+    if(isReservationAvailable(startdate,endDate)){
+      for(int i=0; i<kennelReservations.size(); i++)
+      {
+        KennelReservation reservation1 = kennelReservations.get(i);
+        if (reservation1.getPet().equals(kennelReservation.getPet()))
+        {
+          throw new SamePetException();
+        }
+
+      }
+      kennelReservations.add(kennelReservation);
+    }
+    else {
+      throw new UnavailableReservationException();
+    }
+
   }
 
   /**
@@ -136,7 +151,7 @@ public class KennelReservationList implements Serializable
     {
       if (kennelReservation.getPet().getColor().equals(color))
       {
-        result.addReservation(kennelReservation);
+        result.addReservation(kennelReservation,kennelReservation.getStartDate(),kennelReservation.getEndDate());
       }
     }
     return result;
@@ -156,10 +171,36 @@ public class KennelReservationList implements Serializable
 
       if (kennelReservation.getPet().getSpecies().equals(speciesOrBreed)) throw new UnknownPetTypeException("Pet type cannot be "+type);
       {
-        result.addReservation(kennelReservation);
+        result.addReservation(kennelReservation,kennelReservation.getStartDate(),kennelReservation.getEndDate());
       }
     }
     return result;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public int size()
+  {
+    return kennelReservations.size();
+  }
+
+  /**
+   *
+   * @param index
+   * @return
+   */
+  public KennelReservation get(int index)
+  {
+    if(index<kennelReservations.size())
+    {
+      return kennelReservations.get(index);
+    }
+    else
+    {
+      return null;
+    }
   }
 
   /**

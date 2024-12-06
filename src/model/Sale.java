@@ -23,6 +23,14 @@ public class Sale implements Serializable
     this.finalPrice = finalPrice;
   }
 
+  public Sale(Pet pet, Customer customer, Date date, double finalPrice)
+  {
+    this.pet = pet;
+    this.customer = customer;
+    dateOfSale = date;
+    this.finalPrice = finalPrice;
+  }
+
   public Pet getPet()
   {
     return pet;
@@ -65,5 +73,10 @@ public class Sale implements Serializable
     return pet.equals(other.pet) && customer.equals(other.customer)
         && dateOfSale.equals(other.dateOfSale)
         && finalPrice == other.finalPrice;
+  }
+
+  public Object getDate()
+  {
+    return dateOfSale.copy();
   }
 }
