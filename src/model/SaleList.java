@@ -59,7 +59,7 @@ public class SaleList implements Serializable
     SaleList result = new SaleList();
     for (Sale sale : sales)
     {
-      int type = sale.getPet().getType();
+     int type = sale.getPet().getType();
 
       if(sale.getPet() instanceof Dog || sale.getPet() instanceof Cat)
       switch (type)
@@ -117,6 +117,23 @@ public class SaleList implements Serializable
       }
     }
     return result;
+  }
+*/
+  public int size()
+  {
+    return sales.size();
+  }
+
+  public Sale get(int index)
+  {
+    if(index<sales.size())
+    {
+      return sales.get(index);
+    }
+    else
+    {
+      return null;
+    }
   }
   public String toString()
   {
