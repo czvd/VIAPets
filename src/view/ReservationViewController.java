@@ -262,5 +262,4 @@ public class ReservationViewController
       KennelTableView.getItems().add(reservations.get(i));
     }
   }
-
 }

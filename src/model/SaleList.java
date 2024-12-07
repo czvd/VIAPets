@@ -1,131 +1,68 @@
 package model;
 
-import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * A class containing a list of Sale Objects
+ * @author Carolina Valencia Zavidei
+ * @version 1.0
+ */
 public class SaleList implements Serializable
 {
   private ArrayList<Sale> sales;
 
+  /**
+   * No-argument constructor initializing the SaleList.
+   */
   public SaleList()
   {
     sales = new ArrayList<>();
   }
+
+  /**
+   * One-argument constructor initializing the SaleList with a given list of sales.
+   * @param saleList an ArrayList of Sale objects to initalize the list.
+   */
   public SaleList(ArrayList<Sale> saleList)
   {
     sales = saleList;
   }
 
+  /**
+   * Adds a Sale to the list.
+   * @param sale the Sale to add to the list.
+   */
   public void addSale(Sale sale)
   {
     sales.add(sale);
   }
 
-  public SaleList getSalesByCustomerName(String name)
-  {
-    SaleList result = new SaleList();
-
-    for (Sale sale : sales)
-    {
-      if (sale.getCustomer().getName().equals(name))
-      {
-        result.addSale(sale);
-      }
-    }
-    return result;
-  }
-
-  public SaleList getSalesByPetColor(String color)
-  {
-    SaleList result = new SaleList();
-
-    for (Sale sale : sales)
-    {
-      if (sale.getPet().getColor().equals(color))
-      {
-        result.addSale(sale);
-      }
-    }
-    return result;
-  }
-
+  /**
+   * Removes a Sale from the list
+   * @param sale the Sale object to remove from the list.
+   */
   public void removeSale(Sale sale) {
     sales.remove(sale);
   }
 
-  /*  public SaleList getSalesByPetSpeciesOrBreed(String speciesOrBreed) {
-    SaleList result = new SaleList();
-    for (Sale sale : sales)
-    {
-     int type = sale.getPet().getType();
-
-      if(sale.getPet() instanceof Dog || sale.getPet() instanceof Cat)
-      switch (type)
-      {
-        case 1:
-        {
-          Dog temp = (Dog)sale.getPet();
-          if (temp.getSpecies().equals(speciesOrBreed)) {
-            result.addSale(sale);
-          }
-          break;
-        }
-        case 2:
-        {
-          Cat temp = (Cat)sale.getPet();
-          if (temp.getSpecies().equals(speciesOrBreed)) {
-            result.addSale(sale);
-          }
-        }
-          break;
-        case 3:
-        {
-          Bird temp = (Bird)sale.getPet();
-          if (temp.getSpecies().equals(speciesOrBreed)) {
-            result.addSale(sale);
-          }
-        }
-          break;
-        case 4:
-        {
-          Rodent temp = (Rodent)sale.getPet();
-          if (temp.getSpecies().equals(speciesOrBreed)) {
-            result.addSale(sale);
-          }
-        }
-        break;
-        case 5:
-        {
-          Fish temp = (Fish)sale.getPet();
-          if (temp.getSpecies().equals(speciesOrBreed)) {
-            result.addSale(sale);
-          }
-        }
-        break;
-        case 6:
-        {
-          Various temp = (Various)sale.getPet();
-          if (temp.getSpecies().equals(speciesOrBreed)) {
-            result.addSale(sale);
-          }
-        }
-        break;
-        default:
-          throw new UnknownPetTypeException("Pet type cannot be "+ type);
-      }
-    }
-    return result;
-  }
-*/
+  /**
+   * Returns the size of the sales list.
+   * @return the number of Sale objects in the list.
+   */
   public int size()
   {
     return sales.size();
   }
 
+  /**
+   *
+   * @param index the index of the Sale object to retrieve.
+   * @return the Sale object at the specified index, or null if the index is invalid.
+   */
   public Sale get(int index)
   {
-    if(index<sales.size())
+    if(index < sales.size())
     {
       return sales.get(index);
     }
@@ -134,6 +71,11 @@ public class SaleList implements Serializable
       return null;
     }
   }
+
+  /**
+   * Returns a string representation of the SaleList.
+   * @return a string representation of the list of sales.
+   */
   public String toString()
   {
     return "All sales: " + sales;

@@ -112,7 +112,7 @@ public class AddSaleViewController
                   case Rodent rodent -> selectedPet = new Rodent(rodent);
                   case Bird bird -> selectedPet = new Bird(bird);
                   case Various various -> selectedPet = new Various(various);
-                  default -> System.err.println("Pet tpe is not correct");
+                  default -> System.err.println("Pet type is not correct");
                 }
 
               }

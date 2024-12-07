@@ -132,7 +132,6 @@ public class VIAPetsModelManager
         customer.setEmailAddress(emailAddress);
       }
     }
-
     save();
   }
   public void changePhoneNumber(String firstName, String lastName, String emailAddress, String phoneNumber)
@@ -166,7 +165,6 @@ public class VIAPetsModelManager
         customer.setLastName(lastName);
       }
     }
-
     save();
   }
   public void changeFirstName(String firstName, String lastName, String phoneNumber, String emailAddress)
@@ -184,11 +182,11 @@ public class VIAPetsModelManager
     }
 
     save();
-  }
-  public CustomerList getCustomerByName(String name)
-  {
-    return getAllCustomers().getCustomerByName(name);
-  }
+  }*/
+//  public CustomerList getCustomerByName(String name)
+//  {
+//    return getAllCustomers().getCustomerByName(name);
+//  }
 
   //Kennel Reservation Model manager
   public KennelReservationList getAllReservations()

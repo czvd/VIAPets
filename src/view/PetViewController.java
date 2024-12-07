@@ -34,6 +34,113 @@ public class PetViewController
     this.viewHandler = viewHandler;
     this.scene = scene;
     this.modelManager = modelManager;
+
+    breedspecColumn.setCellValueFactory(new PropertyValueFactory<Pet,String>("species"));
+    colorColumn.setCellValueFactory(new PropertyValueFactory<Pet, String>("color"));
+    genderColumn.setCellValueFactory(new PropertyValueFactory<Pet, String>("gender"));
+    kennelColumn.setCellValueFactory(cellData ->
+        new SimpleStringProperty(Boolean.toString(cellData.getValue().getInKennel()))
+    );
+
+    breedspecColumn.setSortable(false);
+    colorColumn.setSortable(false);
+    genderColumn.setSortable(false);
+    kennelColumn.setSortable(false);
+
+    updatePetTable();
+
+    TableView.TableViewSelectionModel<Pet> selectionModel =
+        petTableView.getSelectionModel();
+    ObservableList<Pet> selectedItems =
+        selectionModel.getSelectedItems();
+    selectedItems.addListener(
+        new ListChangeListener<Pet>() {
+          @Override
+          public void onChanged(
+              Change<? extends Pet> change) {
+            try
+            {
+              Pet temp = change.getList().getFirst();
+              if (temp != null)
+              {
+                switch (temp)
+                {
+                  case Cat cat:
+                    selectedPet = new Cat(cat);
+                    if(temp.getGender().equals("Male")){
+                      selectedPet.isMale();
+                    }
+                    else if (temp.getGender().equals("Female"))
+                    {
+                      selectedPet.isFemale();
+                    }
+                    break;
+                  case Fish fish:
+                    selectedPet = new Fish(fish);
+                    if(temp.getGender().equals("Male")){
+                      selectedPet.isMale();
+                    }
+                    else if (temp.getGender().equals("Female"))
+                    {
+                      selectedPet.isFemale();
+                    }
+                    break;
+                  case Dog dog:
+                    selectedPet = new Dog(dog);
+                    if(temp.getGender().equals("Male")){
+                      selectedPet.isMale();
+                    }
+                    else if (temp.getGender().equals("Female"))
+                    {
+                      selectedPet.isFemale();
+                    }
+                    break;
+                  case Rodent rodent:
+                    selectedPet = new Rodent(rodent);
+                    if(temp.getGender().equals("Male")){
+                      selectedPet.isMale();
+                    }
+                    else if (temp.getGender().equals("Female"))
+                    {
+                      selectedPet.isFemale();
+                    }
+                    break;
+                  case Bird bird:
+                    selectedPet = new Bird(bird);
+                    if(temp.getGender().equals("Male")){
+                      selectedPet.isMale();
+                    }
+                    else if (temp.getGender().equals("Female"))
+                    {
+                      selectedPet.isFemale();
+                    }
+                    break;
+                  case Various various:
+                    selectedPet = new Various(various);
+                    if(temp.getGender().equals("Male")){
+                      selectedPet.isMale();
+                    }
+                    else if (temp.getGender().equals("Female"))
+                    {
+                      selectedPet.isFemale();
+                    }
+                    break;
+                  default:
+                    System.err.println("Pet tpe is not correct");
+                }
+
+              }
+            }
+            catch (NullPointerException e)
+            {
+              System.out.println("no elements found");
+            }
+            catch (NoSuchElementException e)
+            {
+              System.out.println("petTableView, pet changed");
+            }
+          }
+        });
   }
 
   private void updatePetTable()

@@ -98,7 +98,7 @@ public class ViewHandler
         break;
     }
 
-    String title = "";
+    String title = "VIAPets";
 
     if(stage.getScene().getRoot().getUserData() != null)
     {

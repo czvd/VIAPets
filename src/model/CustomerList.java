@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * A class containing a list of Customer objects
+ * A class containing a list of Customer objects.
  * @author Patrik Golian
  * @version 1.0
  */
@@ -30,7 +30,7 @@ public class CustomerList implements Serializable
    */
   public void addCustomer(Customer customer)
   {
-    for(int i=0; i<customers.size(); i++)
+    for(int i = 0; i < customers.size(); i++)
     {
       Customer customer1 = customers.get(i);
       if(customer1.getEmailAddress().equals(customer.getEmailAddress()))
@@ -50,7 +50,7 @@ public class CustomerList implements Serializable
    */
   public void removeCustomer(Customer customer)
   {
-    for(int i =0; i<customers.size(); i++)
+    for(int i =0; i < customers.size(); i++)
     {
       Customer temp = customers.get(i);
       if(temp.equals(customer))

@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import ModelManager.VIAPetsModelManager;
 import model.Customer;
+import model.IllegalFirstNameException;
 import model.IllegalPhoneNumberException;
 import model.IllegalEmailException;
 
@@ -101,13 +102,34 @@ public class AddNewCustomerViewController
         return;
       }
 
+    if (!firstName.matches("[a-zA-z ]+"))
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setHeaderText(null);
+      alert.setContentText("First name can contain only letters!");
+      alert.showAndWait();
+      return;
+    }
+
+    if (!lastName.matches("[a-zA-z ]+"))
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setHeaderText(null);
+      alert.setContentText("Last name can contain only letters!");
+      alert.showAndWait();
+      return;
+    }
+
+
 
     if (!phoneNumber.matches("\\d+"))
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText(null);
-      alert.setContentText("Phone number must contain only digits!");
+      alert.setContentText("Phone number can contain only digits!");
       alert.showAndWait();
       return;
     }

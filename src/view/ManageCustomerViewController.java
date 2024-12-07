@@ -20,7 +20,7 @@ public class ManageCustomerViewController
   private Scene scene;
   private VIAPetsModelManager modelManager;
   private ViewHandler viewHandler;
-
+  private Customer selectedCustomer;
 
   @FXML private TextField firstNameField;
   @FXML private TextField lastNameField;
@@ -36,7 +36,7 @@ public class ManageCustomerViewController
   @FXML private TableColumn<Customer, String> firstNameColumn;
   @FXML private TableColumn<Customer, String> lastNameColumn;
   @FXML private TableColumn<Customer, String> emailAddressColumn;
-  private Customer selectedCustomer;
+
 
 
   public void init(ViewHandler viewHandler, Scene scene, VIAPetsModelManager modelManager)
@@ -165,6 +165,27 @@ public class ManageCustomerViewController
         alert.showAndWait();
         return;
       }
+
+      if (!firstName.matches("[a-zA-z ]+"))
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("First name can contain only letters!");
+        alert.showAndWait();
+        return;
+      }
+
+      if (!lastName.matches("[a-zA-z ]+"))
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Last name can contain only letters!");
+        alert.showAndWait();
+        return;
+      }
+
       try
       {
         Customer customer = new Customer(firstName,lastName,phoneNumber,emailAddress);

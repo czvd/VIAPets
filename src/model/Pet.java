@@ -2,6 +2,11 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author Mihail Rotaru
+ * @version 1.0
+ */
 public abstract class Pet implements Serializable
 {
   private int type;
@@ -11,7 +16,7 @@ public abstract class Pet implements Serializable
   private String gender;
   private String name;
   private String comment;
-  private boolean inKennel = false;
+  private boolean inKennel;
   private String species;
 
   public Pet(int type, double price, String color, int age, String species)
@@ -169,14 +174,14 @@ public abstract class Pet implements Serializable
 
   public void isInKennel()
   {
-//    if (hasAccessToKennel())
-//    {
+    if (hasAccessToKennel())
+    {
       inKennel = true;
       price = 0;
-//    }
-//    else
-//      throw new UnsupportedActionException(
-//          "This type doesn't have access to the kennel");
+    }
+    else
+      throw new UnsupportedActionException(
+          "This type doesn't have access to the kennel");
   }
 
   public void isNotInKennel()
@@ -215,6 +220,6 @@ public abstract class Pet implements Serializable
   {
     return getTypeString() + "\n" + getPrice() + "\n" + getColor() + "\n"
         + getAge() + "\n" + getGender() + "\n" + getName() + "\n" + getComment()
-        + "\n" + getInKennel();
+        + "\n" + getInKennel() + "\n" + getSpecies();
   }
 }
