@@ -22,7 +22,7 @@ public class SaleList implements Serializable
     sales.add(sale);
   }
 
-  public SaleList getSalesByCustomerName(String name) //Create new sale [ALT2]
+  public SaleList getSalesByCustomerName(String name)
   {
     SaleList result = new SaleList();
 
@@ -50,12 +50,19 @@ public class SaleList implements Serializable
     return result;
   }
 
-  public void removeSale(Sale sale)
-  {
-    sales.remove(sale);
+  public void removeSale(Sale sale) {
+    for (int i = 0; i < sales.size(); i++)
+    {
+      Sale temp = sales.get(i);
+      if (temp.equals(sale))
+      {
+        sales.remove(i); // Remove the sale by index
+        break; // Exit the loop after removing the sale
+      }
+    }
   }
 
-/*  public SaleList getSalesByPetSpeciesOrBreed(String speciesOrBreed) {
+  /*  public SaleList getSalesByPetSpeciesOrBreed(String speciesOrBreed) {
     SaleList result = new SaleList();
     for (Sale sale : sales)
     {

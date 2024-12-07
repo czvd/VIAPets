@@ -25,22 +25,28 @@ public class LoadInitialData
     modelManager.addCostumer(new Customer("Ricard", "Vegh","999912", "ricky2@gmail.com"));
     modelManager.addCostumer(new Customer("Rihard", "Vegh","9999222", "ricky1@gmail.com"));
     modelManager.addPet(new Cat(1,"grey",30,"mastiff"));
-    /*
-    VIAPets viaPets = new VIAPets();
-    try
-    {
-      FileHandler.writeToBinaryFile("VIAPets.bin", viaPets);
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("Error opening file ");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO Error writing to file ");
-    }
-    System.out.println("Done");
 
-     */
+    //Sale View Test
+    Customer customer1 = new Customer("Carolina", "Zavidei", "55221008", "caro@gmail.com");
+    modelManager.addCostumer(customer1);
+    Dog dog1 = new Dog(100, "yellow", 2, "labrador");
+    modelManager.addPet(dog1);
+    Sale sale1 = new Sale(dog1, customer1);
+    modelManager.addSale(sale1);
+
+//    VIAPets viaPets = new VIAPets();
+//    try
+//    {
+//      FileHandler.writeToBinaryFile("VIAPets.bin", viaPets);
+//    }
+//    catch (FileNotFoundException e)
+//    {
+//      System.out.println("Error opening file ");
+//    }
+//    catch (IOException e)
+//    {
+//      System.out.println("IO Error writing to file ");
+//    }
+//    System.out.println("Done");
   }
 }

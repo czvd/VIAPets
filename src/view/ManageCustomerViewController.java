@@ -33,7 +33,7 @@ public class ManageCustomerViewController
   @FXML private Button manageButton;
   @FXML private Button addNewButton;
   @FXML private TableView<Customer> fleTableView = new TableView<>();
- @FXML private TableColumn<Customer, String> firstNameColumn;
+  @FXML private TableColumn<Customer, String> firstNameColumn;
   @FXML private TableColumn<Customer, String> lastNameColumn;
   @FXML private TableColumn<Customer, String> emailAddressColumn;
   private Customer selectedCustomer;
@@ -121,16 +121,13 @@ public class ManageCustomerViewController
     }
     else if(e.getSource()== editButton)
     {
-
       String firstName = firstNameField.getText();
       String lastName = lastNameField.getText();
       String phoneNumber = phoneNumberField.getText();
       String emailAddress = emailAddressField.getText();
 
-      if (firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty()
-          || emailAddress.isEmpty())
+      if (firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty() || emailAddress.isEmpty())
       {
-
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
@@ -138,6 +135,7 @@ public class ManageCustomerViewController
         alert.showAndWait();
         return;
       }
+
       if (firstName == null || firstName.length() < 3)
       {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -147,6 +145,7 @@ public class ManageCustomerViewController
         alert.showAndWait();
         return;
       }
+
       if (!phoneNumber.matches("\\d+"))
       {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -156,6 +155,7 @@ public class ManageCustomerViewController
         alert.showAndWait();
         return;
       }
+
       if (!emailAddress.matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
       {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -226,18 +226,18 @@ public class ManageCustomerViewController
         emailAddressField.setText(temp.getEmailAddress());
       }
     }
-    else if (e.getSource()== searchField)
+    else if (e.getSource() == searchField)
     {
       String query = searchField.getText();
       if (query.isEmpty()) {
         updateTableView();
-      } else {
+      }
+      else
+      {
         updateTableView(query);
       }
     }
   }
-
-
 
   private void updateTableView()
   {
@@ -245,32 +245,28 @@ public class ManageCustomerViewController
     {
       fleTableView.getItems().clear();
     }
-
-
-
     CustomerList customers = modelManager.getAllCustomers();
     for (int i = 0; i < customers.size(); i++)
     {
       fleTableView.getItems().add(customers.get(i));
     }
   }
+
   private void updateTableView(String name)
   {
     if (fleTableView != null)
     {
       fleTableView.getItems().clear();
-    } // Clear the table
+    }
 
     CustomerList customers = modelManager.getAllCustomers();
     for (int i =0; i< customers.size();i++ )
     {
       Customer customer = customers.get(i);
 
-      if (customer.getFirstName().equals(name)
-          || customer.getLastName().equals(name))
+      if (customer.getFirstName().equals(name) || customer.getLastName().equals(name))
       {
-        fleTableView.getItems()
-            .add(customer);
+        fleTableView.getItems().add(customer);
       }
     }
   }

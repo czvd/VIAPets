@@ -26,12 +26,14 @@ public class AddSaleViewController
   @FXML private Button saleViewButton;
   @FXML private Button addNewSaleButton;
   @FXML private ComboBox<Customer> customerList;
+
   //initializing costumer table
   @FXML private TableView<Customer> customerTableView = new TableView<>();
   @FXML private TableColumn<Customer, String> firstNameColumn;
   @FXML private TableColumn<Customer, String> lastNameColumn;
   @FXML private TableColumn<Customer, String> emailAddressColumn;
   @FXML private TableColumn<Customer, String> phoneNumberColumn;
+
   //initializing pet table
   @FXML private TableView<Pet> petTableView = new TableView<>();
   @FXML private TableColumn<Pet, String> petNameColumn;
@@ -39,11 +41,13 @@ public class AddSaleViewController
   @FXML private TableColumn<Pet, String> petColorColumn;
   @FXML private TableColumn<Pet, String> petGenderColumn;
   @FXML private TableColumn<Pet, String> petCommentColumn;
+
   //type selector(ComboBox)
   @FXML private ComboBox<String> typeSelect = new ComboBox<>();
 
   @FXML private TextField DateNTimeField;
   @FXML private TextField priceField;
+
   private Customer selectedCustomer;
   private Pet selectedPet;
   private String price;
@@ -55,6 +59,7 @@ public class AddSaleViewController
     this.scene = scene;
     this.modelManager = modelManager;
     DateNTimeField.setText(Date.today().toString());
+
     //type select comboBox
     typeSelect.getItems().add("SelectType");
     typeSelect.getItems().add("Dog");
@@ -64,6 +69,7 @@ public class AddSaleViewController
     typeSelect.getItems().add("Rodent");
     typeSelect.getItems().add("Various");
     typeSelect.getSelectionModel().selectFirst();
+
     //pet table
     petNameColumn.setCellValueFactory(new PropertyValueFactory<Pet, String>("name"));
     petAgeColumn.setCellValueFactory(new PropertyValueFactory<Pet, String>("age"));
@@ -76,7 +82,9 @@ public class AddSaleViewController
     petColorColumn.setSortable(false);
     petGenderColumn.setSortable(false);
     petCommentColumn.setSortable(false);
+
     updatePetTable();
+
     TableView.TableViewSelectionModel<Pet> selectionModel =
         petTableView.getSelectionModel();
     ObservableList<Pet> selectedItems =
@@ -129,7 +137,9 @@ public class AddSaleViewController
     lastNameColumn.setSortable(false);
     emailAddressColumn.setSortable(false);
     phoneNumberColumn.setSortable(false);
+
     updateCostumerTable();
+
    TableView.TableViewSelectionModel<Customer> SelectionModel =
         customerTableView.getSelectionModel();
     ObservableList<Customer> selectedItems1 =
@@ -197,17 +207,18 @@ public class AddSaleViewController
 
   private void updatePetTable()
   {
-
     if (petTableView != null)
     {
       petTableView.getItems().clear();
     }
 
-
     PetList pets = modelManager.getAllPets();
     for (int i = 0; i < pets.size(); i++)
     {
-      petTableView.getItems().add(pets.get(i));
+      if (!pets.get(i).getInKennel())
+      {
+        petTableView.getItems().add(pets.get(i));
+      }
     }
   }
   private void updatePetTable(int type)

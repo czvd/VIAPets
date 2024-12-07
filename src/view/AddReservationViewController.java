@@ -25,12 +25,14 @@ public class AddReservationViewController
   @FXML private DatePicker startDatePick = new DatePicker(LocalDate.now());
   @FXML private DatePicker endDatePick = new DatePicker(LocalDate.now());
   @FXML private ComboBox<Customer> customerList;
+
   //initializing costumer table
   @FXML private TableView<Customer> customerTableView = new TableView<>();
   @FXML private TableColumn<Customer, String> firstNameColumn;
   @FXML private TableColumn<Customer, String> lastNameColumn;
   @FXML private TableColumn<Customer, String> emailAddressColumn;
   @FXML private TableColumn<Customer, String> phoneNumberColumn;
+
   //initializing pet table
   @FXML private TableView<Pet> petTableView = new TableView<>();
   @FXML private TableColumn<Pet, String> petNameColumn;
@@ -38,6 +40,7 @@ public class AddReservationViewController
   @FXML private TableColumn<Pet, String> petColorColumn;
   @FXML private TableColumn<Pet, String> petGenderColumn;
   @FXML private TableColumn<Pet, String> petCommentColumn;
+
   //type selector(ComboBox)
   @FXML private ComboBox<String> typeSelect = new ComboBox<>();
 
@@ -102,7 +105,7 @@ public class AddReservationViewController
                   case Rodent rodent -> selectedPet = new Rodent(rodent);
                   case Bird bird -> selectedPet = new Bird(bird);
                   case Various various -> selectedPet = new Various(various);
-                  default -> System.err.println("Pet tpe is not correct");
+                  default -> System.err.println("Pet type is not correct");
                 }
 
               }

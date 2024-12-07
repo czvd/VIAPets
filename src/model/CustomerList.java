@@ -53,7 +53,6 @@ public class CustomerList implements Serializable
         customers.remove(customer);
       }
     }
-
   }
 
 
