@@ -51,15 +51,7 @@ public class SaleList implements Serializable
   }
 
   public void removeSale(Sale sale) {
-    for (int i = 0; i < sales.size(); i++)
-    {
-      Sale temp = sales.get(i);
-      if (temp.equals(sale))
-      {
-        sales.remove(i); // Remove the sale by index
-        break; // Exit the loop after removing the sale
-      }
-    }
+    sales.remove(sale);
   }
 
   /*  public SaleList getSalesByPetSpeciesOrBreed(String speciesOrBreed) {

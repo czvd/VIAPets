@@ -13,6 +13,23 @@ public class LoadInitialData
   public static void main(String[] args)
   {
 
+
+//    VIAPets viaPets = new VIAPets();
+//    try
+//    {
+//      FileHandler.writeToBinaryFile("VIAPets.bin", viaPets);
+//    }
+//    catch (FileNotFoundException e)
+//    {
+//      System.out.println("Error opening file ");
+//    }
+//    catch (IOException e)
+//    {
+//      System.out.println("IO Error writing to file ");
+//    }
+//    System.out.println("Done");
+
+
     VIAPetsModelManager modelManager = new VIAPetsModelManager("VIAPets.bin");
 
     Cat temp = new Cat(123, "grey", 12,"greatdane");
@@ -34,19 +51,5 @@ public class LoadInitialData
     Sale sale1 = new Sale(dog1, customer1);
     modelManager.addSale(sale1);
 
-//    VIAPets viaPets = new VIAPets();
-//    try
-//    {
-//      FileHandler.writeToBinaryFile("VIAPets.bin", viaPets);
-//    }
-//    catch (FileNotFoundException e)
-//    {
-//      System.out.println("Error opening file ");
-//    }
-//    catch (IOException e)
-//    {
-//      System.out.println("IO Error writing to file ");
-//    }
-//    System.out.println("Done");
   }
 }

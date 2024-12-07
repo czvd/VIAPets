@@ -47,7 +47,7 @@ public class AddReservationViewController
   @FXML private TextField priceField;
   private Customer selectedCustomer;
   private Pet selectedPet;
-  private String price;
+  private String price = "20";
   private Date start;
   private Date end;
 
@@ -159,6 +159,7 @@ public class AddReservationViewController
             }
           }
         });
+    priceField.setText("20");
   }
 
   private void setPriceField()
@@ -331,13 +332,22 @@ public class AddReservationViewController
      alert.showAndWait();
      return;
    }
+   if (end.isBefore(start))
+   {
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error");
+     alert.setHeaderText(null);
+     alert.setContentText("Check in must be before check out");
+     alert.showAndWait();
+     return;
+   }
    try
    {
      modelManager.addReservation(new KennelReservation(selectedPet,selectedCustomer,start,end,price));
-     System.out.println("new reservation added");
      updatePetTable();
+     System.out.println(modelManager.getAllReservations().size());
      updateCostumerTable();
-     priceField.setText("");
+     priceField.setText("20");
    }catch (SamePetException e)
    {
      Alert alert = new Alert(Alert.AlertType.ERROR);

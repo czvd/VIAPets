@@ -36,7 +36,7 @@ public class Bird extends Pet implements Serializable
 
   @Override public boolean hasAccessToKennel()
   {
-    return getInKennel();
+    return true;
   }
 
   public String getPreferredFood()

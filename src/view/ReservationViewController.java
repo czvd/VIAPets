@@ -1,13 +1,13 @@
 package view;
 
 import ModelManager.VIAPetsModelManager;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import model.*;
 
 import java.util.NoSuchElementException;
@@ -24,9 +24,7 @@ public class ReservationViewController
 
   //initializing sale table
   @FXML private TableView<KennelReservation> KennelTableView = new TableView<>();
-  @FXML private TableColumn<KennelReservation, String> customerColumn = new TableColumn<>("CustomerColumn");
-  @FXML private TableColumn<KennelReservation, String> costumerNameColumn = new TableColumn<>("CostumerNameColumn");
-  @FXML private TableColumn<KennelReservation, String> costumerPhoneColumn = new TableColumn<>("CostumerPhoneColumn");
+  @FXML private TableColumn<KennelReservation, String> costumerColumn = new TableColumn<>("CostumerNameColumn");
   @FXML private TableColumn<KennelReservation, String> startDateColumn = new TableColumn<>("StartDateColumn");
   @FXML private TableColumn<KennelReservation, String> endDateColumn = new TableColumn<>("EndDateColumn");
   @FXML private TableColumn<KennelReservation, String> priceColumn = new TableColumn<>("PriceColumn");
@@ -37,28 +35,48 @@ public class ReservationViewController
   private double price;
   private KennelReservation selectedReservation;
 
+  @FXML private TextField petTypeField;
+  @FXML private TextField petNameField;
+  @FXML private TextField petAgeField;
+  @FXML private TextField petColorField;
+  @FXML private TextField petGenderField;
+  @FXML private TextField petCommentField;
+  @FXML private TextField petSpeciesField;
+
+  //specific pet data
+  @FXML private Label petSpec1Label = new Label();
+  @FXML private Label petSpec2Label = new Label();
+  @FXML private TextField petSpec1Field = new TextField();
+  @FXML private TextField petSpec2Field = new TextField();
+
   public void init(ViewHandler viewHandler, Scene scene, VIAPetsModelManager modelManager)
   {
     this.viewHandler = viewHandler;
     this.scene = scene;
     this.modelManager = modelManager;
     //reservation table;
+    costumerColumn.setCellValueFactory(cellData ->
+        new SimpleStringProperty(cellData.getValue().getCustomer().getFirstName())
+    );
 
-    customerColumn.getColumns().addAll(costumerNameColumn,costumerPhoneColumn);
-    KennelTableView.getColumns().addAll(customerColumn,startDateColumn,endDateColumn,priceColumn);
-    costumerNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-    costumerPhoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
-    startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-    endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
-    priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+    startDateColumn.setCellValueFactory(cellData ->
+        new SimpleStringProperty(cellData.getValue().getStartDate().toString())
+    );
+    endDateColumn.setCellValueFactory(cellData ->
+        new SimpleStringProperty(cellData.getValue().getEndDate().toString())
+    );
+    priceColumn.setCellValueFactory(cellData ->
+        new SimpleStringProperty(Double.toString(cellData.getValue().getFinalPrice()))
+    );
 
-    customerColumn.setSortable(false);
-    costumerNameColumn.setSortable(false);
-    costumerPhoneColumn.setSortable(false);
+    costumerColumn.setSortable(false);
     startDateColumn.setSortable(false);
     endDateColumn.setSortable(false);
     priceColumn.setSortable(false);
-    updateTable();
+    petSpec1Label.setVisible(false);
+    petSpec1Field.setVisible(false);
+    petSpec2Field.setVisible(false);
+    petSpec2Label.setVisible(false);
     TableView.TableViewSelectionModel<KennelReservation> selectionModel =
         KennelTableView.getSelectionModel();
     ObservableList<KennelReservation> selectedItems =
@@ -74,22 +92,97 @@ public class ReservationViewController
               KennelReservation temp = change.getList().getFirst();
               if (temp != null)
               {
+                selectedReservation = temp;
 
                 switch (temp.getPet())
                 {
-                  case Cat cat -> pet = new Cat(cat);
-                  case Fish fish -> pet = new Fish(fish);
-                  case Dog dog -> pet = new Dog(dog);
-                  case Rodent rodent -> pet = new Rodent(rodent);
-                  case Bird bird -> pet = new Bird(bird);
-                  case Various various -> pet = new Various(various);
-                  default -> System.err.println("Pet tpe is not correct");
+                  case Cat cat:
+                    pet = new Cat(cat);
+
+
+                    if(temp.getPet().getGender().equals("Male")){
+                      pet.isMale();
+                    }
+                    else if (temp.getPet().getGender().equals("Female"))
+                    {
+                      pet.isFemale();
+                    }
+                    petSpec1Field.setText(cat.getNameOfBreeder());
+                    petSpec1Label.setText("Breeder");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  case Fish fish:
+                    pet = new Fish(fish);
+                    if (fish.isItPredator())
+                    {
+                      petSpec1Field.setText("yes");
+                    }else petSpec1Field.setText("no");
+                    petSpec1Label.setText("Predator");
+                    if(fish.isItSaltWater())
+                    {
+                      petSpec2Field.setText("Salt Water");
+                    }else petSpec1Field.setText("Fresh Water");
+                    petSpec2Label.setText("Water Type");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(true);
+                    petSpec2Label.setVisible(true);
+                    break;
+                  case Dog dog:
+                    pet = new Dog(dog);
+                    petSpec1Field.setText(dog.getNameOfBreeder());
+                    petSpec1Label.setText("Breeder");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  case Rodent rodent:
+                    pet = new Rodent(rodent);
+                    if(rodent.doesItBite()){
+                      petSpec1Field.setText("yes");
+                  } else petSpec1Field.setText("no");
+                    petSpec1Label.setText("Bite");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  case Bird bird:
+                    pet = new Bird(bird);
+                    petSpec1Field.setText(bird.getPreferredFood());
+                    petSpec1Label.setText("Preferred food");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  case Various various:
+                    pet = new Various(various);
+                    petSpec1Label.setVisible(false);
+                    petSpec1Field.setVisible(false);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  default:
+                    System.err.println("Pet tpe is not correct");
                 }
                 customer = temp.getCustomer();
                 start = temp.getStartDate();
                 end = temp.getEndDate();
                 price = temp.getFinalPrice();
                 selectedReservation = new KennelReservation(pet,customer,start,end,price);
+
+                petNameField.setText(pet.getName());
+                petGenderField.setText(pet.getGender());
+                petCommentField.setText(pet.getComment());
+                petTypeField.setText(pet.getTypeString());
+                petAgeField.setText(String.valueOf(pet.getAge()));
+                petColorField.setText(pet.getColor());
+                petSpeciesField.setText(pet.getSpecies());
               }
             }
             catch (NullPointerException e)
@@ -102,6 +195,8 @@ public class ReservationViewController
             }
           }
         });
+
+    updateTable();
   }
 
   public Scene getScene()
@@ -111,6 +206,8 @@ public class ReservationViewController
 
   public void reset()
   {
+    updateTable();
+    modelManager.save();
   }
 
   public void handleActions(ActionEvent e)

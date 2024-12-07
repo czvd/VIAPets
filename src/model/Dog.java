@@ -52,7 +52,7 @@ public class Dog extends Pet implements Serializable
   @Override
   public boolean hasAccessToKennel()
   {
-    return getInKennel();
+    return true;
   }
 
   @Override

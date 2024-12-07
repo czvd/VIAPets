@@ -102,59 +102,63 @@ public class Date implements Serializable
 
   public static int calculatePeriod(Date startDate, Date endDate)
   {
-    //checking if the start date is after than end date, else returns error message
-    if(endDate.isBefore(startDate))
+    //Checking if the start date is after than end date, else returns error message
+    if(endDate.isBefore(startDate)) //the comparison will be done once
     {
-      throw new IllegalArgumentException("Check-out date must be after check-in date.");
+      throw new IllegalArgumentException("Check-out date must be after check-in date.");//this takes 1
     }
-    //total days is the days between the start-end date, start value is the days in first month
-    int totalDays= startDate.daysInMonth() - startDate.getDay();
-    //if year is the same
-    if(startDate.getYear() == endDate.getYear()){
-      if (startDate.getMonth() == endDate.getMonth())
+    //Total days is the days between the start-end date, start value is the days in first month
+    int totalDays= startDate.daysInMonth() - startDate.getDay(); //this takes 2
+    //If year is the same
+    if(startDate.getYear() == endDate.getYear()){ //the comparison will be done once
+      if (startDate.getMonth() == endDate.getMonth()) //the comparison will be done once
       {
         //month and day is the same == same day
-        if (startDate.getDay() == endDate.getDay()){
-          return 0;
+        if (startDate.getDay() == endDate.getDay()){ //the comparison will be done once
+          return 0; // 1 return
         }
         //the month is the same, return just the days between
-        return endDate.getDay() - startDate.getDay();
+        return endDate.getDay() - startDate.getDay(); //1 calculation 1 return
       }
-      //month are not the same, goes trough every month between, plus add days in first and last month
-      int checkMonth = startDate.getMonth() + 1;
-      for (int i = endDate.getMonth() - startDate.getMonth()-1; i>0;i--)
+      //month are not the same, goes through every month between, plus add days in first and last month
+      int checkMonth = startDate.getMonth() + 1; // this takes 2
+      for (int i = endDate.getMonth() - startDate.getMonth()-1; i>0;i--) //1 "=" 1 for calculation, 1 for comparison, and we loop n times
       {
-        totalDays+=daysInMonth(checkMonth,startDate.getYear());
-        checkMonth++;
+        totalDays+=daysInMonth(checkMonth,startDate.getYear()); //for each iteration we have 1 "+" and 1 "=" and call the method daysInMonths worth
+        checkMonth++; //this takes 1
       }
-      return totalDays+endDate.getDay();
+      return totalDays+endDate.getDay(); //1 calculation 1 return
     }
     //if year is not the same
     //start with first year, where the startdate is in
-    for (int i=startDate.getMonth()+1;i<=12;i++)
+    int compare = startDate.getMonth()+1; // this cost 1
+    for (int i=12;i>=compare;i--) //we loop n times 1 "=" and 1 for comparison
     {
-      totalDays+=daysInMonth(i, startDate.getYear());
+      totalDays+=daysInMonth(i, startDate.getYear()); //for each iteration we have 1"+" and 1 "=" and call the method daysInMonths worth
     }
-    //if there is more than 1 years we count the whole year
-    int difference = endDate.getYear() - startDate.getYear();
-    if (difference>1)
+    //if there is more than 1 year we count the whole year
+    int difference = endDate.getYear() - startDate.getYear(); //this takes 2
+    if (difference>1) //1 for comparison
     {
-      for (int i = startDate.getYear()+1; i < endDate.getYear(); i++)
+      int compares =startDate.getYear()+1; // this is worth 3
+      int getvalue = endDate.getYear(); // this is worth 2
+      for (int i = compares; i < getvalue; i++) //we loop n times, 1 for "=", 1 for comparison
       {
-        if(isLeapYear(i))
+        if(isLeapYear(i)) // this will be done n times
         {
-          totalDays+=366;
+          totalDays+=366; //this takes 2
         }
-        totalDays+=365;
+        totalDays+=365;//this takes 2
       }
     }
     // the last year with months and days added together
-    for (int i=1; i<endDate.getMonth();i++)
+    int getendvalue = endDate.getMonth(); // this is worth 2
+    for (int i=1; i<getendvalue;i++) // we loop n times, 1 for "=" and 1 for comparison
     {
-      totalDays+=daysInMonth(i, endDate.getYear());
+      totalDays+=daysInMonth(i, endDate.getYear()); //for each iteration we have 1"+" and 1 "=" and call the method daysInMonths worth
     }
     //lastly adding the last day
-    return totalDays+endDate.getDay();
+    return totalDays+endDate.getDay(); // 1 for calculating 1 for return
 
   }
   private boolean isLeapYear()

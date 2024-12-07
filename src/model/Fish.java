@@ -13,23 +13,9 @@ public class Fish extends Pet implements Serializable
     isNotPredator();
     isNotSaltWater();
   }
-    //constuctor for easy checking used at Kennel reservation and sales reservation
   public Fish(Fish fish)
   {
     super(fish.getType(), fish.getPrice(), fish.getColor(), fish.getAge(), fish.getSpecies());
-    if (fish.isItPredator())
-    {
-      isPredator();
-    }
-    else {
-      isNotPredator();
-    }
-    if (fish.isItSaltWater()){
-      isSaltWater();
-    }
-    else {
-      isNotSaltWater();
-    }
 
     if(fish.getGender().equals("Male")){
       isMale();
@@ -45,12 +31,26 @@ public class Fish extends Pet implements Serializable
     }else {
       isNotInKennel();
     }
+    if (isItPredator())
+    {
+      isPredator();
+    }
+    else {
+      isNotPredator();
+    }
+    if (isItSaltWater())
+    {
+      isSaltWater();
+    }
+    else {
+      isNotSaltWater();
+    }
 
   }
 
   @Override public boolean hasAccessToKennel()
   {
-    return getInKennel();
+    return false;
   }
 
   public boolean isItPredator()

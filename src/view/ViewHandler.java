@@ -49,8 +49,8 @@ public class ViewHandler
     loadReservationView();
     loadAddReservationView();
 //    load pet
-//    loadPetView();
-//    loadAddPetView();
+    loadPetView();
+    loadAddPetView();
 
     openView("MainView");
 

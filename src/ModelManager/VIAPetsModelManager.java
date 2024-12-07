@@ -117,7 +117,7 @@ public class VIAPetsModelManager
     save();
   }
 
-
+/*
   public void changeEmailAddress(String firstName, String lastName, String phoneNumber, String emailAddress)
   {
     CustomerList allCustomers = getAllCustomers();
@@ -196,10 +196,10 @@ public class VIAPetsModelManager
     return viaPets.getKennelReservationList();
   }
   public void addReservation(KennelReservation newReservation)
-  {/*
+  {
     KennelReservationList allReservations = getAllReservations();
     allReservations.addReservation(newReservation);
-    save();*/
+    save();
   }
   public void removeReservation(KennelReservation deleteReservation)
   {

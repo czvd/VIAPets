@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
 import model.*;
 
 import java.util.NoSuchElementException;
@@ -170,7 +169,8 @@ public class SaleViewController
         if (alert.getResult() == ButtonType.YES)
         {
           // Remove the selected sale from the model
-          modelManager.removeSale(selectedSale);
+
+          modelManager.getAllSales().removeSale(selectedSale);
 
           // Debug: Print the sales list after deletion
           System.out.println("Sales list after deletion:");
@@ -179,7 +179,7 @@ public class SaleViewController
             Sale sale = sales.get(i);
             System.out.println(sale);
           }
-
+          selectedSale = null;
           // Refresh the table
           updateSaleTable();
 
@@ -194,7 +194,7 @@ public class SaleViewController
           speciesField.setText("");
 
           // Clear selected sale reference
-          selectedSale = null;
+
 
           // Show success message
           Alert successAlert = new Alert(Alert.AlertType.INFORMATION,

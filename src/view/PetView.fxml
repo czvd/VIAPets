@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.PetView"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PetViewController">
+    <children>
+        <Button layoutX="228.0" layoutY="15.0" mnemonicParsing="false" text="View Pets" />
+        <Button fx:id="addPetButton" layoutX="312.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleActions" text="Add Pet" />
+        <ComboBox layoutX="14.0" layoutY="41.0" prefWidth="150.0" promptText="Type" />
+        <TableView fx:id="petTableView" layoutX="14.0" layoutY="75.0" prefHeight="276.0" prefWidth="322.0">
+            <columns>
+                <TableColumn fx:id="breedspecColumn" prefWidth="95.20001220703125" text="Breed/Species" />
+                <TableColumn fx:id="colorColumn" prefWidth="55.20001220703125" text="Color" />
+                <TableColumn fx:id="genderColumn" minWidth="0.0" prefWidth="65.60003662109375" text="Gender" />
+                <TableColumn fx:id="kennelColumn" prefWidth="104.0" text="Kennel Status" />
+            </columns>
+        </TableView>
+        <Button fx:id="backButton" layoutX="15.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleActions" text="Back" />
+        <Label layoutX="370.0" layoutY="79.0" text="Type" />
+        <TextField editable="false" layoutX="402.0" layoutY="75.0" prefHeight="26.0" prefWidth="89.0" />
+        <Label layoutX="370.0" layoutY="115.0" text="Price" />
+        <TextField layoutX="402.0" layoutY="111.0" prefHeight="26.0" prefWidth="89.0" />
+        <Label layoutX="370.0" layoutY="151.0" text="Color" />
+        <TextField layoutX="402.0" layoutY="147.0" prefHeight="26.0" prefWidth="89.0" />
+        <Label layoutX="369.0" layoutY="219.0" text="Gender" />
+        <RadioButton layoutX="413.0" layoutY="219.0" mnemonicParsing="false" text="Male" />
+        <RadioButton layoutX="466.0" layoutY="219.0" mnemonicParsing="false" text="Female" />
+        <CheckBox layoutX="499.0" layoutY="115.0" mnemonicParsing="false" text="Kennel" />
+        <Label layoutX="369.0" layoutY="250.0" text="Name" />
+        <TextField layoutX="405.0" layoutY="246.0" prefHeight="26.0" prefWidth="121.0" />
+        <Label layoutX="369.0" layoutY="281.0" text="Comment" />
+        <TextArea layoutX="366.0" layoutY="299.0" prefHeight="48.0" prefWidth="162.0" />
+        <Label layoutX="370.0" layoutY="187.0" text="Age" />
+        <TextField layoutX="402.0" layoutY="183.0" prefHeight="26.0" prefWidth="39.0" />
+        <Button layoutX="366.0" layoutY="360.0" mnemonicParsing="false" text="Edit" />
+    </children>
 </AnchorPane>

@@ -211,4 +211,8 @@ public class KennelReservationList implements Serializable
     return kennelReservations.toString();
   }
 
+  public void addReservation(KennelReservation newReservation)
+  {
+    kennelReservations.add(newReservation);
+  }
 }
