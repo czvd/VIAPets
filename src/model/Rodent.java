@@ -8,7 +8,7 @@ public class Rodent extends Pet implements Serializable
 
   public Rodent(double price, String color, int age, String species)
   {
-    super(4, price, color, age, species);
+    super(5, price, color, age, species);
     bite = false;
   }
   public Rodent(Rodent rodent)

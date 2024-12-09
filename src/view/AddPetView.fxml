@@ -31,7 +31,7 @@
         <CheckBox fx:id="kennelCheck" layoutX="68.0" layoutY="329.0" mnemonicParsing="false" onAction="#kennelBlock" text="Kennel Pet" />
         <Label layoutX="67.0" layoutY="58.0" text="Type" />
         <ComboBox fx:id="typeComboBox" layoutX="101.0" layoutY="54.0" onAction="#initialize" prefWidth="150.0" />
-        <Button layoutX="229.0" layoutY="14.0" mnemonicParsing="false" text="View Pets" />
+        <Button fx:id="viewPetsButton" layoutX="229.0" layoutY="14.0" mnemonicParsing="false" onAction="#viewPetButtonAction" text="View Pets" />
         <Button layoutX="330.0" layoutY="14.0" mnemonicParsing="false" text="Add Pet" />
         <Label fx:id="breedLabel" layoutX="316.0" layoutY="58.0" text="Breed" visible="false" />
         <TextField fx:id="breedField" layoutX="353.0" layoutY="54.0" visible="false" />

@@ -39,6 +39,13 @@ public class SaleViewController
   @FXML private TableColumn<Sale, String> priceColumn;
 
   private Sale selectedSale;
+  private Pet pet;
+
+  //specific pet data
+  @FXML private Label petSpec1Label = new Label();
+  @FXML private Label petSpec2Label = new Label();
+  @FXML private TextField petSpec1Field = new TextField();
+  @FXML private TextField petSpec2Field = new TextField();
 
   public void init(ViewHandler viewHandler, Scene scene,
       VIAPetsModelManager modelManager)
@@ -71,6 +78,10 @@ public class SaleViewController
     customerPhoneColumn.setSortable(false);
     dateColumn.setSortable(false);
     priceColumn.setSortable(false);
+    petSpec1Label.setVisible(false);
+    petSpec1Field.setVisible(false);
+    petSpec2Field.setVisible(false);
+    petSpec2Label.setVisible(false);
 
     TableView.TableViewSelectionModel<Sale> selectionModel = SaleTableView.getSelectionModel();
     ObservableList<Sale> selectedItems = selectionModel.getSelectedItems();

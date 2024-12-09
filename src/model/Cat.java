@@ -1,7 +1,11 @@
 package model;
 
 import java.io.Serializable;
-
+/**
+ * A class representing a bird with type, price, color, age, gender, breed, kennel status, name, price, additional comment and name of breeder
+ * @author Mihail Rotaru
+ * @version 1.0
+ */
 public class Cat extends Pet implements Serializable
 {
   private String nameOfBreeder = "NoName";
@@ -18,6 +22,11 @@ public class Cat extends Pet implements Serializable
     super(2, price, color, age, species);
     nameOfBreeder = "NoName";
   }
+
+  /**
+   * One-argument constructor.
+   * @param cat
+   */
   //constuctor for easy checking used at Kennel reservation and sales reservation
   public Cat(Cat cat)
   {
@@ -41,13 +50,19 @@ public class Cat extends Pet implements Serializable
 
   }
 
+  /**
+   * Gets the cat's name of breeder.
+   * @return the cat's name of breeder
+   */
   public String getNameOfBreeder()
   {
     return nameOfBreeder;
   }
 
-
-
+  /**
+   * Sets the cat's name of breeder.
+   * @param nameOfBreeder what the cat's name of breeder will be set to
+   */
   public void setNameOfBreeder(String nameOfBreeder)
   {
     if (nameOfBreeder.matches("[a-zA-z ]+"))

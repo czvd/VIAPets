@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 /**
- *
+ * An abstract class called Pet that serves as a base for all the subclasses.
  * @author Mihail Rotaru
  * @version 1.0
  */
@@ -40,16 +40,28 @@ public abstract class Pet implements Serializable
     comment = "NoComment";
   }
 
+  /**
+   * Gets the type of the pet.
+   * @return An integer between 1 and 6, that represents the type of the pet.
+   */
   public int getType()
   {
     return type;
   }
 
+  /**
+   * Gets the species of the pet.
+   * @return A string that contains the species of the pet.
+   */
   public String getSpecies()
   {
     return species;
   }
 
+  /**
+   * Gets the type of the pet in a String format.
+   * @return A String which can be Dog,Cat,Bird,Fish,Rodent or Various, which represent the type of the pet.
+   */
   public String getTypeString()
   {
     String temp = "";
@@ -77,21 +89,37 @@ public abstract class Pet implements Serializable
     return temp;
   }
 
+  /**
+   * Gets the price of the pet.
+   * @return A double bigger than or equal to 0 that represents the price of the pet.
+   */
   public double getPrice()
   {
     return price;
   }
 
+  /**
+   * Gets the color of the pet.
+   * @return A String that contains the color of the pet.
+   */
   public String getColor()
   {
     return color;
   }
 
+  /**
+   * Gets the age of the pet.
+   * @return An integer bigger or equal to 0 that contains the age of the pet.
+   */
   public int getAge()
   {
     return age;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getGender()
   {
     return gender;
@@ -112,7 +140,7 @@ public abstract class Pet implements Serializable
     return inKennel;
   }
 
-  private final void setType(int type)
+  private void setType(int type)
   {
     switch (type)
     {

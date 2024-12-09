@@ -9,7 +9,7 @@ public class Fish extends Pet implements Serializable
 
   public Fish(double price, String color, int age, String species)
   {
-    super(5, price, color, age,species);
+    super(4, price, color, age,species);
     isNotPredator();
     isNotSaltWater();
   }

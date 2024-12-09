@@ -57,36 +57,67 @@ public class Sale implements Serializable
     this.finalPrice = finalPrice;
   }
 
+  /**
+   * Retrieves the pet involved in the sale.
+   * @return the Pet object associated with the sale.
+   */
   public Pet getPet()
   {
     return pet;
   }
 
+  /**
+   * Retrieves the customer who purchased the pet.
+   * @return the Customer object associated with the sale.
+   */
   public Customer getCustomer()
   {
     return customer;
   }
 
+  /**
+   * Retrieves the date of the sale.
+   * @return the Date object representing the sale date.
+   */
   public Date getDateOfSale()
   {
     return dateOfSale;
   }
+
+  /**
+   * Retrieves the final price of the sale.
+   * @return the final price of the sale as a double.
+   */
   public double getFinalPrice()
   {
     return finalPrice;
   }
 
+  /**
+   * Sets the final price of the sale.
+   * @param finalPrice the new final price for the sale.
+   */
   public void setFinalPrice(double finalPrice)
   {
     this.finalPrice = finalPrice;
   }
 
+  /**
+   * Returns a string representation of the sale, including details about the pet, customer, date, and final price
+   * @return a string representation of the sale.
+   */
   public String toString()
   {
     return "Pet: " + pet + ", Customer:  " + customer + ", Date of sale: "
         + dateOfSale + "Final price: " + finalPrice;
   }
 
+  /**
+   * Compares this Sale object with another object for equality.
+   * Two sales are considered equal if their pet, customer, date, and final price match.
+   * @param obj the object to compare with this sale.
+   * @return true if the specified object is equal to this sale; false otherwise.
+   */
   public boolean equals(Object obj)
   {
     if (obj == null || getClass() != obj.getClass())
@@ -101,6 +132,10 @@ public class Sale implements Serializable
         && finalPrice == other.finalPrice;
   }
 
+  /**
+   * Retrieves a copy of the sale's date.
+   * @return a copy of the Date object representing the sale date.
+   */
   public Object getDate()
   {
     return dateOfSale.copy();
