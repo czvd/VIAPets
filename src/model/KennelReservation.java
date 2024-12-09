@@ -35,12 +35,13 @@ public class KennelReservation implements Serializable
   }
 
   /**
-   *
-   * @param pet
-   * @param customer
-   * @param startDate
-   * @param endDate
-   * @param pricePerDay
+   * five-argument constructor initializing kennelReservation, assuming
+   * the price is set by the method(not using the initial 20) and is a String
+   * @param customer Costumer object about a set costumer
+   * @param startDate qDate object, with data for year, month, name, storing the start date
+   * @param endDate Date object, with value for the date of finishing the booking(year,month,day)
+   * @param pet Object about a pet
+   * @param pricePerDay price in dollar for one day of booking
    */
   public KennelReservation(Pet pet,Customer customer,Date startDate, Date endDate, String pricePerDay)
   {
@@ -49,22 +50,6 @@ public class KennelReservation implements Serializable
     this.endDate = endDate;
     this.pet = pet;
     this.pricePerDay = Double.parseDouble(pricePerDay);
-  }
-  /**
-   * four-argument constructor initializing kennelReservation, normally
-   * using this method sets the price for one booking per day to 20
-   * @param customer
-   * @param startDate
-   * @param endDate
-   * @param pet
-   */
-  public KennelReservation(Pet pet,Customer customer,Date startDate, Date endDate)
-  {
-    this.customer = customer;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.pet = pet;
-    pricePerDay = 20;
   }
 
   /**
@@ -112,16 +97,30 @@ public class KennelReservation implements Serializable
   {
     return Date.calculatePeriod(startDate,endDate);
   }
-  //returning the price for set period
+  /**
+   * returning the price for set period
+   * @return price for one day multiplied by the duration in days
+   */
   public double getFinalPrice()
   {
     return getPeriod()*pricePerDay;
   }
+
+  /**
+   * method for giving access to price per day value inside class
+   * @return pricePerDay integer
+   */
   public double getPrice()
   {
     return pricePerDay;
   }
-  //equals method
+
+  /**
+   * Compares price per day value, Pet class, start and end date
+   * as Date Class and Customer class between two Kennel Reservations.
+   * @param obj the object to compare with
+   * @return  true if the given object is equal to this customer
+   */
   public boolean equals(Object obj)
   {
     if (obj == null || getClass() != obj.getClass())
@@ -139,10 +138,10 @@ public class KennelReservation implements Serializable
 
   /**
    * toString method for kennel reservation
-   * @return A string with the initial values of the class, separated by :
+   * @return A string with the initial values of the class, separated by ::
    */
   public String toString()
   {
-    return customer+":"+startDate+":"+endDate+":"+pet+":"+pricePerDay;
+    return startDate+"::"+endDate;
   }
 }

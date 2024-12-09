@@ -5,10 +5,9 @@ import parser.ParserException;
 import parser.XmlJsonParser;
 
 public class XMLConvertor {
-  public static void main(String[] args)
+  public static void write(VIAPetsModelManager manager)
   {
-    VIAPetsModelManager modelManager = new VIAPetsModelManager("VIAPets.bin");;
-    PetList petList = modelManager.getAllPets();
+    PetList petList = manager.getAllPets();
 
     XmlJsonParser parser = new XmlJsonParser();
 
@@ -22,15 +21,6 @@ public class XMLConvertor {
       e.printStackTrace();
     }
 
-    //read the XML file
-    try
-    {
-      petList = parser.fromXml("list.xml", PetList.class);
-      System.out.println(petList);
-    }
-    catch (ParserException e)
-    {
-      e.printStackTrace();
-    }
+
   }
 }

@@ -7,6 +7,7 @@ import model.PetList;
 import java.io.FileNotFoundException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class VIAPetsModelManager
 {
@@ -39,6 +40,8 @@ public class VIAPetsModelManager
     try
     {
       FileHandler.writeToBinaryFile(fileName, viaPets);
+      XMLConvertor.write(new VIAPetsModelManager(fileName));
+      FileHandler.writeToTextFile("ReservationLists.txt",viaPets.getKennelReservationList().toString());
     }
     catch (FileNotFoundException e)
     {
@@ -70,12 +73,6 @@ public class VIAPetsModelManager
     save();
   }
 
-  public void changePetName(String name, Pet pet)
-  {
-    PetList pets = getAllPets();
-    save();
-  }
-
   // Sales Model Manager
   public SaleList getAllSales()
   {
@@ -86,13 +83,6 @@ public class VIAPetsModelManager
   {
     SaleList allSales = getAllSales();
     allSales.addSale(newSale);
-    save();
-  }
-
-  public void removeSale(Sale deleteSale)
-  {
-    SaleList allSales = getAllSales();
-    allSales.removeSale(deleteSale);
     save();
   }
 
@@ -117,76 +107,8 @@ public class VIAPetsModelManager
     save();
   }
 
-/*
-  public void changeEmailAddress(String firstName, String lastName, String phoneNumber, String emailAddress)
-  {
-    CustomerList allCustomers = getAllCustomers();
-    Customer change = new Customer(firstName, lastName, emailAddress, phoneNumber);
 
-    for (int i = 0; i < allCustomers.size(); i++)
-    {
-      Customer customer = allCustomers.get(i);
 
-      if (customer.equals(change))
-      {
-        customer.setEmailAddress(emailAddress);
-      }
-    }
-    save();
-  }
-  public void changePhoneNumber(String firstName, String lastName, String emailAddress, String phoneNumber)
-  {
-    CustomerList allCustomers = getAllCustomers();
-    Customer change = new Customer(firstName, lastName, emailAddress, phoneNumber);
-
-    for (int i = 0; i < allCustomers.size(); i++)
-    {
-      Customer customer = allCustomers.get(i);
-
-      if (customer.equals(change))
-      {
-        customer.setPhoneNumber(phoneNumber);
-      }
-    }
-
-    save();
-  }
-  public void changeLastName(String firstName, String lastName, String phoneNumber, String emailAddress)
-  {
-    CustomerList allCustomers = getAllCustomers();
-    Customer change = new Customer(firstName, lastName, emailAddress, phoneNumber);
-
-    for (int i = 0; i < allCustomers.size(); i++)
-    {
-      Customer customer = allCustomers.get(i);
-
-      if (customer.equals(change))
-      {
-        customer.setLastName(lastName);
-      }
-    }
-    save();
-  }
-  public void changeFirstName(String firstName, String lastName, String phoneNumber, String emailAddress)
-  {
-    CustomerList allCustomers = getAllCustomers();
-    Customer change = new Customer(firstName, lastName, emailAddress, phoneNumber);
-    for (int i = 0; i < allCustomers.size(); i++)
-    {
-      Customer customer = allCustomers.get(i);
-
-      if (customer.equals((Object)change))
-      {
-        customer.setFirstName(firstName);
-      }
-    }
-
-    save();
-  }*/
-//  public CustomerList getCustomerByName(String name)
-//  {
-//    return getAllCustomers().getCustomerByName(name);
-//  }
 
   //Kennel Reservation Model manager
   public KennelReservationList getAllReservations()
@@ -203,6 +125,11 @@ public class VIAPetsModelManager
   {
     getAllReservations().removeReservation(deleteReservation);
     save();
+  }
+
+  public PetList getReservedPets()
+  {
+    return viaPets.getReservedPets();
   }
 
 

@@ -53,6 +53,9 @@ public class SaleViewController
     this.viewHandler = viewHandler;
     this.scene = scene;
     this.modelManager = modelManager;
+    searchField.setPromptText("Search by Customer Phone number");
+    searchField.clear();
+
 
     this.scene.getStylesheets()
         .add(getClass().getResource("SaleView.css").toExternalForm());
@@ -206,6 +209,8 @@ public class SaleViewController
   public void reset()
   {
     updateSaleTable();
+    searchField.setPromptText("Search by Customer Phone number");
+    searchField.clear();
     modelManager.save();
   }
 

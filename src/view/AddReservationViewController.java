@@ -25,7 +25,6 @@ public class AddReservationViewController
   @FXML private Button addNewKennelButton;
   @FXML private DatePicker startDatePick = new DatePicker(LocalDate.now());
   @FXML private DatePicker endDatePick = new DatePicker(LocalDate.now());
-  @FXML private ComboBox<Customer> customerList;
 
   //initializing costumer table
   @FXML private TableView<Customer> customerTableView = new TableView<>();
@@ -51,13 +50,8 @@ public class AddReservationViewController
   private String price = "20";
   private Date start;
   private Date end;
-  static ArrayList<Pet> reservedPet = new ArrayList<>();
   private boolean isNot;
-
-  public static ArrayList<Pet> getReservedPet()
-  {
-    return reservedPet;
-  }
+  private PetList reservedPet = new PetList();
 
   public void init(ViewHandler viewHandler, Scene scene,
       VIAPetsModelManager modelManager)
@@ -65,6 +59,7 @@ public class AddReservationViewController
     this.viewHandler = viewHandler;
     this.scene = scene;
     this.modelManager = modelManager;
+    reservedPet = modelManager.getReservedPets();
     //type select comboBox
     typeSelect.getItems().add("SelectType");
     typeSelect.getItems().add("Dog");
@@ -194,7 +189,7 @@ public class AddReservationViewController
 
   private void updatePetTable()
   {
-
+    reservedPet = modelManager.getReservedPets();
     if (petTableView != null)
     {
       petTableView.getItems().clear();
@@ -375,10 +370,19 @@ public class AddReservationViewController
      alert.showAndWait();
      return;
    }
+   if (!(modelManager.getAllReservations().isReservationAvailable(start,end)))
+   {
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error");
+     alert.setHeaderText(null);
+     alert.setContentText("During this period there is no reservations available");
+     alert.showAndWait();
+     return;
+   }
    try
    {
      modelManager.addReservation(new KennelReservation(selectedPet,selectedCustomer,start,end,price));
-     reservedPet.add(selectedPet);
+     modelManager.getReservedPets().addPet(selectedPet);
      updatePetTable();
      updateCostumerTable();
      priceField.setText("20");

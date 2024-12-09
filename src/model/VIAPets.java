@@ -8,6 +8,7 @@ public class VIAPets implements Serializable
   private KennelReservationList kennelReservationList;
   private CustomerList customerList;
   private PetList petList;
+  private final PetList reservedPets = new PetList();
 
   public VIAPets(SaleList saleList, KennelReservationList kennelReservationList, CustomerList customerList, PetList petList)
   {
@@ -59,5 +60,9 @@ public class VIAPets implements Serializable
     return saleList;
   }
 
+  public PetList getReservedPets()
+  {
+    return reservedPets;
+  }
 }
 

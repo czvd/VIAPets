@@ -22,27 +22,6 @@ public class KennelReservationList implements Serializable
     kennelReservations = new ArrayList<KennelReservation>();
   }
   /**
-   * one-argument constructor initializing KennelReservationList,
-   * used when maximum limit of reservations in a time period is 10
-   * @param kennelReservations Array list of KennelReservation objects
-   */
-  public KennelReservationList(ArrayList<KennelReservation> kennelReservations)
-  {
-    this.kennelReservations = kennelReservations;
-  }
-  /**
-   * two-argument constructor initializing KennelReservationList,
-   * used when maximum limit is known and not initial for a time period
-   * @param maxlimit value for maximum limit of stored pets in a timeline
-   * @param kennelReservations Array list of KennelReservation objects
-   */
-  public KennelReservationList(int maxlimit,ArrayList<KennelReservation> kennelReservations)
-  {
-    this.kennelReservations = kennelReservations;
-    this.maxlimit = maxlimit;
-  }
-
-  /**
    * method for adding a KennelReservation object to the list
    * @param kennelReservation a KennelReservation object
    */
@@ -81,15 +60,6 @@ public class KennelReservationList implements Serializable
       }
     }
   }
-
-  /**
-   * method used for returning all the KennelReservation object in one ArrayList
-   * @return an array list of KennelReservation objects
-   */
-  public KennelReservationList getAllReservations()
-  {
-    return new KennelReservationList(kennelReservations);
-  }
   /**
    * method for calculating the number of reservations available in the given time
    * @param startDate Date object, with data for year, month, name, storing the start date
@@ -119,75 +89,10 @@ public class KennelReservationList implements Serializable
   {
     return howMuchIsAvailable(startDate,endDate)>0;
   }
-  /**
-   * method for checking if a reservation is available during the given timeline,
-   * using given max limit and not initial
-   * @param startDate Date object, with data for year, month, name, storing the start date
-   * @param endDate Date object, with value for the date of finishing the booking(year,month,day)
-   * @param maxlimit value for maximum limit of stored pets
-   * @return reservation available or not based on a maxlimit, we check.
-   */
-  public boolean isReservationAvailable(Date startDate, Date endDate, int maxlimit)
-  {
-    return (maxlimit-howMuchIsAvailable(startDate,endDate))>0;
-  }
-  /**
-   * method for selecting all reservations with the specific customer in it.
-   * @param name
-   * @return  a reservationList if found else a (null)
-   */
-  public KennelReservation getReservationByCustomerName(String name)
-  {
-    for (int i = 0; i < kennelReservations.size(); i++)
-    {
-      if (kennelReservations.get(i).getCustomer().isEqual(name))
-      {
-        return kennelReservations.get(i);
-      }
-    }
-    return null;
-  }
-  /**
-   * Returning reservationList, based on pets in petList and searches trough color.
-   * @param color
-   * @return
-   */
-  public KennelReservationList getReservationByPetColor(String color)
-  {
-    KennelReservationList result = new KennelReservationList();
-    for (KennelReservation kennelReservation : kennelReservations)
-    {
-      if (kennelReservation.getPet().getColor().equals(color))
-      {
-        result.addReservation(kennelReservation,kennelReservation.getStartDate(),kennelReservation.getEndDate());
-      }
-    }
-    return result;
-  }
-  /**
-   * Returning reservationList, based on pets in petList and searches trough species.
-   * @param speciesOrBreed
-   * @return
-   */
-  public KennelReservationList getReservationByPetSpecies(String speciesOrBreed)
-  {
-    KennelReservationList result = new KennelReservationList();
-    for (KennelReservation kennelReservation : kennelReservations)
-    {
-      int type = kennelReservation.getPet().getType();
-
-
-      if (kennelReservation.getPet().getSpecies().equals(speciesOrBreed)) throw new UnknownPetTypeException("Pet type cannot be "+type);
-      {
-        result.addReservation(kennelReservation,kennelReservation.getStartDate(),kennelReservation.getEndDate());
-      }
-    }
-    return result;
-  }
 
   /**
-   *
-   * @return
+   * method for returning the number of the elements inside the kennel
+   * @return kennel reservation array list's size
    */
   public int size()
   {
@@ -195,10 +100,10 @@ public class KennelReservationList implements Serializable
   }
 
   /**
-   *
-   * @param index
-   * @return
-   */
+   * Gets a KennelReservation object from position index from the list.
+    * @param index  the position in the list of the KennelReservation object
+   * @return the KennelReservation object at position index if one exists, else null
+    */
   public KennelReservation get(int index)
   {
     if(index<kennelReservations.size())
@@ -212,15 +117,22 @@ public class KennelReservationList implements Serializable
   }
 
   /**
-   * Returning all reservations as a String
-   * @return
+   * Adds a KennelReservation to the list.
+   * @param newReservation the KennelReservation object to add to the list
    */
-  public String toString() {
-    return kennelReservations.toString();
-  }
-
   public void addReservation(KennelReservation newReservation)
   {
     kennelReservations.add(newReservation);
   }
+
+  /**
+   * Returns a string representation of the KennelReservationList.
+   * @return the list of Kennel reservation objects as String
+   */
+  public String toString() {
+
+    return kennelReservations.toString();
+  }
+
+
 }

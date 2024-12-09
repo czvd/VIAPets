@@ -72,55 +72,6 @@ public class CustomerList implements Serializable
   }
 
   /**
-   * Searches for customers in the list by their first or last name.
-   * @param name the name that is searched for(can match either first name or last name)
-   * @return A CustomerList containing all customers with a matching first or last name
-   */
-//  public CustomerList getCustomerByName(String name)
-//  {
-//    // Declares a temporary variable to hold a Customer during iteration.
-//    Customer temp;
-//
-//    // Creates a new, empty CustomerList to store matching customers.
-//    CustomerList customers = new CustomerList();
-//
-//    // Loops through the customers list.
-//    for(int i = 0; i < customers.size(); i++)
-//    {
-//      // Retrieves the customer at the current index of the list.
-//      temp = customers.get(i);
-//
-//      // Checks if the first or last name of the customer matches the given name.
-//      if(temp.getFirstName().equals(name) || temp.getLastName().equals(name))
-//      {
-//        // Adds the matching customer to the customers list.
-//        customers.addCustomer(temp);
-//      }
-//    }
-//    return customers;
-//  }
-
-  /**
-   *Finds the index of a Customer in the list based on their first and last names.
-   * @param firstName the first name of the customer to find
-   * @param lastName the last name of the customer to find
-   * @return the index of the customer if found, or -1 if not found
-   */
-  public int getIndex(String firstName, String lastName)
-  {
-    for(int i = 0; i<customers.size(); i++)
-    {
-      Customer temp = customers.get(i);
-
-      if(temp.getFirstName().equals(firstName) && temp.getLastName().equals(lastName))
-      {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  /**
    * Gets a Customer object from position index from the list.
    * @param index  the position in the list of the Customer object
    * @return the Customer object at position index if one exists, else null

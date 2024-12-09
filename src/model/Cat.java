@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 /**
- * A class representing a bird with type, price, color, age, gender, breed, kennel status, name, price, additional comment and name of breeder
+ * A class representing a cat with type, price, color, age, gender, breed, kennel status, name, price, additional comment and name of breeder.
  * @author Mihail Rotaru
  * @version 1.0
  */
@@ -11,11 +11,12 @@ public class Cat extends Pet implements Serializable
   private String nameOfBreeder = "NoName";
 
   /**
-   * Four-argument constructor initializing the name of breeder to NoName.
+   * Four-argument constructor for creating a Cat object with specified price, color, age, and species.
+   * The name of the breeder is initialized to "NoName".
    * @param price the cat's price
    * @param color the cat's color
    * @param age the cat's age
-   * @param species the cat's breed
+   * @param species the cat's species
    */
   public Cat(double price, String color, int age, String species)
   {
@@ -24,10 +25,11 @@ public class Cat extends Pet implements Serializable
   }
 
   /**
-   * One-argument constructor.
-   * @param cat
+   * Copy constructor for creating a Cat object based on another Cat object.
+   * Copies all attributes from the given Cat object to this new instance.
+   * Constructor for easy checking used at Kennel reservation and sales reservation.
+   * @param cat the Cat object to copy
    */
-  //constuctor for easy checking used at Kennel reservation and sales reservation
   public Cat(Cat cat)
   {
     super(cat.getType(), cat.getPrice(), cat.getColor(), cat.getAge(), cat.getSpecies());
@@ -73,8 +75,9 @@ public class Cat extends Pet implements Serializable
       throw new IllegalNameException();
   }
   /**
-   * This method checks if this type of pet can be put to kennel, and with cat it is set to true, because it can be in kennel.
-   * @return true, because cat can be in kennel
+   * Checks if the cat has access to a kennel.
+   * For cats, this is always true.
+   * @return true, as cat can access a kennel.
    */
   @Override
   public boolean hasAccessToKennel()
@@ -86,7 +89,7 @@ public class Cat extends Pet implements Serializable
   /**
    * First compares the attributes from super class and if they match, then it compares the name of breeder of two cats.
    * @param obj the object to compare with
-   * @return  true if the given object is equal to this bird
+   * @return  true if the given object is equal to this cat
    */
   @Override
   public boolean equals(Object obj)

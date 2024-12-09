@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<PetList>
+  <pets>
+    <nameOfBreeder>gf</nameOfBreeder>
+    <inKennel>true</inKennel>
+    <color>gg</color>
+    <gender>Male</gender>
+    <species>mbhj</species>
+    <price>0.0</price>
+    <name>fhgf</name>
+    <comment>NoComment</comment>
+    <type>2</type>
+    <age>4</age>
+  </pets>
+</PetList>

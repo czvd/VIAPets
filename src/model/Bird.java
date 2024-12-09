@@ -12,9 +12,10 @@ public class Bird extends Pet implements Serializable
   private String preferredFood = "NoData";
 
   /**
-   * Four-argument constructor initializing the preferredFood to NoData and type of bird to 3
+   * Four-argument constructor for creating a Bird object with specified price, color, age, and species.
+   * The preferred food is initialized to "NoData".
    * @param price the bird's price
-   * @param color the birds' color
+   * @param color the bird's color
    * @param age the bird's age
    * @param species the bird's species
    */
@@ -25,10 +26,11 @@ public class Bird extends Pet implements Serializable
   }
 
   /**
-   * One-argument constructor
-   * @param bird
+   * Copy constructor for creating a Bird object based on another Bird object.
+   * Copies all attributes from the given Bird object to this new instance.
+   * Constructor for easy checking used at Kennel reservation and sales reservation.
+   * @param bird the Bird object to copy
    */
-  //constuctor for easy checking used at Kennel reservation and sales reservation
   public Bird(Bird bird)
   {
     super(bird.getType(), bird.getPrice(), bird.getColor(), bird.getAge(), bird.getSpecies());
@@ -52,8 +54,9 @@ public class Bird extends Pet implements Serializable
   }
 
   /**
-   * This method checks if this type of pet can be put to kennel, and with bird it is set to true, because it can be in kennel.
-   * @return true, because bird can be in kennel
+   * Checks if the bird has access to a kennel.
+   * For birds, this is always true.
+   * @return true, as bird can access a kennel.
    */
   @Override public boolean hasAccessToKennel()
   {

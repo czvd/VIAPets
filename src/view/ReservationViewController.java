@@ -43,6 +43,8 @@ public class ReservationViewController
   @FXML private TextField petCommentField= new TextField();
   @FXML private TextField petSpeciesField = new TextField();
 
+  @FXML private  TextField searchField = new TextField();
+
   //specific pet data
   @FXML private Label petSpec1Label = new Label();
   @FXML private Label petSpec2Label = new Label();
@@ -54,6 +56,8 @@ public class ReservationViewController
     this.viewHandler = viewHandler;
     this.scene = scene;
     this.modelManager = modelManager;
+    searchField.setPromptText("Search by Customer Phone number");
+    searchField.clear();
     //reservation table;
     costumerColumn.setCellValueFactory(cellData ->
         new SimpleStringProperty(cellData.getValue().getCustomer().getFirstName())
@@ -210,6 +214,8 @@ public class ReservationViewController
   {
     updateTable();
     selectedReservation=null;
+    searchField.setPromptText("Search by Customer Phone number");
+    searchField.clear();
     modelManager.save();
   }
 
@@ -229,6 +235,18 @@ public class ReservationViewController
         viewHandler.openView("MainView");
       }
     }
+    else if (e.getSource() ==  searchField)
+    {
+      String query = searchField.getText().trim();
+      if (query.isEmpty())
+      {
+        updateTable();
+      }
+      else
+      {
+        updateTable(query);
+      }
+    }
     else if (e.getSource() == addNewButton)
     {
       viewHandler.openView("AddReservationView");
@@ -245,9 +263,9 @@ public class ReservationViewController
 
         if (alert.getResult() == ButtonType.YES)
         {
-          AddReservationViewController.reservedPet.remove(selectedReservation.getPet());
-            modelManager.removeReservation(selectedReservation);
-            updateTable();
+          modelManager.getReservedPets().removePet(selectedReservation.getPet());
+          modelManager.removeReservation(selectedReservation);
+          updateTable();
         }
       }
 
@@ -265,6 +283,22 @@ public class ReservationViewController
     for (int i = 0; i < reservations.size(); i++)
     {
       KennelTableView.getItems().add(reservations.get(i));
+    }
+  }
+  public void updateTable(String phone)
+  {
+    if (KennelTableView != null)
+    {
+      KennelTableView.getItems().clear();
+    }
+
+    KennelReservationList reservations = modelManager.getAllReservations();
+    for (int i = 0; i < reservations.size(); i++)
+    {
+      if (reservations.get(i).getCustomer().getPhoneNumber().equals(phone))
+      {
+        KennelTableView.getItems().add(reservations.get(i));
+      }
     }
   }
 }
