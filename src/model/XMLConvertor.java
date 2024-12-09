@@ -1,59 +1,36 @@
 package model;
 
-public class XMLConvertor
-{
+import ModelManager.VIAPetsModelManager;
+import parser.ParserException;
+import parser.XmlJsonParser;
 
-  public static String petToXML(Pet pet)
+public class XMLConvertor {
+  public static void main(String[] args)
   {
-    String xmlFile =
-        "<pet>\n"
-            + " <name>" +pet.getName() + "<name>\n"
-            + " <age>" + pet.getAge() + "<age>\n"
-            +" <gender>" + pet.getGender() + "<gender\n"
-            +" <price>" + pet.getPrice() + "<price\n"
-            + "< color>" + pet.getColor() + "<color>\n"
-            + "<type>" + pet.getType() + "<color>\n"
-            + "<species>" + pet.getSpecies() + "<species>\n"
-            + "<comment>" + pet.getComment() + "<comment>\n";
+    VIAPetsModelManager modelManager = new VIAPetsModelManager("VIAPets.bin");;
+    PetList petList = modelManager.getAllPets();
 
-    return xmlFile;
-  }
+    XmlJsonParser parser = new XmlJsonParser();
 
-  public static String petsToXML(PetList pets)
-  {
-    String xmlFile = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    xmlFile += "<petList>\n";
-    for (int i = 0; i < pets.size(); i++)
+    //write the XML file
+    try
     {
-      xmlFile += petToXML(pets.get(i));
+      parser.toXml(petList, "list.xml");
     }
-    xmlFile += "</petList>\n";
-    return xmlFile;
+    catch (ParserException e)
+    {
+      e.printStackTrace();
+    }
+
+    //read the XML file
+    try
+    {
+      petList = parser.fromXml("list.xml", PetList.class);
+      System.out.println(petList);
+    }
+    catch (ParserException e)
+    {
+      e.printStackTrace();
+    }
   }
-
-
-  public static String dogToXML(Dog dog)
-  {
-    String xmlFile =
-        "<dog>\n"
-        + "<name>" + dog.getName() + "<name>\n"
-        + "<color>" + dog.getColor() + "<color>\n"
-        + "<age>" + dog.getAge() + "<age>\n";
-
-    return xmlFile;
-  }
-
-//  public static String dogsToXML(PetList dogs)
-//  {
-//String xmlFile = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-  //    xmlFile += "<dogList>\n";
-  //    for (int i = 0; i < dogs.size(); i++)
-  //    {
-  //      xmlFile += dogToXML(pets.get(i));
-  //    }
-  //    xmlFile += "</dogList>\n";
-  //    return xmlFile;
-//  }
-
 }
-

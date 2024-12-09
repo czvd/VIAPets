@@ -72,13 +72,22 @@ public class Cat extends Pet implements Serializable
     else
       throw new IllegalNameException();
   }
-
+  /**
+   * This method checks if this type of pet can be put to kennel, and with cat it is set to true, because it can be in kennel.
+   * @return true, because cat can be in kennel
+   */
   @Override
   public boolean hasAccessToKennel()
   {
     return true;
   }
 
+
+  /**
+   * First compares the attributes from super class and if they match, then it compares the name of breeder of two cats.
+   * @param obj the object to compare with
+   * @return  true if the given object is equal to this bird
+   */
   @Override
   public boolean equals(Object obj)
   {
@@ -91,6 +100,10 @@ public class Cat extends Pet implements Serializable
     return super.equals(temp) && nameOfBreeder.equals(temp.getNameOfBreeder());
   }
 
+  /**
+   * Returns a string representation of the cat.
+   * @return a string representation of the cat in the format type \n price \n color \n age \n gender \n name \n comment \n kennel status \n species \n name of breeder
+   */
   public String toString()
   {
     return super.toString() + "\n" + nameOfBreeder;
