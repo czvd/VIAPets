@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class AddReservationViewController
@@ -50,6 +51,13 @@ public class AddReservationViewController
   private String price = "20";
   private Date start;
   private Date end;
+  static ArrayList<Pet> reservedPet = new ArrayList<>();
+  private boolean isNot;
+
+  public static ArrayList<Pet> getReservedPet()
+  {
+    return reservedPet;
+  }
 
   public void init(ViewHandler viewHandler, Scene scene,
       VIAPetsModelManager modelManager)
@@ -192,13 +200,23 @@ public class AddReservationViewController
       petTableView.getItems().clear();
     }
 
-
     PetList pets = modelManager.getAllPets();
     for (int i = 0; i < pets.size(); i++)
     {
       if (pets.get(i).getInKennel())
       {
-        petTableView.getItems().add(pets.get(i));
+        isNot = true;
+        for (int j=0; j<reservedPet.size();j++)
+        {
+          if ((reservedPet.get(j).equals(pets.get(i))))
+          {
+            isNot = false;
+          }
+        }
+        if (isNot)
+        {
+          petTableView.getItems().add(pets.get(i));
+        }
       }
     }
   }
@@ -214,7 +232,21 @@ public class AddReservationViewController
     PetList pets = modelManager.getAllPets().getPetsByType(type);
     for (int i = 0; i < pets.size(); i++)
     {
-      petTableView.getItems().add(pets.get(i));
+      if (pets.get(i).getInKennel())
+      {
+        isNot = true;
+        for (int j=0; j<reservedPet.size();j++)
+        {
+          if ((reservedPet.get(j).equals(pets.get(i))))
+          {
+            isNot = false;
+          }
+        }
+        if (isNot)
+        {
+          petTableView.getItems().add(pets.get(i));
+        }
+      }
     }
   }
 
@@ -226,7 +258,9 @@ public class AddReservationViewController
   public void reset()
   {
     updateCostumerTable();
+    selectedCustomer=null;
     updatePetTable();
+    selectedCustomer=null;
     modelManager.save();
   }
 
@@ -344,6 +378,7 @@ public class AddReservationViewController
    try
    {
      modelManager.addReservation(new KennelReservation(selectedPet,selectedCustomer,start,end,price));
+     reservedPet.add(selectedPet);
      updatePetTable();
      updateCostumerTable();
      priceField.setText("20");

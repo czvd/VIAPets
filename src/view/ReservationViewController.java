@@ -209,6 +209,7 @@ public class ReservationViewController
   public void reset()
   {
     updateTable();
+    selectedReservation=null;
     modelManager.save();
   }
 
@@ -244,6 +245,7 @@ public class ReservationViewController
 
         if (alert.getResult() == ButtonType.YES)
         {
+          AddReservationViewController.reservedPet.remove(selectedReservation.getPet());
             modelManager.removeReservation(selectedReservation);
             updateTable();
         }
