@@ -44,6 +44,7 @@ public class AddPetViewController
   @FXML private ToggleGroup saltWaterToggleGroup;
   @FXML private Button saveButton;
   @FXML private Button backButton;
+  @FXML private Button viewPetsButton;
 
   public void init(ViewHandler viewHandler, Scene scene,
       VIAPetsModelManager modelManager)
@@ -259,20 +260,41 @@ public class AddPetViewController
           alert.showAndWait();
           return;
         }
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(dog.toString());
-        alert.showAndWait();
 
-        modelManager.addPet(dog);
-        priceField.clear();
-        colorField.clear();
-        ageField.clear();
-        nameField.clear();
-        commentArea.clear();
-        breedField.clear();
-        breederField.clear();
+        boolean matches = false;
+        for(int i = 0; i < modelManager.getAllPets().size(); i++)
+        {
+          if(dog.equals(modelManager.getAllPets().get(i)))
+          {
+            matches = true;
+            break;
+          }
+        }
+        if(!matches)
+        {
+          modelManager.addPet(dog);
+          priceField.clear();
+          colorField.clear();
+          ageField.clear();
+          nameField.clear();
+          commentArea.clear();
+          breedField.clear();
+          breederField.clear();
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setTitle("Save");
+          alert.setHeaderText(null);
+          alert.setContentText("Pet was successfully saved!");
+          alert.showAndWait();
+        } else
+        {
+          Alert alertMatches = new Alert(Alert.AlertType.ERROR);
+          alertMatches.setTitle("Error");
+          alertMatches.setHeaderText(null);
+          alertMatches.setContentText("This pet matches all the information of another pet!");
+          alertMatches.showAndWait();
+          return;
+        }
+
       }
       break;
       case 2:
@@ -370,20 +392,40 @@ public class AddPetViewController
           alert.showAndWait();
           return;
         }
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(cat.toString());
-        alert.showAndWait();
 
-        modelManager.addPet(cat);
-        priceField.clear();
-        colorField.clear();
-        ageField.clear();
-        nameField.clear();
-        commentArea.clear();
-        breedField.clear();
-        breederField.clear();
+        boolean matches = false;
+        for(int i = 0; i < modelManager.getAllPets().size(); i++)
+        {
+          if(cat.equals(modelManager.getAllPets().get(i)))
+          {
+            matches = true;
+            break;
+          }
+        }
+        if(!matches)
+        {
+          modelManager.addPet(cat);
+          priceField.clear();
+          colorField.clear();
+          ageField.clear();
+          nameField.clear();
+          commentArea.clear();
+          breedField.clear();
+          breederField.clear();
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setTitle("Save");
+          alert.setHeaderText(null);
+          alert.setContentText("Pet was successfully saved!");
+          alert.showAndWait();
+        } else
+        {
+          Alert alertMatches = new Alert(Alert.AlertType.ERROR);
+          alertMatches.setTitle("Error");
+          alertMatches.setHeaderText(null);
+          alertMatches.setContentText("This pet matches all the information of another pet!");
+          alertMatches.showAndWait();
+          return;
+        }
       }
       break;
       case 3:
@@ -481,20 +523,40 @@ public class AddPetViewController
           alert.showAndWait();
           return;
         }
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(bird.toString());
-        alert.showAndWait();
 
-        modelManager.addPet(bird);
-        priceField.clear();
-        colorField.clear();
-        ageField.clear();
-        nameField.clear();
-        commentArea.clear();
-        speciesField.clear();
-        preferredFoodField.clear();
+        boolean matches = false;
+        for(int i = 0; i < modelManager.getAllPets().size(); i++)
+        {
+          if(bird.equals(modelManager.getAllPets().get(i)))
+          {
+            matches = true;
+            break;
+          }
+        }
+        if(!matches)
+        {
+          modelManager.addPet(bird);
+          priceField.clear();
+          colorField.clear();
+          ageField.clear();
+          nameField.clear();
+          commentArea.clear();
+          speciesField.clear();
+          preferredFoodField.clear();
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setTitle("Save");
+          alert.setHeaderText(null);
+          alert.setContentText("Pet was successfully saved!");
+          alert.showAndWait();
+        } else
+        {
+          Alert alertMatches = new Alert(Alert.AlertType.ERROR);
+          alertMatches.setTitle("Error");
+          alertMatches.setHeaderText(null);
+          alertMatches.setContentText("This pet matches all the information of another pet!");
+          alertMatches.showAndWait();
+          return;
+        }
       }
       break;
       case 4:
@@ -600,19 +662,38 @@ public class AddPetViewController
           alert.showAndWait();
           return;
         }
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(fish.toString());
-        alert.showAndWait();
-
-        modelManager.addPet(fish);
-        priceField.clear();
-        colorField.clear();
-        ageField.clear();
-        nameField.clear();
-        commentArea.clear();
-        speciesField.clear();
+        boolean matches = false;
+        for(int i = 0; i < modelManager.getAllPets().size(); i++)
+        {
+          if(fish.equals(modelManager.getAllPets().get(i)))
+          {
+            matches = true;
+            break;
+          }
+        }
+        if(!matches)
+        {
+          modelManager.addPet(fish);
+          priceField.clear();
+          colorField.clear();
+          ageField.clear();
+          nameField.clear();
+          commentArea.clear();
+          speciesField.clear();
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setTitle("Save");
+          alert.setHeaderText(null);
+          alert.setContentText("Pet was successfully saved!");
+          alert.showAndWait();
+        } else
+        {
+          Alert alertMatches = new Alert(Alert.AlertType.ERROR);
+          alertMatches.setTitle("Error");
+          alertMatches.setHeaderText(null);
+          alertMatches.setContentText("This pet matches all the information of another pet!");
+          alertMatches.showAndWait();
+          return;
+        }
       }
       break;
       case 5:
@@ -712,19 +793,39 @@ public class AddPetViewController
           alert.showAndWait();
           return;
         }
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(rodent.toString());
-        alert.showAndWait();
 
-        modelManager.addPet(rodent);
-        priceField.clear();
-        colorField.clear();
-        ageField.clear();
-        nameField.clear();
-        commentArea.clear();
-        speciesField.clear();
+        boolean matches = false;
+        for(int i = 0; i < modelManager.getAllPets().size(); i++)
+        {
+          if(rodent.equals(modelManager.getAllPets().get(i)))
+          {
+            matches = true;
+            break;
+          }
+        }
+        if(!matches)
+        {
+          modelManager.addPet(rodent);
+          priceField.clear();
+          colorField.clear();
+          ageField.clear();
+          nameField.clear();
+          commentArea.clear();
+          speciesField.clear();
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setTitle("Save");
+          alert.setHeaderText(null);
+          alert.setContentText("Pet was successfully saved!");
+          alert.showAndWait();
+        } else
+        {
+          Alert alertMatches = new Alert(Alert.AlertType.ERROR);
+          alertMatches.setTitle("Error");
+          alertMatches.setHeaderText(null);
+          alertMatches.setContentText("This pet matches all the information of another pet!");
+          alertMatches.showAndWait();
+          return;
+        }
       }
       break;
       case 6:
@@ -818,19 +919,39 @@ public class AddPetViewController
           alert.showAndWait();
           return;
         }
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(various.toString());
-        alert.showAndWait();
 
-        modelManager.addPet(various);
-        priceField.clear();
-        colorField.clear();
-        ageField.clear();
-        nameField.clear();
-        commentArea.clear();
-        speciesField.clear();
+        boolean matches = false;
+        for(int i = 0; i < modelManager.getAllPets().size(); i++)
+        {
+          if(various.equals(modelManager.getAllPets().get(i)))
+          {
+            matches = true;
+            break;
+          }
+        }
+        if(!matches)
+        {
+          modelManager.addPet(various);
+          priceField.clear();
+          colorField.clear();
+          ageField.clear();
+          nameField.clear();
+          commentArea.clear();
+          speciesField.clear();
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setTitle("Save");
+          alert.setHeaderText(null);
+          alert.setContentText("Pet was successfully saved!");
+          alert.showAndWait();
+        } else
+        {
+          Alert alertMatches = new Alert(Alert.AlertType.ERROR);
+          alertMatches.setTitle("Error");
+          alertMatches.setHeaderText(null);
+          alertMatches.setContentText("This pet matches all the information of another pet!");
+          alertMatches.showAndWait();
+          return;
+        }
       }
     }
 
@@ -867,6 +988,21 @@ public class AddPetViewController
     if (alert.getResult() == ButtonType.YES)
     {
       viewHandler.openView("MainView");
+    }
+  }
+
+  @FXML public void viewPetButtonAction()
+  {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+        "Do you really want to go to \"View Pets\"?", ButtonType.YES, ButtonType.NO);
+    alert.setTitle("Back");
+    alert.setHeaderText(null);
+
+    alert.showAndWait();
+
+    if (alert.getResult() == ButtonType.YES)
+    {
+      viewHandler.openView("PetView");
     }
   }
 
@@ -932,6 +1068,7 @@ public class AddPetViewController
           sweetWaterRadioButton.setVisible(true);
           saveButton.setVisible(true);
         }
+        break;
         case "Various":
         {
           speciesLabel.setVisible(true);

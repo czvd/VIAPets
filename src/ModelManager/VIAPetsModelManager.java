@@ -201,8 +201,7 @@ public class VIAPetsModelManager
   }
   public void removeReservation(KennelReservation deleteReservation)
   {
-    KennelReservationList allReservation = getAllReservations();
-    allReservation.removeReservation(deleteReservation);
+    getAllReservations().removeReservation(deleteReservation);
     save();
   }
 

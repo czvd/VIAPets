@@ -17,8 +17,16 @@ public abstract class Pet implements Serializable
   private String name;
   private String comment;
   private boolean inKennel;
-  private String species;
+  private String species = "";
 
+  /**
+   * A 5-argument constructor that creates a new Pet object.
+   * @param type An integer that indicates in which subclass is the pet can have values between 1 and 6.
+   * @param price A double that indicates the price of the animal, if it's not in the kennel, otherwise it's set 0.
+   * @param color A String that stores the color information about the pet.
+   * @param age A integer that stores the age information about the pet.
+   * @param species A String that stores the species information about the pet.
+   */
   public Pet(int type, double price, String color, int age, String species)
   {
     isNotInKennel();

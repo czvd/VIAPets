@@ -4,8 +4,15 @@ import java.io.Serializable;
 
 public class Bird extends Pet implements Serializable
 {
-  private String preferredFood;
+  private String preferredFood = "NoData";
 
+  /**
+   * Four-argument constructor initializing the preferredFood to NoData and type of bird to 3
+   * @param price the bird's price
+   * @param color the birds' color
+   * @param age the bird's age
+   * @param species the bird's species
+   */
   public Bird(double price, String color, int age, String species)
   {
     super(3, price, color, age, species);

@@ -35,13 +35,13 @@ public class ReservationViewController
   private double price;
   private KennelReservation selectedReservation;
 
-  @FXML private TextField petTypeField;
-  @FXML private TextField petNameField;
-  @FXML private TextField petAgeField;
-  @FXML private TextField petColorField;
-  @FXML private TextField petGenderField;
-  @FXML private TextField petCommentField;
-  @FXML private TextField petSpeciesField;
+  @FXML private TextField petTypeField= new TextField();
+  @FXML private TextField petNameField= new TextField();
+  @FXML private TextField petAgeField= new TextField();
+  @FXML private TextField petColorField= new TextField();
+  @FXML private TextField petGenderField= new TextField();
+  @FXML private TextField petCommentField= new TextField();
+  @FXML private TextField petSpeciesField = new TextField();
 
   //specific pet data
   @FXML private Label petSpec1Label = new Label();
@@ -89,10 +89,12 @@ public class ReservationViewController
               Change<? extends KennelReservation> change) {
             try
             {
-              KennelReservation temp = change.getList().getFirst();
+              KennelReservation temp = KennelTableView.getSelectionModel().getSelectedItem();
               if (temp != null)
               {
                 selectedReservation = temp;
+
+
 
                 switch (temp.getPet())
                 {
@@ -154,7 +156,7 @@ public class ReservationViewController
                   case Bird bird:
                     pet = new Bird(bird);
                     petSpec1Field.setText(bird.getPreferredFood());
-                    petSpec1Label.setText("Preferred food");
+                    petSpec1Label.setText("Food");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -173,7 +175,7 @@ public class ReservationViewController
                 customer = temp.getCustomer();
                 start = temp.getStartDate();
                 end = temp.getEndDate();
-                price = temp.getFinalPrice();
+                price = temp.getPrice();
                 selectedReservation = new KennelReservation(pet,customer,start,end,price);
 
                 petNameField.setText(pet.getName());
@@ -242,7 +244,8 @@ public class ReservationViewController
 
         if (alert.getResult() == ButtonType.YES)
         {
-          modelManager.removeReservation(selectedReservation);
+            modelManager.removeReservation(selectedReservation);
+            updateTable();
         }
       }
 

@@ -43,7 +43,15 @@ public class SaleList implements Serializable
    * @param sale the Sale object to remove from the list.
    */
   public void removeSale(Sale sale) {
-    sales.remove(sale);
+    for(int i =0; i < sales.size(); i++)
+    {
+      Sale temp = sales.get(i);
+      if(temp.getPet().equals(sale.getPet()))
+      {
+        sales.remove(i);
+        break;
+      }
+    }
   }
 
   /**

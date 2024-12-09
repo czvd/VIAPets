@@ -4,8 +4,15 @@ import java.io.Serializable;
 
 public class Cat extends Pet implements Serializable
 {
-  private String nameOfBreeder;
+  private String nameOfBreeder = "NoName";
 
+  /**
+   * Four-argument constructor initializing the name of breeder to NoName.
+   * @param price the cat's price
+   * @param color the cat's color
+   * @param age the cat's age
+   * @param species the cat's breed
+   */
   public Cat(double price, String color, int age, String species)
   {
     super(2, price, color, age, species);

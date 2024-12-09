@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Dog extends Pet implements Serializable
 {
-  private String nameOfBreeder;
+  private String nameOfBreeder = "NoName";
 
   public Dog(double price, String color, int age, String species)
   {

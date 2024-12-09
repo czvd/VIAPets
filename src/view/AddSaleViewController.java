@@ -332,7 +332,7 @@ public class AddSaleViewController
       }
       modelManager.addSale(new Sale(selectedPet,selectedCustomer,Integer.parseInt(price)));
       System.out.println("new sale added");
-      modelManager.getAllPets().removePet(selectedPet);
+      modelManager.getAllPets().removePet(petTableView.getSelectionModel().getSelectedItem());
       updatePetTable();
       updateCostumerTable();
       selectedCustomer = null;

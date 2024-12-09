@@ -82,6 +82,5 @@
         </GridPane>
         <Label layoutX="389.0" layoutY="50.0" text="Pet Information" />
       <Button fx:id="deleteButton" layoutX="364.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleActions" text="Delete" />
-      <Button layoutX="542.0" layoutY="341.0" mnemonicParsing="false" text="Edit" />
     </children>
 </AnchorPane>

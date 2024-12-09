@@ -345,7 +345,6 @@ public class AddReservationViewController
    {
      modelManager.addReservation(new KennelReservation(selectedPet,selectedCustomer,start,end,price));
      updatePetTable();
-     System.out.println(modelManager.getAllReservations().size());
      updateCostumerTable();
      priceField.setText("20");
    }catch (SamePetException e)

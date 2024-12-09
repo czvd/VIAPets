@@ -71,7 +71,15 @@ public class KennelReservationList implements Serializable
    */
   public void removeReservation(KennelReservation kennelReservation)
   {
-    kennelReservations.remove(kennelReservation);
+    for(int i =0; i < kennelReservations.size(); i++)
+    {
+      KennelReservation temp = kennelReservations.get(i);
+      if(temp.getPet().equals(kennelReservation.getPet()))
+      {
+        kennelReservations.remove(i);
+        break;
+      }
+    }
   }
 
   /**

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Rodent extends Pet implements Serializable
 {
-  private boolean bite;
+  private boolean bite =false;
 
   public Rodent(double price, String color, int age, String species)
   {

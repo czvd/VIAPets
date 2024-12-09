@@ -18,15 +18,15 @@ public class SaleViewController
   private VIAPetsModelManager modelManager;
   private ViewHandler viewHandler;
 
-  @FXML private TextField typeField;
-  @FXML private TextField nameField;
-  @FXML private TextField ageField;
-  @FXML private TextField colorField;
-  @FXML private TextField priceField;
-  @FXML private TextField genderField;
-  @FXML private TextField commentField;
-  @FXML private TextField speciesField;
-  @FXML private TextField searchField;
+  @FXML private TextField typeField = new TextField();
+  @FXML private TextField nameField = new TextField();
+  @FXML private TextField ageField = new TextField();
+  @FXML private TextField colorField = new TextField();
+  @FXML private TextField priceField = new TextField();
+  @FXML private TextField genderField = new TextField();
+  @FXML private TextField commentField = new TextField();
+  @FXML private TextField speciesField = new TextField();
+  @FXML private TextField searchField = new TextField();
   @FXML private Button backButton;
   @FXML private Button addNewButton;
   @FXML private Button deleteButton;
@@ -85,8 +85,85 @@ public class SaleViewController
               Sale temp = change.getList().getFirst();
               if (temp != null)
               {
-                //selectedSale = new Sale(temp.getPet(), temp.getCustomer(), temp.getDateOfSale(), temp.getFinalPrice());
-                selectedSale = temp;
+                selectedSale = new Sale(temp.getPet(),temp.getCustomer(),temp.getDateOfSale(),temp.getFinalPrice());
+//              selectedSale = temp;
+
+                switch (temp.getPet())
+                {
+                  case Cat cat:
+                    pet = new Cat(cat);
+
+
+                    if(temp.getPet().getGender().equals("Male")){
+                      pet.isMale();
+                    }
+                    else if (temp.getPet().getGender().equals("Female"))
+                    {
+                      pet.isFemale();
+                    }
+                    petSpec1Field.setText(cat.getNameOfBreeder());
+                    petSpec1Label.setText("Breeder");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  case Fish fish:
+                    pet = new Fish(fish);
+                    if (fish.isItPredator())
+                    {
+                      petSpec1Field.setText("yes");
+                    }else petSpec1Field.setText("no");
+                    petSpec1Label.setText("Predator");
+                    if(fish.isItSaltWater())
+                    {
+                      petSpec2Field.setText("Salt Water");
+                    }else petSpec1Field.setText("Fresh Water");
+                    petSpec2Label.setText("Water Type");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(true);
+                    petSpec2Label.setVisible(true);
+                    break;
+                  case Dog dog:
+                    pet = new Dog(dog);
+                    petSpec1Field.setText(dog.getNameOfBreeder());
+                    petSpec1Label.setText("Breeder");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  case Rodent rodent:
+                    pet = new Rodent(rodent);
+                    if(rodent.doesItBite()){
+                      petSpec1Field.setText("yes");
+                    } else petSpec1Field.setText("no");
+                    petSpec1Label.setText("Bite");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  case Bird bird:
+                    pet = new Bird(bird);
+                    petSpec1Field.setText(bird.getPreferredFood());
+                    petSpec1Label.setText("Food");
+                    petSpec1Label.setVisible(true);
+                    petSpec1Field.setVisible(true);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  case Various various:
+                    pet = new Various(various);
+                    petSpec1Label.setVisible(false);
+                    petSpec1Field.setVisible(false);
+                    petSpec2Field.setVisible(false);
+                    petSpec2Label.setVisible(false);
+                    break;
+                  default:
+                    System.err.println("Pet type is not correct");
+                }
                 typeField.setText(temp.getPet().getTypeString());
                 nameField.setText(temp.getPet().getName());
                 ageField.setText(String.valueOf(temp.getPet().getAge()));
@@ -157,7 +234,7 @@ public class SaleViewController
     {
       if (selectedSale != null)
       {
-        System.out.println("Attempting to delete sale: " + selectedSale);
+        System.out.println("Attempting to delete sale ");
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
             "Do you really want to remove the sale?", ButtonType.YES,
@@ -169,16 +246,15 @@ public class SaleViewController
         if (alert.getResult() == ButtonType.YES)
         {
           // Remove the selected sale from the model
-
           modelManager.getAllSales().removeSale(selectedSale);
 
           // Debug: Print the sales list after deletion
-          System.out.println("Sales list after deletion:");
-          SaleList sales = modelManager.getAllSales();
-          for (int i = 0; i < sales.size(); i++) {
-            Sale sale = sales.get(i);
-            System.out.println(sale);
-          }
+//          System.out.println("Sales list after deletion:");
+//          SaleList sales = modelManager.getAllSales();
+//          for (int i = 0; i < sales.size(); i++) {
+//            Sale sale = sales.get(i);
+//            System.out.println(sale);
+//          }
           selectedSale = null;
           // Refresh the table
           updateSaleTable();
@@ -192,6 +268,8 @@ public class SaleViewController
           genderField.setText("");
           commentField.setText("");
           speciesField.setText("");
+          petSpec1Field.setText("");
+          petSpec2Field.setText("");
 
           // Clear selected sale reference
 

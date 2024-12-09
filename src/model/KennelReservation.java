@@ -117,6 +117,10 @@ public class KennelReservation implements Serializable
   {
     return getPeriod()*pricePerDay;
   }
+  public double getPrice()
+  {
+    return pricePerDay;
+  }
   //equals method
   public boolean equals(Object obj)
   {
