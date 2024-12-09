@@ -14,9 +14,9 @@ public class Dog extends Pet implements Serializable
   /**
    * Constructor for creating a Dog object with specified price, color, age, and species.
    * The name of the breeder is initialized to "NoName".
-   * @param price price 
-   * @param color
-   * @param age
+   * @param price price the dog's price
+   * @param color color the dog's color
+   * @param age the dog's age
    * @param species
    */
   public Dog(double price, String color, int age, String species)
