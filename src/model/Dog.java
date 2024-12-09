@@ -2,16 +2,30 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ * A class representing a dog with attributes such as name of breeder, price, color, age, gender, species, kennel status, name, and additional comments.
+ * @author Mihai Rotaru
+ * @version 1.0
+ */
 public class Dog extends Pet implements Serializable
 {
   private String nameOfBreeder = "NoName";
 
+  /**
+   * Constructor for creating a Dog object with specified price, color, age, and species.
+   * The name of the breeder is initialized to "NoName".
+   * @param price price 
+   * @param color
+   * @param age
+   * @param species
+   */
   public Dog(double price, String color, int age, String species)
   {
     super(1, price, color, age, species);
     nameOfBreeder = "NoName";
   }
-  //constuctor for easy checking used at Kennel reservation and sales reservation
+
+  //Constuctor for easy checking used at Kennel reservation and sales reservation.
   public Dog(Dog dog)
   {
     super(dog.getType(), dog.getPrice(), dog.getColor(), dog.getAge(), dog.getSpecies());

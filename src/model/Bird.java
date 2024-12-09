@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 /**
- * A class representing a bird with type, price, color, age, gender, species, kennel status, name, price, additional comment and preferred food
+ * A class representing a bird with type, price, color, age, gender, species, kennel status, name, price, additional comment and preferred food.
  * @author Mihail Rotaru
  * @version 1.0
  */
