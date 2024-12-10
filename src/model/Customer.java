@@ -85,6 +85,7 @@ public class Customer implements Serializable {
    * Sets the customer's last name., the name must be at least 3 characters long.
    * @param firstName what the customer's first name will be set to
    * @throws InvalidNameException if the first name is null or shorter than 3 characters
+   * @throws IllegalFirstNameException if the first name does not contain only letters
    */
   public void setFirstName(String firstName) {
     if (firstName == null || firstName.length() < 3) {
@@ -101,6 +102,7 @@ public class Customer implements Serializable {
   /**
    * Sets the customer's last name.
    * @param lastName what the customer's last name will be set to
+   * @throws IllegalLastNameException if the last name does not contain only letters
    */
   public void setLastName(String lastName) {
     if (!lastName.matches("[a-zA-z ]+"))
