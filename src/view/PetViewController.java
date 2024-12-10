@@ -69,9 +69,12 @@ public class PetViewController
   public void init(ViewHandler viewHandler, Scene scene,
       VIAPetsModelManager modelManager)
   {
+    hideAllFields();
     this.viewHandler = viewHandler;
     this.scene = scene;
     this.modelManager = modelManager;
+
+    this.scene.getStylesheets().add(getClass().getResource("PetView.css").toExternalForm());
 
     maleRadio.setToggleGroup(genderToggleGroup);
     femaleRadio.setToggleGroup(genderToggleGroup);
@@ -283,6 +286,14 @@ public class PetViewController
     {
       int typeTemp = petTableView.getSelectionModel().getSelectedItem()
           .getType();
+      if(kennelCheck.isSelected())
+      {
+        priceField.setEditable(false);
+      }
+      else
+      {
+        priceField.setEditable(true);
+      }
       hideAllFields();
       switch (typeTemp)
       {

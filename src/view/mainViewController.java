@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import ModelManager.VIAPetsModelManager;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 
 public class mainViewController
@@ -20,6 +21,8 @@ public class mainViewController
   @FXML Button ReservationsButton;
   @FXML Button SalesButton;
   @FXML Button CustomersButton;
+  @FXML Label welcomeLabel;
+  @FXML Label actionLabel;
 
   public void init(ViewHandler viewHandler, Scene scene, VIAPetsModelManager modelManager)
   {
@@ -27,6 +30,9 @@ public class mainViewController
     this.scene = scene;
     this.scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
     this.modelManager = modelManager;
+
+    welcomeLabel.setId("welcomeLabel");
+    actionLabel.setId("actionLabel");
   }
 
   // Getter for the scene

@@ -33,11 +33,11 @@
         <Label layoutX="387.0" layoutY="102.0" text="Color" />
         <TextField fx:id="colorField" layoutX="419.0" layoutY="98.0" prefHeight="26.0" prefWidth="89.0" />
         <Label layoutX="387.0" layoutY="156.0" text="Gender" />
-        <RadioButton fx:id="maleRadio" layoutX="431.0" layoutY="156.0" mnemonicParsing="false" text="Male">
+        <RadioButton fx:id="maleRadio" layoutX="436.0" layoutY="156.0" mnemonicParsing="false" text="Male">
             <toggleGroup>
                 <ToggleGroup fx:id="genderToggleGroup" />
             </toggleGroup></RadioButton>
-        <RadioButton fx:id="femaleRadio" layoutX="484.0" layoutY="156.0" mnemonicParsing="false" text="Female" toggleGroup="$genderToggleGroup" />
+        <RadioButton fx:id="femaleRadio" layoutX="496.0" layoutY="156.0" mnemonicParsing="false" text="Female" toggleGroup="$genderToggleGroup" />
         <CheckBox fx:id="kennelCheck" layoutX="516.0" layoutY="73.0" mnemonicParsing="false" text="Kennel" />
         <Label layoutX="385.0" layoutY="181.0" text="Name" />
         <TextField fx:id="nameField" layoutX="421.0" layoutY="177.0" prefHeight="26.0" prefWidth="121.0" />
@@ -45,36 +45,36 @@
         <TextArea fx:id="commentArea" layoutX="383.0" layoutY="225.0" prefHeight="48.0" prefWidth="162.0" />
         <Label layoutX="387.0" layoutY="131.0" text="Age" />
         <TextField fx:id="ageField" layoutX="419.0" layoutY="127.0" prefHeight="26.0" prefWidth="39.0" />
-        <Button fx:id="editButton" layoutX="366.0" layoutY="360.0" mnemonicParsing="false" onAction="#editButtonAction" text="Edit" visible="false" />
-        <Button fx:id="deleteButton" layoutX="413.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteButtonAction" text="Delete" visible="false" />
-        <Label fx:id="breedLabel" layoutX="384.0" layoutY="280.0" text="Breed" visible="false" />
-        <Label fx:id="breederLabel" layoutX="385.0" layoutY="310.0" text="Breeder" visible="false" />
-        <TextField fx:id="breedField" layoutX="418.0" layoutY="276.0" prefHeight="26.0" prefWidth="90.0" visible="false" />
-        <TextField fx:id="breederField" layoutX="429.0" layoutY="305.0" prefHeight="26.0" prefWidth="90.0" visible="false" />
-        <Label fx:id="speciesLabel" layoutX="384.0" layoutY="281.0" text="Species" visible="false" />
-        <TextField fx:id="speciesField" layoutX="428.0" layoutY="277.0" prefHeight="26.0" prefWidth="90.0" visible="false" />
-        <Label fx:id="preferredFoodLabel" layoutX="386.0" layoutY="311.0" text="Preferred Food" visible="false" />
-        <TextField fx:id="preferredFoodField" layoutX="471.0" layoutY="307.0" prefHeight="26.0" prefWidth="112.0" visible="false" />
-        <Label fx:id="bitesLabel" layoutX="384.0" layoutY="305.0" text="Bites" visible="false" />
-        <RadioButton fx:id="bitesRadioButton" layoutX="422.0" layoutY="306.0" mnemonicParsing="false" text="Yes" visible="false">
+        <Button fx:id="editButton" layoutX="366.0" layoutY="360.0" mnemonicParsing="false" onAction="#editButtonAction" text="Edit" />
+        <Button fx:id="deleteButton" layoutX="413.0" layoutY="360.0" mnemonicParsing="false" onAction="#deleteButtonAction" text="Delete" />
+        <Label fx:id="breedLabel" layoutX="384.0" layoutY="280.0" text="Breed" />
+        <Label fx:id="breederLabel" layoutX="385.0" layoutY="310.0" text="Breeder" />
+        <TextField fx:id="breedField" layoutX="421.0" layoutY="276.0" prefHeight="26.0" prefWidth="90.0" />
+        <TextField fx:id="breederField" layoutX="432.0" layoutY="305.0" prefHeight="26.0" prefWidth="90.0" />
+        <Label fx:id="speciesLabel" layoutX="384.0" layoutY="281.0" text="Species" />
+        <TextField fx:id="speciesField" layoutX="431.0" layoutY="277.0" prefHeight="26.0" prefWidth="90.0" />
+        <Label fx:id="preferredFoodLabel" layoutX="386.0" layoutY="311.0" text="Preferred Food" />
+        <TextField fx:id="preferredFoodField" layoutX="474.0" layoutY="307.0" prefHeight="26.0" prefWidth="112.0" />
+        <Label fx:id="bitesLabel" layoutX="384.0" layoutY="305.0" text="Bites" />
+        <RadioButton fx:id="bitesRadioButton" layoutX="425.0" layoutY="306.0" mnemonicParsing="false" text="Yes">
             <toggleGroup>
                 <ToggleGroup fx:id="bitesToggleGroup" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="doesNotBiteRadioButton" layoutX="468.0" layoutY="306.0" mnemonicParsing="false" text="No" toggleGroup="$bitesToggleGroup" visible="false" />
-        <RadioButton fx:id="predatorRadioButton" layoutX="443.0" layoutY="306.0" mnemonicParsing="false" text="Yes" visible="false">
+        <RadioButton fx:id="doesNotBiteRadioButton" layoutX="468.0" layoutY="306.0" mnemonicParsing="false" text="No" toggleGroup="$bitesToggleGroup" />
+        <RadioButton fx:id="predatorRadioButton" layoutX="446.0" layoutY="306.0" mnemonicParsing="false" text="Yes">
             <toggleGroup>
                 <ToggleGroup fx:id="predatorToggleGroup" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="notPredatorRadioButton" layoutX="489.0" layoutY="306.0" mnemonicParsing="false" text="No" toggleGroup="$predatorToggleGroup" visible="false" />
-        <RadioButton fx:id="saltWaterRadioButton" layoutX="459.0" layoutY="326.0" mnemonicParsing="false" text="Salt" visible="false">
+        <RadioButton fx:id="notPredatorRadioButton" layoutX="496.0" layoutY="306.0" mnemonicParsing="false" text="No" toggleGroup="$predatorToggleGroup" />
+        <RadioButton fx:id="saltWaterRadioButton" layoutX="462.0" layoutY="326.0" mnemonicParsing="false" text="Salt">
             <toggleGroup>
                 <ToggleGroup fx:id="saltWaterToggleGroup" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="sweetWaterRadioButton" layoutX="504.0" layoutY="326.0" mnemonicParsing="false" text="Sweet" toggleGroup="$saltWaterToggleGroup" visible="false" />
-        <Label fx:id="predatorLabel" layoutX="383.0" layoutY="305.0" text="Predator?" visible="false" />
-        <Label fx:id="saltWaterLabel" layoutX="384.0" layoutY="326.0" text="Environment" visible="false" />
+        <RadioButton fx:id="sweetWaterRadioButton" layoutX="510.0" layoutY="326.0" mnemonicParsing="false" text="Fresh" toggleGroup="$saltWaterToggleGroup" />
+        <Label fx:id="predatorLabel" layoutX="383.0" layoutY="305.0" text="Predator?" />
+        <Label fx:id="saltWaterLabel" layoutX="384.0" layoutY="326.0" text="Environment" />
     </children>
 </AnchorPane>

@@ -81,7 +81,7 @@ public class Dog extends Pet implements Serializable
       this.nameOfBreeder = nameOfBreeder;
     }
     else
-      throw new IllegalNameException();
+      throw new IllegalNameException("( name of breeder)");
   }
 
   /**
