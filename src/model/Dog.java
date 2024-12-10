@@ -1,9 +1,12 @@
 package model;
 
+import Exeptions.IllegalNameException;
+
 import java.io.Serializable;
 
 /**
- * A class representing a dog with attributes such price, color, age, gender, species, kennel status, name, additional comments, as name of breeder.
+ * A class representing a dog with attributes such price, color,
+ * age, gender, species, kennel status, name, additional comments, as name of breeder.
  * @author Mihai Rotaru
  * @version 1.0
  */

@@ -64,7 +64,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Label text="Price" textAlignment="CENTER" />
+                  <Label text="Price per day" textAlignment="CENTER" />
                   <TextField fx:id="priceField" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#handleActions" prefHeight="26.0" prefWidth="251.0" />
                </children>
             </VBox>

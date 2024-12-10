@@ -42,6 +42,7 @@ public class ReservationViewController
   @FXML private TextField petGenderField= new TextField();
   @FXML private TextField petCommentField= new TextField();
   @FXML private TextField petSpeciesField = new TextField();
+  @FXML private Label petSpeciesLabel = new Label();
 
   @FXML private  TextField searchField = new TextField();
 
@@ -115,6 +116,7 @@ public class ReservationViewController
                     }
                     petSpec1Field.setText(cat.getNameOfBreeder());
                     petSpec1Label.setText("Breeder");
+                    petSpeciesLabel.setText("Breed");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -132,6 +134,7 @@ public class ReservationViewController
                       petSpec2Field.setText("Salt Water");
                     }else petSpec1Field.setText("Fresh Water");
                     petSpec2Label.setText("Water Type");
+                    petSpeciesLabel.setText("Species");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(true);
@@ -141,6 +144,7 @@ public class ReservationViewController
                     pet = new Dog(dog);
                     petSpec1Field.setText(dog.getNameOfBreeder());
                     petSpec1Label.setText("Breeder");
+                    petSpeciesLabel.setText("Breed");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -152,6 +156,7 @@ public class ReservationViewController
                       petSpec1Field.setText("yes");
                   } else petSpec1Field.setText("no");
                     petSpec1Label.setText("Bite");
+                    petSpeciesLabel.setText("Species");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -161,6 +166,7 @@ public class ReservationViewController
                     pet = new Bird(bird);
                     petSpec1Field.setText(bird.getPreferredFood());
                     petSpec1Label.setText("Food");
+                    petSpeciesLabel.setText("Species");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -168,6 +174,7 @@ public class ReservationViewController
                     break;
                   case Various various:
                     pet = new Various(various);
+                    petSpeciesLabel.setText("Species");
                     petSpec1Label.setVisible(false);
                     petSpec1Field.setVisible(false);
                     petSpec2Field.setVisible(false);

@@ -1,5 +1,6 @@
 package view;
 
+import Exeptions.*;
 import ModelManager.VIAPetsModelManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ListChangeListener;
@@ -15,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.*;
 
-import java.awt.*;
 import java.util.NoSuchElementException;
 
 public class PetViewController

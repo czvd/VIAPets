@@ -1,4 +1,4 @@
-package model;
+package Exeptions;
 
 public class IllegalPhoneNumberException extends IllegalArgumentException
 {

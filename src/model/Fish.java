@@ -2,7 +2,9 @@ package model;
 
 import java.io.Serializable;
 /**
- * A class representing a fish with type, price, color, age, gender, species, kennel status, name, price, additional comment, if it's a predator and if it's a saltwater.
+ * A class representing a fish with type, price, color, age, gender,
+ * species, kennel status, name, price, additional comment, if it's a
+ * predator and if it's a saltwater.
  * @author Mihail Rotaru
  * @version 1.0
  */
@@ -126,7 +128,8 @@ public class Fish extends Pet implements Serializable
     saltWater = false;
   }
   /**
-   * First compares the attributes from super class and if they match, then it compares the predator status and water status of two fish.
+   * First compares the attributes from super class and if they match,
+   * then it compares the predator status and water status of two fish.
    * @param obj the object to compare with
    * @return  true if the given object is equal to this fish
    */
@@ -144,7 +147,9 @@ public class Fish extends Pet implements Serializable
 
   /**
    * Returns a string representation of the fish.
-   * @return a string representation of the fish in the format type \n price \n color \n age \n gender \n name \n comment \n kennel status \n species \n predator status \n water status
+   * @return a string representation of the fish in the format type \n price
+   * \n color \n age \n gender \n name \n comment \n kennel status \n species
+   * \n predator status \n water status
    */
   public String toString()
   {

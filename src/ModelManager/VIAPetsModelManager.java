@@ -3,11 +3,11 @@ package ModelManager;
 import model.*;
 import utils.FileHandler;
 import model.PetList;
+import utils.XMLConvertor;
 
 import java.io.FileNotFoundException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class VIAPetsModelManager
 {
@@ -41,7 +41,7 @@ public class VIAPetsModelManager
     {
       FileHandler.writeToBinaryFile(fileName, viaPets);
       XMLConvertor.write(new VIAPetsModelManager(fileName));
-      FileHandler.writeToTextFile("ReservationLists.txt",viaPets.getKennelReservationList().toString());
+      XMLConvertor.writeRes(new VIAPetsModelManager(fileName));
     }
     catch (FileNotFoundException e)
     {

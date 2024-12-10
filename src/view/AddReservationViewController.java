@@ -1,5 +1,7 @@
 package view;
 
+import Exeptions.SamePetException;
+import Exeptions.UnavailableReservationException;
 import ModelManager.VIAPetsModelManager;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -11,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class AddReservationViewController
@@ -403,6 +404,10 @@ public class AddReservationViewController
      alert.showAndWait();
      return;
    }
-
+   Alert alert = new Alert(Alert.AlertType.INFORMATION);
+   alert.setTitle("New Reservation");
+   alert.setHeaderText(null);
+   alert.setContentText("New Reservation Added");
+   alert.showAndWait();
  }
 }

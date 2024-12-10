@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 
 /**
- * A class representing a rodent with type, price, color, age, gender, species, kennel status, name, price, additional comment and if it bites or not.
+ * A class representing a rodent with type, price, color, age, gender,
+ * species, kennel status, name, price, additional comment and if it bites or not.
  * @author Mihail Rotaru
  * @version 1.0
  */
@@ -13,7 +14,8 @@ public class Rodent extends Pet implements Serializable
   private boolean bite =false;
 
   /**
-   * Four-argument constructor for creating a Rodent object with specified price, color, age, and species.
+   * Four-argument constructor for creating a Rodent object with
+   * specified price, color, age, and species.
    * The bite is initialized to false.
    * @param price the rodent's price
    * @param color the rodent's color
@@ -96,7 +98,8 @@ public class Rodent extends Pet implements Serializable
   }
 
   /**
-   * First compares the attributes from super class and if they match, then it compares the biting status of two rodents.
+   * First compares the attributes from super class and if they match,
+   * then it compares the biting status of two rodents.
    * @param obj the object to compare with
    * @return  true if the given object is equal to this rodent
    */
@@ -113,7 +116,9 @@ public class Rodent extends Pet implements Serializable
 
   /**
    * Returns a string representation of the rodent.
-   * @return a string representation of the rodent in the format type \n price \n color \n age \n gender \n name \n comment \n kennel status \n species \n biting status
+   * @return a string representation of the rodent in the format
+   * type \n price \n color \n age \n gender \n name \n comment \n
+   * kennel status \n species \n biting status
    */
   public String toString()
   {

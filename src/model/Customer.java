@@ -1,5 +1,9 @@
 package model;
 
+import Exeptions.IllegalFirstNameException;
+import Exeptions.IllegalLastNameException;
+import Exeptions.InvalidNameException;
+
 import java.io.Serializable;
 
 /**

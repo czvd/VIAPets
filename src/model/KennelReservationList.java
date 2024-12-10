@@ -1,5 +1,8 @@
 package model;
 
+import Exeptions.SamePetException;
+import Exeptions.UnavailableReservationException;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 

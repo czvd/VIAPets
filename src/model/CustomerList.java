@@ -1,5 +1,8 @@
 package model;
 
+import Exeptions.IllegalEmailException;
+import Exeptions.IllegalPhoneNumberException;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 

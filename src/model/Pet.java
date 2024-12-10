@@ -1,5 +1,7 @@
 package model;
 
+import Exeptions.*;
+
 import java.io.Serializable;
 
 /**
@@ -21,8 +23,10 @@ public abstract class Pet implements Serializable
 
   /**
    * A 5-argument constructor that creates a new Pet object.
-   * @param type An integer that indicates in which subclass is the pet can have values between 1 and 6.
-   * @param price A double that indicates the price of the animal, if it's not in the kennel, otherwise it's set 0.
+   * @param type An integer that indicates in which subclass is the pet can
+   *             have values between 1 and 6.
+   * @param price A double that indicates the price of the animal, if it's
+   *              not in the kennel, otherwise it's set 0.
    * @param color A String that stores the color information about the pet.
    * @param age A integer that stores the age information about the pet.
    * @param species A String that stores the species information about the pet.
@@ -60,7 +64,8 @@ public abstract class Pet implements Serializable
 
   /**
    * Gets the type of the pet in a String format.
-   * @return A String which can be Dog,Cat,Bird,Fish,Rodent or Various, which represent the type of the pet.
+   * @return A String which can be Dog,Cat,Bird,Fish,Rodent or Various,
+   * which represent the type of the pet.
    */
   public String getTypeString()
   {

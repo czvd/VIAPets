@@ -1,4 +1,4 @@
-package model;
+package Exeptions;
 
 public class IllegalFirstNameException extends IllegalArgumentException
 {

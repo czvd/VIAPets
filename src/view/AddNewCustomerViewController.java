@@ -5,9 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import ModelManager.VIAPetsModelManager;
 import model.Customer;
-import model.IllegalFirstNameException;
-import model.IllegalPhoneNumberException;
-import model.IllegalEmailException;
+import Exeptions.IllegalPhoneNumberException;
+import Exeptions.IllegalEmailException;
 
 
 public class AddNewCustomerViewController

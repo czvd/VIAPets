@@ -1,5 +1,7 @@
 package model;
 
+import Exeptions.IllegalNameException;
+
 import java.io.Serializable;
 /**
  * A class representing a cat with type, price, color, age, gender, breed, kennel status, name, price, additional comment and name of breeder.

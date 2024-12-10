@@ -1,5 +1,6 @@
 package view;
 
+import Exeptions.*;
 import ModelManager.VIAPetsModelManager;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;

@@ -177,7 +177,7 @@ public class Date implements Serializable
    * @return the number of days between start and end date
    * @throws IllegalArgumentException if the end date is before start date
    */
-  public static int calculatePeriod(Date startDate, Date endDate)
+  public static int calculatePeriod(Date startDate, Date endDate) //(n complexity overall)
   {
     //Checking if the start date is after than end date, else returns error message
     if(endDate.isBefore(startDate)) //the comparison will be done once
@@ -201,17 +201,17 @@ public class Date implements Serializable
       int checkMonth = startDate.getMonth() + 1; // this takes 2
       for (int i = endDate.getMonth() - startDate.getMonth()-1; i>0;i--) //1 "=" 1 for calculation, 1 for comparison, and we loop n times
       {
-        totalDays+=daysInMonth(checkMonth,startDate.getYear()); //for each iteration we have 1 "+" and 1 "=" and call the method daysInMonths worth
+        totalDays+=daysInMonth(checkMonth,startDate.getYear()); //for each iteration we have 1 "+" and 1 "=" and call the method daysInMonths worth 1
         checkMonth++; //this takes 1
       }
       return totalDays+endDate.getDay(); //1 calculation 1 return
     }
     //if year is not the same
     //start with first year, where the startdate is in
-    int compare = startDate.getMonth()+1; // this cost 1
-    for (int i=12;i>=compare;i--) //we loop n times 1 "=" and 1 for comparison
+    int compare = startDate.getMonth()+1; // this cost 3
+    for (int i=12;i>=compare;i--) //we loop n times 1 "=", 1 for calculation and 1 for comparison
     {
-      totalDays+=daysInMonth(i, startDate.getYear()); //for each iteration we have 1"+" and 1 "=" and call the method daysInMonths worth
+      totalDays+=daysInMonth(i, startDate.getYear()); //for each iteration we have 1"+" and 1 "=" and call the method daysInMonths worth 1
     }
     //if there is more than 1 year we count the whole year
     int difference = endDate.getYear() - startDate.getYear(); //this takes 2
@@ -219,7 +219,7 @@ public class Date implements Serializable
     {
       int compares =startDate.getYear()+1; // this is worth 3
       int getvalue = endDate.getYear(); // this is worth 2
-      for (int i = compares; i < getvalue; i++) //we loop n times, 1 for "=", 1 for comparison
+      for (int i = compares; i < getvalue; i++) //we loop n times, 1 for "=", 1 for comparison and 1 for calculation
       {
         if(isLeapYear(i)) // this will be done n times
         {
@@ -230,13 +230,17 @@ public class Date implements Serializable
     }
     // the last year with months and days added together
     int getendvalue = endDate.getMonth(); // this is worth 2
-    for (int i=1; i<getendvalue;i++) // we loop n times, 1 for "=" and 1 for comparison
+    for (int i=1; i<getendvalue;i++) // we loop n times, 1 for "=" and 1 for comparison, 1 for calculation
     {
-      totalDays+=daysInMonth(i, endDate.getYear()); //for each iteration we have 1"+" and 1 "=" and call the method daysInMonths worth
+      totalDays+=daysInMonth(i, endDate.getYear()); //for each iteration we have 1"+" and 1 "=" and call the method daysInMonths worth 1
     }
     //lastly adding the last day
     return totalDays+endDate.getDay(); // 1 for calculating 1 for return
 
+    //cost 1+2+1+2+2+(1+6n)+2+3+(1+5n)+2+1+3+2+(1+4n)+2+(1+5n)+2
+    //29+20n
+    // Overall time complexity: O(n)
+    // Each condition and operation is performed in constant time, independent of input size.
   }
 
   /**
@@ -260,7 +264,7 @@ public class Date implements Serializable
    * @param year the year to check
    * @return true if the year is leap year, else false
    */
-  public static boolean isLeapYear(int year)
+  public static boolean isLeapYear(int year) // (1 complexity overall)
   {
     return year % 400 == 0 || (year % 100 != 0 && year % 4 == 0);
     // The return has 8 operations, which makes this O(1) complexity.
@@ -308,7 +312,7 @@ public class Date implements Serializable
    * @param year the given year
    * @return the number of days in that month
    */
-  public static int daysInMonth(int month, int year)
+  public static int daysInMonth(int month, int year) // (1 complexity overall)
   {
     if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8
         || month == 10 || month == 12)

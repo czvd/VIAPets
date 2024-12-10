@@ -26,6 +26,7 @@ public class SaleViewController
   @FXML private TextField genderField = new TextField();
   @FXML private TextField commentField = new TextField();
   @FXML private TextField speciesField = new TextField();
+  @FXML private Label speciesLabel = new Label();
   @FXML private TextField searchField = new TextField();
   @FXML private Button backButton;
   @FXML private Button addNewButton;
@@ -117,6 +118,7 @@ public class SaleViewController
                     }
                     petSpec1Field.setText(cat.getNameOfBreeder());
                     petSpec1Label.setText("Breeder");
+                    speciesLabel.setText("Breed");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -134,6 +136,7 @@ public class SaleViewController
                       petSpec2Field.setText("Salt Water");
                     }else petSpec1Field.setText("Fresh Water");
                     petSpec2Label.setText("Water Type");
+                    speciesLabel.setText("Species");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(true);
@@ -143,6 +146,7 @@ public class SaleViewController
                     pet = new Dog(dog);
                     petSpec1Field.setText(dog.getNameOfBreeder());
                     petSpec1Label.setText("Breeder");
+                    speciesLabel.setText("Breed");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -154,6 +158,7 @@ public class SaleViewController
                       petSpec1Field.setText("yes");
                     } else petSpec1Field.setText("no");
                     petSpec1Label.setText("Bite");
+                    speciesLabel.setText("Species");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -163,6 +168,7 @@ public class SaleViewController
                     pet = new Bird(bird);
                     petSpec1Field.setText(bird.getPreferredFood());
                     petSpec1Label.setText("Food");
+                    speciesLabel.setText("Species");
                     petSpec1Label.setVisible(true);
                     petSpec1Field.setVisible(true);
                     petSpec2Field.setVisible(false);
@@ -170,6 +176,7 @@ public class SaleViewController
                     break;
                   case Various various:
                     pet = new Various(various);
+                    speciesLabel.setText("Species");
                     petSpec1Label.setVisible(false);
                     petSpec1Field.setVisible(false);
                     petSpec2Field.setVisible(false);

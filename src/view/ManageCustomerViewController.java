@@ -10,8 +10,8 @@ import ModelManager.VIAPetsModelManager;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
 import model.CustomerList;
-import model.IllegalEmailException;
-import model.IllegalPhoneNumberException;
+import Exeptions.IllegalEmailException;
+import Exeptions.IllegalPhoneNumberException;
 
 import java.util.NoSuchElementException;
 
@@ -227,14 +227,28 @@ public class ManageCustomerViewController
       String lastName = lastNameField.getText();
       String phoneNumber = phoneNumberField.getText();
       String emailAddress = emailAddressField.getText();
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "Do you really want to delete?", ButtonType.YES, ButtonType.NO);
+      alert.setTitle("Delete");
+      alert.setHeaderText(null);
 
-      Customer customer = new Customer(firstName,lastName,phoneNumber,emailAddress);
-      modelManager.removeCustomer(customer);
-      updateTableView();
-      firstNameField.setText("");
-      lastNameField.setText("");
-      phoneNumberField.setText("");
-      emailAddressField.setText("");
+      alert.showAndWait();
+
+      if (alert.getResult() == ButtonType.YES)
+      {
+        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+        alert1.setTitle("Deleted!");
+        alert1.setHeaderText(null);
+        alert1.setContentText("The customer has been deleted.");
+        alert1.showAndWait();
+        Customer customer = new Customer(firstName,lastName,phoneNumber,emailAddress);
+        modelManager.removeCustomer(customer);
+        updateTableView();
+        firstNameField.setText("");
+        lastNameField.setText("");
+        phoneNumberField.setText("");
+        emailAddressField.setText("");
+      }
     }
     else if (e.getSource() == fleTableView)
     {
