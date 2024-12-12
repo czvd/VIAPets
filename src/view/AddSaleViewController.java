@@ -233,7 +233,11 @@ public class AddSaleViewController
     PetList pets = modelManager.getAllPets().getPetsByType(type);
     for (int i = 0; i < pets.size(); i++)
     {
-      petTableView.getItems().add(pets.get(i));
+      if (!pets.get(i).getInKennel())
+      {
+        petTableView.getItems().add(pets.get(i));
+      }
+
     }
   }
 

@@ -54,6 +54,8 @@ public class AddPetViewController
     this.scene = scene;
     this.modelManager = modelManager;
 
+    this.scene.getStylesheets().add(getClass().getResource("AddPetView.css").toExternalForm());
+
     maleRadio.setToggleGroup(genderToggleGroup);
     femaleRadio.setToggleGroup(genderToggleGroup);
     maleRadio.isSelected();

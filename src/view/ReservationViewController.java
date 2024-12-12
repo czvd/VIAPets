@@ -74,6 +74,17 @@ public class ReservationViewController
         new SimpleStringProperty(Double.toString(cellData.getValue().getFinalPrice()))
     );
 
+
+    petTypeField.setEditable(false);
+    petNameField.setEditable(false);
+    petAgeField.setEditable(false);
+    petColorField.setEditable(false);
+    petGenderField.setEditable(false);
+    petCommentField.setEditable(false);
+    petSpeciesField.setEditable(false);
+    petSpec1Field.setEditable(false);
+    petSpec1Field.setEditable(false);
+
     costumerColumn.setSortable(false);
     startDateColumn.setSortable(false);
     endDateColumn.setSortable(false);

@@ -57,6 +57,19 @@ public class SaleViewController
     searchField.setPromptText("Search by Customer Phone number");
     searchField.clear();
 
+    typeField.setEditable(false);
+    nameField.setEditable(false);
+    ageField.setEditable(false);
+    colorField.setEditable(false);
+    priceField.setEditable(false);
+    genderField.setEditable(false);
+    commentField.setEditable(false);
+    speciesField.setEditable(false);
+    petSpec1Field.setEditable(false);
+    petSpec1Field.setEditable(false);
+
+    this.scene.getStylesheets().add(getClass().getResource("SaleView.css").toExternalForm());
+
 
     this.scene.getStylesheets()
         .add(getClass().getResource("SaleView.css").toExternalForm());

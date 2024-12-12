@@ -29,6 +29,9 @@ public class AddNewCustomerViewController
     this.viewHandler = viewHandler;
     this.scene = scene;
     this.modelManager = modelManager;
+
+    this.scene.getStylesheets().add(getClass().getResource("AddNewCustomer.css").toExternalForm());
+
   }
 
   public Scene getScene()
