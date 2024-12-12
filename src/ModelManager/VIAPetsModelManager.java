@@ -102,8 +102,7 @@ public class VIAPetsModelManager
 
   public void removeCustomer(Customer deleteCustomer)
   {
-    CustomerList allCustomer = getAllCustomers();
-    allCustomer.removeCustomer(deleteCustomer);
+    getAllCustomers().removeCustomer(deleteCustomer);
     save();
   }
 
