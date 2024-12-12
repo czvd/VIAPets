@@ -61,6 +61,8 @@ public class AddReservationViewController
     this.scene = scene;
     this.modelManager = modelManager;
     reservedPet = modelManager.getReservedPets();
+
+    this.scene.getStylesheets().add(getClass().getResource("AddReservationView.css").toExternalForm());
     //type select comboBox
     typeSelect.getItems().add("SelectType");
     typeSelect.getItems().add("Dog");

@@ -22,7 +22,7 @@
             <Button mnemonicParsing="false" text="Add New Sale" />
          </children>
       </HBox>
-      <HBox alignment="BOTTOM_RIGHT" layoutX="1.0" layoutY="364.0" prefHeight="35.0" prefWidth="600.0">
+      <HBox alignment="BOTTOM_RIGHT" layoutX="1.0" layoutY="364.0" prefHeight="36.0" prefWidth="182.0">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleActions" text="Back to the main page">
                <HBox.margin>
@@ -34,7 +34,7 @@
             <Insets right="20.0" />
          </padding>
       </HBox>
-      <GridPane layoutX="30.0" layoutY="50.0" prefHeight="271.0" prefWidth="538.0">
+      <GridPane layoutX="30.0" layoutY="50.0" prefHeight="288.0" prefWidth="558.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="10.0" prefWidth="271.79998779296875" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="265.8000122070313" />
@@ -43,10 +43,9 @@
             <RowConstraints maxHeight="100.0" minHeight="0.0" prefHeight="100.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="100.0" minHeight="0.0" prefHeight="100.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TableView fx:id="customerTableView" onSort="#handleActions" prefHeight="90.0" prefWidth="600.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+            <TableView fx:id="customerTableView" onSort="#handleActions" prefHeight="98.0" prefWidth="551.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
                <columns>
                   <TableColumn fx:id="firstNameColumn" prefWidth="100.0" text="First Name" />
                   <TableColumn fx:id="lastNameColumn" prefWidth="100.0" text="Last Name" />
@@ -54,8 +53,7 @@
                   <TableColumn fx:id="emailAddressColumn" prefWidth="100.0" text="Email" />
                </columns>
             </TableView>
-            <Button fx:id="addNewSaleButton" mnemonicParsing="false" onAction="#handleActions" text="Add The New Sale" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+            <VBox prefHeight="79.0" prefWidth="283.0" GridPane.rowIndex="2">
                <children>
                   <Label text="Date &amp; time" textAlignment="CENTER" />
                   <TextField fx:id="DateNTimeField" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#handleActions" prefHeight="26.0" prefWidth="254.0" />
@@ -83,5 +81,6 @@
             </HBox>
          </children>
       </GridPane>
+      <Button fx:id="addNewSaleButton" layoutX="473.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleActions" text="Add The New Sale" />
    </children>
 </AnchorPane>

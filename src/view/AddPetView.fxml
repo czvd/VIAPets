@@ -36,10 +36,10 @@
         <Label fx:id="breedLabel" layoutX="316.0" layoutY="58.0" text="Breed" visible="false" />
         <TextField fx:id="breedField" layoutX="353.0" layoutY="54.0" visible="false" />
         <Label fx:id="breederLabel" layoutX="316.0" layoutY="92.0" text="Breeder" visible="false" />
-        <TextField fx:id="breederField" layoutX="361.0" layoutY="88.0" visible="false" />
+        <TextField fx:id="breederField" layoutX="368.0" layoutY="88.0" visible="false" />
         <Label fx:id="speciesLabel" layoutX="309.0" layoutY="58.0" text="Species" visible="false" />
         <TextField fx:id="speciesField" layoutX="359.0" layoutY="54.0" visible="false" />
-        <TextField fx:id="preferredFoodField" layoutX="393.0" layoutY="84.0" visible="false" />
+        <TextField fx:id="preferredFoodField" layoutX="403.0" layoutY="84.0" visible="false" />
         <Label fx:id="preferredFoodLabel" layoutX="309.0" layoutY="88.0" text="Preferred food" visible="false" />
         <Label fx:id="bitesLabel" layoutX="309.0" layoutY="87.0" text="Does it bite?" visible="false" />
         <RadioButton fx:id="bitesRadioButton" layoutX="384.0" layoutY="87.0" mnemonicParsing="false" text="Yes" visible="false">
@@ -56,12 +56,12 @@
             </toggleGroup>
         </RadioButton>
         <RadioButton fx:id="NotPredatorRadioButton" layoutX="424.0" layoutY="89.0" mnemonicParsing="false" text="No" toggleGroup="$predatorToggleGroup" visible="false" />
-        <RadioButton fx:id="saltWaterRadioButton" layoutX="383.0" layoutY="113.0" mnemonicParsing="false" text="Salt water" visible="false">
+        <RadioButton fx:id="saltWaterRadioButton" layoutX="387.0" layoutY="111.0" mnemonicParsing="false" text="Salt water" visible="false">
             <toggleGroup>
                 <ToggleGroup fx:id="saltWaterToggleGroup" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="sweetWaterRadioButton" layoutX="462.0" layoutY="113.0" mnemonicParsing="false" text="Sweet water" toggleGroup="$saltWaterToggleGroup" visible="false" />
+        <RadioButton fx:id="sweetWaterRadioButton" layoutX="478.0" layoutY="111.0" mnemonicParsing="false" text="Fesh Water" toggleGroup="$saltWaterToggleGroup" visible="false" />
         <Button fx:id="saveButton" layoutX="413.0" layoutY="138.0" mnemonicParsing="false" onAction="#addPet" text="Save" visible="false" />
         <Button fx:id="backButton" layoutX="69.0" layoutY="355.0" mnemonicParsing="false" onAction="#backButtonAction" text="Back" />
     </children>

@@ -60,6 +60,8 @@ public class AddSaleViewController
     this.modelManager = modelManager;
     DateNTimeField.setText(Date.today().toString());
 
+    this.scene.getStylesheets().add(getClass().getResource("AddSaleView.css").toExternalForm());
+
     //type select comboBox
     typeSelect.getItems().add("SelectType");
     typeSelect.getItems().add("Dog");

@@ -47,6 +47,7 @@ public class ManageCustomerViewController
     firstNameColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("firstName"));
     lastNameColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("lastName"));
     emailAddressColumn.setCellValueFactory(new PropertyValueFactory<Customer, String>("emailAddress"));
+    this.scene.getStylesheets().add(getClass().getResource("ManageCustomerView.css").toExternalForm());
 
     firstNameColumn.setSortable(false);
     lastNameColumn.setSortable(false);

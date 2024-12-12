@@ -286,15 +286,8 @@ public class PetViewController
     {
       int typeTemp = petTableView.getSelectionModel().getSelectedItem()
           .getType();
-      if(kennelCheck.isSelected())
-      {
-        priceField.setEditable(false);
-      }
-      else
-      {
-        priceField.setEditable(true);
-      }
       hideAllFields();
+      clearAllFields();
       switch (typeTemp)
       {
         case 1:
@@ -439,6 +432,30 @@ public class PetViewController
     editButton.setVisible(false);
   }
 
+  public void clearAllFields()
+  {
+    {
+      breedField.clear();
+      breederField.clear();
+      speciesField.clear();
+      preferredFoodField.clear();
+      bitesRadioButton.setSelected(false);
+      doesNotBiteRadioButton.setSelected(false);
+      predatorRadioButton.setSelected(false);
+      notPredatorRadioButton.setSelected(false);
+      saltWaterRadioButton.setSelected(false);
+      sweetWaterRadioButton.setSelected(false);
+      colorField.clear();
+      typeTextField.clear();
+      ageField.clear();
+      nameField.clear();
+      commentArea.clear();
+      maleRadio.setSelected(false);
+      femaleRadio.setSelected(false);
+
+    }
+  }
+
   public void displayGeneralInfo(Pet tempPet)
   {
     typeTextField.setText(tempPet.getTypeString());
@@ -514,6 +531,11 @@ public class PetViewController
     {
       modelManager.removePet(
           petTableView.getSelectionModel().getSelectedItem());
+      Alert alertDelete = new Alert(Alert.AlertType.INFORMATION);
+      alertDelete.setTitle("Delete");
+      alertDelete.setHeaderText(null);
+      alertDelete.setContentText("Pet was successfully deleted!");
+      alertDelete.showAndWait();
       updatePetTable();
     }
   }
@@ -522,7 +544,7 @@ public class PetViewController
   {
     Alert alertEdit = new Alert(Alert.AlertType.CONFIRMATION,
         "Do you really want to edit this pet?", ButtonType.YES, ButtonType.NO);
-    alertEdit.setTitle("Delete");
+    alertEdit.setTitle("Edit");
     alertEdit.setHeaderText(null);
 
     alertEdit.showAndWait();
@@ -1425,6 +1447,19 @@ public class PetViewController
         }
       }
       updatePetTable();
+    }
+  }
+
+  public void kennelCheckAction()
+  {
+    if(kennelCheck.isSelected())
+    {
+      priceField.setEditable(false);
+      priceField.clear();
+    }
+    else
+    {
+      priceField.setEditable(true);
     }
   }
 

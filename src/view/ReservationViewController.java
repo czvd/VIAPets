@@ -59,6 +59,8 @@ public class ReservationViewController
     this.modelManager = modelManager;
     searchField.setPromptText("Search by Customer Phone number");
     searchField.clear();
+
+    this.scene.getStylesheets().add(getClass().getResource("ReservationView.css").toExternalForm());
     //reservation table;
     costumerColumn.setCellValueFactory(cellData ->
         new SimpleStringProperty(cellData.getValue().getCustomer().getFirstName())

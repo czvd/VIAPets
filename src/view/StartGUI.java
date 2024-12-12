@@ -1,6 +1,7 @@
 package view;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import ModelManager.VIAPetsModelManager;
 
@@ -13,6 +14,8 @@ public class StartGUI extends Application
   {
     ViewHandler viewHandler = new ViewHandler(window, modelManager);
     viewHandler.start();
+    window.getIcons().add(new Image(getClass().getResourceAsStream("../icon.png")));
+    window.setResizable(false);
   }
 }
 

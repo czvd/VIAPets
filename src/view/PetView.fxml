@@ -38,11 +38,11 @@
                 <ToggleGroup fx:id="genderToggleGroup" />
             </toggleGroup></RadioButton>
         <RadioButton fx:id="femaleRadio" layoutX="496.0" layoutY="156.0" mnemonicParsing="false" text="Female" toggleGroup="$genderToggleGroup" />
-        <CheckBox fx:id="kennelCheck" layoutX="516.0" layoutY="73.0" mnemonicParsing="false" text="Kennel" />
+        <CheckBox fx:id="kennelCheck" layoutX="516.0" layoutY="73.0" mnemonicParsing="false" onAction="#kennelCheckAction" text="Kennel" />
         <Label layoutX="385.0" layoutY="181.0" text="Name" />
         <TextField fx:id="nameField" layoutX="421.0" layoutY="177.0" prefHeight="26.0" prefWidth="121.0" />
         <Label layoutX="386.0" layoutY="207.0" text="Comment" />
-        <TextArea fx:id="commentArea" layoutX="383.0" layoutY="225.0" prefHeight="48.0" prefWidth="162.0" />
+        <TextArea fx:id="commentArea" layoutX="383.0" layoutY="225.0" prefHeight="48.0" prefWidth="210.0" />
         <Label layoutX="387.0" layoutY="131.0" text="Age" />
         <TextField fx:id="ageField" layoutX="419.0" layoutY="127.0" prefHeight="26.0" prefWidth="39.0" />
         <Button fx:id="editButton" layoutX="366.0" layoutY="360.0" mnemonicParsing="false" onAction="#editButtonAction" text="Edit" />
