@@ -337,6 +337,15 @@ public class AddReservationViewController
      alert.showAndWait();
      return;
    }
+   if (Integer.parseInt(price)<0)
+   {
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error");
+     alert.setHeaderText(null);
+     alert.setContentText("Price cannot be negative");
+     alert.showAndWait();
+     return;
+   }
    if(selectedCustomer==null)
    {
      Alert alert = new Alert(Alert.AlertType.ERROR);

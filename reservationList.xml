@@ -40,10 +40,10 @@
       <month>12</month>
       <hour>0</hour>
       <year>2024</year>
-      <day>12</day>
+      <day>26</day>
       <minute>0</minute>
     </endDate>
-    <pricePerDay>20.0</pricePerDay>
+    <pricePerDay>27.0</pricePerDay>
     <pet>
       <nameOfBreeder>NoName</nameOfBreeder>
       <inKennel>true</inKennel>
@@ -60,7 +60,7 @@
       <month>12</month>
       <hour>0</hour>
       <year>2024</year>
-      <day>2</day>
+      <day>10</day>
       <minute>0</minute>
     </startDate>
     <customer>
