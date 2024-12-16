@@ -1,4 +1,5 @@
 package view;
+// Import necessary classes
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -14,22 +15,23 @@ public class AddNewCustomerViewController
   private Scene scene;
   private VIAPetsModelManager modelManager;
   private ViewHandler viewHandler;
+  // UI components from the FXML file
+  @FXML private TextField firstNameField;// Text field for entering the first name
+  @FXML private TextField lastNameField;// Text field for entering the last name
+  @FXML private TextField phoneNumberField;// Text field for entering the phone number
+  @FXML private TextField emailAddressField;// Text field for entering the email address
+  @FXML private Button backButton;// Button for navigating back
+  @FXML private Button addButton;// Button for adding a new customer
+  @FXML private Button manageButton;// Button for navigating to manage customers
 
-  @FXML private TextField firstNameField;
-  @FXML private TextField lastNameField;
-  @FXML private TextField phoneNumberField;
-  @FXML private TextField emailAddressField;
-  @FXML private Button backButton;
-  @FXML private Button addButton;
-  @FXML private Button manageButton;
-
+  // Initializes the controller with references to the ViewHandler, Scene, and ModelManager
   public void init(ViewHandler viewHandler, Scene scene,
       VIAPetsModelManager modelManager)
   {
     this.viewHandler = viewHandler;
     this.scene = scene;
     this.modelManager = modelManager;
-
+    //Implements css source for the scene
     this.scene.getStylesheets().add(getClass().getResource("AddNewCustomer.css").toExternalForm());
 
   }
@@ -41,7 +43,7 @@ public class AddNewCustomerViewController
 
   public void reset()
   {
-
+    resetFields();
   }
 
   public void handleActions(ActionEvent e)
@@ -96,6 +98,7 @@ public class AddNewCustomerViewController
 
     if (firstName == null || firstName.length() < 3)
       {
+        //Show an error alert if the firstName is empty or less than 3 characters
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
@@ -116,6 +119,7 @@ public class AddNewCustomerViewController
 
     if (!lastName.matches("[a-zA-z ]+"))
     {
+      //Show an error if the last name contains anything else than letters
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText(null);
@@ -139,6 +143,7 @@ public class AddNewCustomerViewController
 
     if (!emailAddress.matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
     {
+      //Show an error if the email adress is not the format user@host.domain.
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText(null);
@@ -186,4 +191,3 @@ public class AddNewCustomerViewController
     emailAddressField.clear();
   }
 }
-

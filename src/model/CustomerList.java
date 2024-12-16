@@ -31,20 +31,28 @@ public class CustomerList implements Serializable
    * @throws IllegalEmailException if the email address already exists in the system
    * @throws IllegalPhoneNumberException if the phone number already exists in the system
    */
+  //adding a new Customer object to the customerList array list
   public void addCustomer(Customer customer)
   {
+    //For each element in the list
     for(int i = 0; i < customers.size(); i++)
     {
+      //initializing the current customer
       Customer customer1 = customers.get(i);
+      //checking the current customer's email if matches the desired one
       if(customer1.getEmailAddress().equals(customer.getEmailAddress()))
       {
+        //if the argument is true break the process with throwing an argument
         throw new IllegalEmailException("The email address matches other email address in the system, enter other email address.");
       }
+      //checking the current customer's phone if matches the desired one
       else if(customer1.getPhoneNumber().equals(customer.getPhoneNumber()))
       {
+        //if the argument is true break the process with throwing an argument
         throw new IllegalPhoneNumberException("The phone number matches other phone number in the system, enter other phone number.");
       }
     }
+    //adding the desired customer to the list
     customers.add(customer);
   }
   /**

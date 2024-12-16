@@ -36,9 +36,9 @@ $(document).ready(function () {
         kennelReservations.forEach((reservation) => {
             if (!(reservation.endDate < startDate || reservation.startDate >= endDate)) {
                 reservedCount++;
-                if (reservedCount >= maxLimit) {
+                if (reservedCount = maxLimit) {
                     
-                    return reservedCount;
+                    return 0;
                 }
             }
         });

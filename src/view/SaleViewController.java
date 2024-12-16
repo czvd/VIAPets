@@ -100,25 +100,40 @@ public class SaleViewController
     petSpec2Field.setVisible(false);
     petSpec2Label.setVisible(false);
 
+    //initializing table view, using built in classes in java to get access
+    // to all the selected items
     TableView.TableViewSelectionModel<Sale> selectionModel = SaleTableView.getSelectionModel();
     ObservableList<Sale> selectedItems = selectionModel.getSelectedItems();
 
+    //implementing listener to the Observative list of selected items
     selectedItems.addListener(
+        //initializing function
         new ListChangeListener<Sale>() {
+          //using void statement, from superclass
           @Override
           public void onChanged(
+              //importing Change class, not to directly change the source
               Change<? extends Sale> change) {
+            //starting the process, knowing it can throw exeptions (NullPointException or NoSuchElementException)
             try
             {
+              //creating a temporary Sale class, to only ask for the element once
               Sale temp = change.getList().getFirst();
+              //checking for being the element null, if not continue
               if (temp != null)
               {
+                //creating a NEW sale class, matching with the original,
+                // and storing it to get access to it in other methods
                 selectedSale = new Sale(temp.getPet(),temp.getCustomer(),temp.getDateOfSale(),temp.getFinalPrice());
 //              selectedSale = temp;
 
+                //checking for pet Types.
+                // Different types has extra information to display
                 switch (temp.getPet())
                 {
+                  //in case it is a cat
                   case Cat cat:
+                    //saving and casting it as a cat class
                     pet = new Cat(cat);
 
 
@@ -129,6 +144,7 @@ public class SaleViewController
                     {
                       pet.isFemale();
                     }
+                    //setting up specific fields according to the class
                     petSpec1Field.setText(cat.getNameOfBreeder());
                     petSpec1Label.setText("Breeder");
                     speciesLabel.setText("Breed");
@@ -137,8 +153,11 @@ public class SaleViewController
                     petSpec2Field.setVisible(false);
                     petSpec2Label.setVisible(false);
                     break;
+                  //in case of fish class
                   case Fish fish:
+                    //saving and casting it as a fish object
                     pet = new Fish(fish);
+                    //setting up specific fields according to the class
                     if (fish.isItPredator())
                     {
                       petSpec1Field.setText("yes");
@@ -155,8 +174,11 @@ public class SaleViewController
                     petSpec2Field.setVisible(true);
                     petSpec2Label.setVisible(true);
                     break;
+                  //in case of dog
                   case Dog dog:
+                    //saving and casting it as a dog class
                     pet = new Dog(dog);
+                    //setting up specific fields according to the class
                     petSpec1Field.setText(dog.getNameOfBreeder());
                     petSpec1Label.setText("Breeder");
                     speciesLabel.setText("Breed");
@@ -165,8 +187,11 @@ public class SaleViewController
                     petSpec2Field.setVisible(false);
                     petSpec2Label.setVisible(false);
                     break;
+                  //in case it is rodent class
                   case Rodent rodent:
+                    //saving and casting it as a rodent class
                     pet = new Rodent(rodent);
+                    //setting up specific fields according to the class
                     if(rodent.doesItBite()){
                       petSpec1Field.setText("yes");
                     } else petSpec1Field.setText("no");
@@ -177,8 +202,11 @@ public class SaleViewController
                     petSpec2Field.setVisible(false);
                     petSpec2Label.setVisible(false);
                     break;
+                  //in case for bird class
                   case Bird bird:
+                    //saving and casting it as a cat class
                     pet = new Bird(bird);
+                    //setting up specific fields according to the class
                     petSpec1Field.setText(bird.getPreferredFood());
                     petSpec1Label.setText("Food");
                     speciesLabel.setText("Species");
@@ -187,17 +215,24 @@ public class SaleViewController
                     petSpec2Field.setVisible(false);
                     petSpec2Label.setVisible(false);
                     break;
+                  //if object is instance of various class
                   case Various various:
+                    //saving and casting it as various class
                     pet = new Various(various);
+                    //setting up specific fields according to the class
                     speciesLabel.setText("Species");
                     petSpec1Label.setVisible(false);
                     petSpec1Field.setVisible(false);
                     petSpec2Field.setVisible(false);
                     petSpec2Label.setVisible(false);
                     break;
+                  //if the class is not the ones above,
+                  // means it is not initialized as desired classes
                   default:
+                    //throwing error message
                     System.err.println("Pet type is not correct");
                 }
+                //initializing common field's texts what all the pet classes have information for
                 typeField.setText(temp.getPet().getTypeString());
                 nameField.setText(temp.getPet().getName());
                 ageField.setText(String.valueOf(temp.getPet().getAge()));
@@ -208,16 +243,19 @@ public class SaleViewController
                 speciesField.setText(temp.getPet().getSpecies());
               }
             }
+            //catching NullPointerException
             catch (NullPointerException e)
             {
               System.out.println("no elements found");
             }
+            //if the element could not be initialized catches NoSuchElementException
             catch (NoSuchElementException e)
             {
               System.out.println("customerTableView, customer changed");
             }
           }
         });
+    //calling method for updating the table
     updateSaleTable();
   }
 

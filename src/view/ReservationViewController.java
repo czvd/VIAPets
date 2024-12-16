@@ -292,6 +292,7 @@ public class ReservationViewController
     }
   }
 
+  //method for updating the table
   public void updateTable()
   {
     if (KennelTableView != null)
