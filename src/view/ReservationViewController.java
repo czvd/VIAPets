@@ -295,29 +295,42 @@ public class ReservationViewController
   //method for updating the table
   public void updateTable()
   {
+    //Check if the table view is not null
     if (KennelTableView != null)
     {
+      //Clear all items in the table view
       KennelTableView.getItems().clear();
     }
 
+    // Retrieve all kennel reservations from the model manager
     KennelReservationList reservations = modelManager.getAllReservations();
+
+    // Iterate through each reservation in the list
     for (int i = 0; i < reservations.size(); i++)
     {
+      // Add the reservation to the table view
       KennelTableView.getItems().add(reservations.get(i));
     }
   }
   public void updateTable(String phone)
   {
+    // Check if the table view is not null
     if (KennelTableView != null)
     {
+      // Clear all items in the table view
       KennelTableView.getItems().clear();
     }
 
+    // Retrieve all kennel reservations from the model manager
     KennelReservationList reservations = modelManager.getAllReservations();
+
+    // Iterate through each reservation in the list
     for (int i = 0; i < reservations.size(); i++)
     {
+      // Check if the reservation's customer phone number matches the provided phone number
       if (reservations.get(i).getCustomer().getPhoneNumber().equals(phone))
       {
+        // Add the matching reservation to the table view
         KennelTableView.getItems().add(reservations.get(i));
       }
     }

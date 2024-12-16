@@ -12,6 +12,7 @@ import Exeptions.IllegalEmailException;
 
 public class AddNewCustomerViewController
 {
+  // Scene and model objects for managing the view and data
   private Scene scene;
   private VIAPetsModelManager modelManager;
   private ViewHandler viewHandler;
@@ -36,20 +37,24 @@ public class AddNewCustomerViewController
 
   }
 
+  // Returns the scene associated with this controller
   public Scene getScene()
   {
     return scene;
   }
 
+  // Resets the view
   public void reset()
   {
     resetFields();
   }
 
+  // Handles button actions based on the source of the event
   public void handleActions(ActionEvent e)
   {
     if (e.getSource() == backButton)
     {
+      // If the "Back" button is clicked, show a confirmation dialog
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
           "Do you really want to go back?", ButtonType.YES, ButtonType.NO);
       alert.setTitle("Back");
@@ -57,36 +62,38 @@ public class AddNewCustomerViewController
 
       alert.showAndWait();
 
+      // Navigate back to the main view if confirmed
       if (alert.getResult() == ButtonType.YES)
       {
         viewHandler.openView("MainView");
       }
     }
-
+    // If the "Manage" button is clicked, navigate to the ManageCustomerView
     else if (e.getSource() == manageButton)
     {
       viewHandler.openView("ManageCustomerView");
     }
-
+    // If the "Add" button is clicked, attempt to add a new customer
     else if (e.getSource() == addButton)
     {
       addNewCustomer();
     }
-
   }
 
+  // Adds a new customer after validating input fields
   private void addNewCustomer()
   {
-
+    // Retrieve values from text fields
     String firstName = firstNameField.getText();
     String lastName = lastNameField.getText();
     String phoneNumber = phoneNumberField.getText();
     String emailAddress = emailAddressField.getText();
 
+    // Check if any fields are empty
     if (firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty()
         || emailAddress.isEmpty())
     {
-
+      // Show an error alert if any field is empty
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText(null);
@@ -95,7 +102,7 @@ public class AddNewCustomerViewController
       return;
     }
 
-
+    // Validate that the first name is at least 3 characters long
     if (firstName == null || firstName.length() < 3)
       {
         //Show an error alert if the firstName is empty or less than 3 characters
