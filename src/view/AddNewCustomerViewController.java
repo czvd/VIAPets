@@ -113,9 +113,10 @@ public class AddNewCustomerViewController
         alert.showAndWait();
         return;
       }
-
-    if (!firstName.matches("[a-zA-z ]+"))
+    // Ensure the first name contains only letters
+    if (!firstName.matches("[a-zA-z ]"))
     {
+      //Show an error alert if the first name does not contain only letters
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText(null);
@@ -123,8 +124,8 @@ public class AddNewCustomerViewController
       alert.showAndWait();
       return;
     }
-
-    if (!lastName.matches("[a-zA-z ]+"))
+    // Ensure the last name contains only letters
+    if (!lastName.matches("[a-zA-z ]"))
     {
       //Show an error if the last name contains anything else than letters
       Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -136,9 +137,10 @@ public class AddNewCustomerViewController
     }
 
 
-
+    // Ensure the phone number contains only digits
     if (!phoneNumber.matches("\\d+"))
     {
+      //Show an error alert if the phone number does not contain only digits
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText(null);
@@ -147,7 +149,7 @@ public class AddNewCustomerViewController
       return;
     }
 
-
+    // Validate the email format using a regex pattern
     if (!emailAddress.matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
     {
       //Show an error if the email adress is not the format user@host.domain.
@@ -158,13 +160,14 @@ public class AddNewCustomerViewController
       alert.showAndWait();
       return;
     }
-
-
+  //Attempt to create and add a new customer
   try
   {
     Customer newCustomer = new Customer(firstName, lastName, phoneNumber, emailAddress);
     modelManager.addCostumer(newCustomer);
   }
+
+  // Handle duplicate email error
   catch (IllegalEmailException e){
     Alert alert = new Alert(Alert.AlertType.ERROR);
     alert.setTitle("Error");
@@ -173,6 +176,7 @@ public class AddNewCustomerViewController
     alert.showAndWait();
     return;
   }
+  // Handle duplicate phone number error
   catch(IllegalPhoneNumberException e)
   {
     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -182,7 +186,7 @@ public class AddNewCustomerViewController
     alert.showAndWait();
     return;
   }
-
+    // Shows a success message after the customer was added to the system and resets the fields
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setTitle("Success");
     alert.setHeaderText(null);
@@ -191,6 +195,7 @@ public class AddNewCustomerViewController
     resetFields();
   }
 
+  // This method clears all input fields to reset the form
   private void resetFields() {
     firstNameField.clear();
     lastNameField.clear();
