@@ -463,4 +463,16 @@
     <type>1</type>
     <age>2</age>
   </pets>
+  <pets>
+    <nameOfBreeder>NoName</nameOfBreeder>
+    <inKennel>true</inKennel>
+    <color>Brown</color>
+    <gender>Male</gender>
+    <species>Terrier</species>
+    <price>0.0</price>
+    <name>Gizmo</name>
+    <comment>Test type dog</comment>
+    <type>1</type>
+    <age>3</age>
+  </pets>
 </PetList>
